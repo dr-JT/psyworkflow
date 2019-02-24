@@ -15,7 +15,7 @@ copy_raw <- function(from, to, pattern, subj.list = NULL, remove = FALSE){
 
   dirs <- list.dirs(from, full.names = FALSE, recursive = FALSE)
   for (task_dir in dirs){
-    files <- list.files(paste(from, task_dir, sep = "/"), recursive = TRUE, pattern = pattern)
+    files <- list.files(paste(from, task_dir, sep = "/"), pattern = pattern, recursive = TRUE, full.names = TRUE)
     task <- stringr::str_split(task_dir, ". ")
     if (length(task)==1){
       task <- task[[1]][1]
