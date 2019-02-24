@@ -46,40 +46,6 @@ update_osf <- function(components, tokenid, tokentype = "file"){
    i <- legnth(overwrite_comp)
    osf_dir <- osf_components
    sub <- overwrite_comp
-   whlie (i > 0) {
-     dir <- sub[i]
-     osf_sub <- dplyr::filter(osf_dir, name = dir)
-
-     osf_files <- osfr::osf_ls_files(osf_sub, type = "files")
-     remove <- osf_files$name[which(!(osf_files$name %in% local_files))]
-     for (file in remove){
-       rm_file <- dplyr::filter(osf_files, name == file)
-       osfr::osf_rm(rm_file)
-     }
-
-     osf_folders <- osfr::osf_ls_files(osf_sub, type = "folders")
-     n <- nrow(osf_folders)
-     if (n==0){
-       i <- i - 1
-       next
-     }
-
-     for (j in seq_along(1:n)){
-       osf_subfolder <- osf_folders[j,]
-
-       osf_files <- osfr::osf_ls_files(osf_subfolder, type = "files")
-       remove <- osf_files$name[which(!(osf_files$name %in% local_files))]
-       for (file in remove){
-         rm_file <- dplyr::filter(osf_files, name == file)
-         osfr::osf_rm(rm_file)
-       }
-     }
-
-
-
-
-
-   }
 
 
 
