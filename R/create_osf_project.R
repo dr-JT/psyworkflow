@@ -1,4 +1,4 @@
-#' Create Directory Organization For a New Study
+#' Create Directory Organization For a New Study test
 #'
 #' This function can be used to automatically setup your study directory by
 #' creating folders and template scripts
@@ -21,7 +21,7 @@
 #' @param mergescript Logical. Download mergescript template? default = TRUE
 #' @param demographics Logical. Download demographics template? default = TRUE
 #' @param sem Logical. Download sem templates? default = TRUE
-#' @keywords create
+#' @keywords center
 #' @export
 #' @examples
 #'
@@ -62,4 +62,3 @@ create_study <- function(scripts.dir = TRUE, data.dir = TRUE, raw.dir = TRUE,
     download.file("http://englelab.gatech.edu/R/5_MainAnalyses.Rmd", "R Scripts/5_MainAnalyses.Rmd")
   }
 }
-
