@@ -82,6 +82,8 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
 
   if (type == "sem") {
     sem <- TRUE
+  } else {
+    sem <- FALSE
   }
 
   messy.name <- paste("Data Files/Raw Data/", messy.name, sep = "")
