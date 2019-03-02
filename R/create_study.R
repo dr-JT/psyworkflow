@@ -109,6 +109,12 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
   }
   if (tasks.dir==TRUE & dir.exists(paste(path, "Tasks", sep = ""))==FALSE) {
     dir.create(paste(path, "Tasks", sep = ""))
+    if (sessions > 1) {
+      for (i in 1:sessions) {
+        session <- paste(path, "Tasks/Session ", i, sep = "")
+        if (dir.exists(session) == FASLE) dir.create(session)
+      }
+    }
   }
   if (documents.dir==TRUE & dir.exists(paste(path, "Documents", sep = ""))==FALSE) {
     dir.create(paste(path, "Documents", sep = ""))
