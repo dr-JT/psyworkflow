@@ -1,4 +1,4 @@
-Binding: create_study
+Binding: package_template
 Title: Create a Research Study
 
 Parameter: type
