@@ -20,6 +20,7 @@
 #' @param flankerDL Logical. Do you want to download flankerDL template files?
 #' @param va4 Logical. Do you want to download va4 template files?
 #' @param sact Logical. Do you want to download sact template files?
+#' @param path String. Home directory file path
 #' @export
 #'
 
@@ -29,9 +30,10 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
                      type = "both", gf = FALSE, wmc = FALSE, ac = FALSE,
                      antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
                      stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE,
-                     sact = FALSE){
+                     sact = FALSE, path = "./"){
 
   ## Setup ####
+  to <- paste(path, to, sep = "")
   if (all == TRUE) {
     masterscript <- TRUE
     rawscript <- TRUE
@@ -53,7 +55,7 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
   ## Download Generic Templates
   if (masterscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/masterscript.R",
-                  "~/masterscript.R")
+                  paste(path, "masterscript.R", sep = ""))
   }
   if (rawscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/1_taskname1_raw.R",

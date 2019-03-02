@@ -9,7 +9,7 @@ template(all = FALSE, to = "R Scripts", masterscript = FALSE,
   demographics = FALSE, sem = FALSE, type = "both", gf = FALSE,
   wmc = FALSE, ac = FALSE, antisaccade = FALSE, stroop = FALSE,
   flanker = FALSE, stroopDL = FALSE, flankerDL = FALSE,
-  va4 = FALSE, sact = FALSE)
+  va4 = FALSE, sact = FALSE, path = "./")
 }
 \arguments{
 \item{all}{Logical. Download all R script templates?}
@@ -49,6 +49,8 @@ template(all = FALSE, to = "R Scripts", masterscript = FALSE,
 \item{va4}{Logical. Do you want to download va4 template files?}
 
 \item{sact}{Logical. Do you want to download sact template files?}
+
+\item{path}{String. Home directory file path}
 }
 \description{
 This function will download R script templates

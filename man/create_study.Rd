@@ -13,7 +13,8 @@ create_study(type = "standard", sessions = 1, all = FALSE,
   rawscript = FALSE, scorescript = FALSE, mergescript = FALSE,
   demographics = FALSE, gf = FALSE, wmc = FALSE, ac = FALSE,
   antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
-  stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE, sact = FALSE)
+  stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE, sact = FALSE,
+  path = "./")
 }
 \arguments{
 \item{type}{String. Options: "standard" or "sem". (Default = "standard").
@@ -80,6 +81,8 @@ create_study(type = "standard", sessions = 1, all = FALSE,
 \item{va4}{Logical. Do you want to download va4 template files?}
 
 \item{sact}{Logical. Do you want to download sact template files?}
+
+\item{path}{String. Home directory file path}
 }
 \description{
 This function can be used to automatically setup your study directory by

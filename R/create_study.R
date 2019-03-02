@@ -35,6 +35,7 @@
 #' @param flankerDL Logical. Do you want to download flankerDL template files?
 #' @param va4 Logical. Do you want to download va4 template files?
 #' @param sact Logical. Do you want to download sact template files?
+#' @param path String. Home directory file path
 #' @export
 #'
 
@@ -50,7 +51,7 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
                          demographics = FALSE, gf = FALSE, wmc = FALSE, ac = FALSE,
                          antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
                          stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE,
-                         sact = FALSE){
+                         sact = FALSE, path = "./"){
 
   ## Setup ####
   if (all == TRUE) {
@@ -86,44 +87,45 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
     sem <- FALSE
   }
 
-  messy.name <- paste("Data Files/Raw Data/", messy.name, sep = "")
+  messy.name <- paste(path, "Data Files/Raw Data/", messy.name, sep = "")
   #####
 
   ## Create directory structure ####
-  if (scripts.dir==TRUE & dir.exists("./R Scripts")==FALSE) {
-    dir.create("./R Scripts")
+  if (scripts.dir==TRUE & dir.exists(paste(path, "R Scripts", sep = ""))==FALSE) {
+    dir.create(paste(path, "R Scripts", sep = ""))
   }
-  if (data.dir==TRUE & dir.exists("Data Files")==FALSE) {
-    dir.create("Data Files")
+  if (data.dir==TRUE & dir.exists(paste(path, "Data Files", sep = ""))==FALSE) {
+    dir.create(paste(path, "Data Files", sep = ""))
   }
-  if (raw.dir==TRUE & dir.exists("Data Files/Raw Data")==FALSE) {
-    dir.create("Data Files/Raw Data")
+  if (raw.dir==TRUE & dir.exists(paste(path, "Data Files/Raw Data", sep = ""))==FALSE) {
+    dir.create(paste(path, "Data Files/Raw Data", sep = ""))
   }
   if (messy.dir==TRUE & dir.exists(messy.name)==FALSE) {
     dir.create(messy.name)
   }
-  if (scored.dir==TRUE & dir.exists("Data Files/Scored Data")==FALSE) {
-    dir.create("Data Files/Scored Data")
+  if (scored.dir==TRUE & dir.exists(paste(path, "Data Files/Scored Data", sep = ""))==FALSE) {
+    dir.create(paste(path, "Data Files/Scored Data", sep = ""))
   }
-  if (tasks.dir==TRUE & dir.exists("Tasks")==FALSE) {
-    dir.create("Tasks")
+  if (tasks.dir==TRUE & dir.exists(paste(path, "Tasks", sep = ""))==FALSE) {
+    dir.create(paste(path, "Tasks", sep = ""))
   }
-  if (documents.dir==TRUE & dir.exists("Documents")==FALSE) {
-    dir.create("Documents")
+  if (documents.dir==TRUE & dir.exists(paste(path, "Documents", sep = ""))==FALSE) {
+    dir.create(paste(path, "Documents", sep = ""))
   }
-  if (results.dir==TRUE & dir.exists("Results")==FALSE) {
-    dir.create("Results")
+  if (results.dir==TRUE & dir.exists(paste(path, "Results", sep = ""))==FALSE) {
+    dir.create(paste(path, "Results", sep = ""))
   }
-  if (figures.dir==TRUE & dir.exists("Results/Figures")==FALSE) {
-    dir.create("Results/Figures")
+  if (figures.dir==TRUE & dir.exists(paste(path, "Results/Figures", sep = ""))==FALSE) {
+    dir.create(paste(path, "Results/Figures", sep = ""))
   }
-  if (manuscript.dir==TRUE & dir.exists("Manuscript")==FALSE) {
-    dir.create("Manuscript")
+  if (manuscript.dir==TRUE & dir.exists(paste(path, "Manuscript", sep = ""))==FALSE) {
+    dir.create(paste(path, "Manuscript", sep = ""))
   }
-  if (presentations.dir==TRUE & dir.exists("Presentations")==FALSE) {
-    dir.create("Presentations")
+  if (presentations.dir==TRUE & dir.exists(paste(path, "Presentations", sep = ""))==FALSE) {
+    dir.create(paste(path, "Presentations", sep = ""))
   }
   for (dir in other.dir){
+    dir <- paste(path, dir, sep = "")
     if (dir.exists(dir)==FALSE) dir.create(dir)
   }
   #####
@@ -133,7 +135,8 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
            scorescript = scorescript, mergescript = mergescript,
            demographics = demographics, sem = sem, gf = gf, wmc = wmc, ac = ac,
            antisaccade = antisaccade, stroop = stroop, flanker = flanker,
-           stroopDL = stroopDL, flankerDL = flankerDL, va4 = va4, sact = sact)
+           stroopDL = stroopDL, flankerDL = flankerDL, va4 = va4, sact = sact,
+           path = path)
   #####
 }
 
