@@ -1,14 +1,16 @@
 #' Copy raw data files from one direcoty to another
 #'
-#' This function will automatically copy files from the Task directory to the Raw data directory
+#' This function will automatically copy files from the Task directory to
+#' the Raw data directory
 #' @param from a directory of task folders
 #' @param to a directory where raw data files are to be copied to
-#' @param pattern a string pattern identifying a specific type of raw data file (e.g. .edat2).
-#' @param subj.list a file path to a list of subjects who completed the entire study. (Default: NULL).
-#' @param remove logical. Should the files in the 'from' directory be deleted? (Default: FALSE)
-#' @keywords center
+#' @param pattern a string pattern identifying a specific
+#'     type of raw data file (e.g. .edat2).
+#' @param subj.list a file path to a list of subjects who completed
+#'     the entire study. (Default: NULL).
+#' @param remove logical. Should the files in the 'from' directory
+#'     be deleted? (Default: FALSE)
 #' @export
-#' @examples
 #'
 
 copy_raw <- function(from, to, pattern, subj.list = NULL, remove = FALSE){
