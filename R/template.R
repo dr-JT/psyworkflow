@@ -54,20 +54,30 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
 
   ## Download Generic Templates
   if (masterscript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/masterscript.R",
-                  paste(path, "masterscript.R", sep = "/"))
+    if (gf == TRUE | wmc == TRUE | ac == TRUE) {
+      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/masterscript.R",
+                    paste(path, "masterscript.R", sep = "/"))
+    } else {
+      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/masterscript.R",
+                    paste(path, "masterscript.R", sep = "/"))
+    }
   }
   if (rawscript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/1_taskname1_raw.R",
+    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/1_taskname1_raw.R",
                   paste(to, "1_taskname1_raw.R", sep = "/"))
   }
   if (scorescript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/2_taskname1_score.R",
+    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/2_taskname1_score.R",
                   paste(to, "2_taskname1_score.R", sep = "/"))
   }
   if (mergescript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/3_merge.R",
-                  paste(to, "3_merge.R", sep = "/"))
+    if (gf == TRUE | wmc == TRUE | ac == TRUE) {
+      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/merge.R",
+                    paste(to, "3_merge.R", sep = "/"))
+    } else {
+      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/3_merge.R",
+                    paste(to, "3_merge.R", sep = "/"))
+    }
   }
   if (demographics == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Analysis/Demographics.Rmd",

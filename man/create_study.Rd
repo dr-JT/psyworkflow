@@ -14,7 +14,7 @@ create_study(type = "standard", sessions = 1, all = FALSE,
   demographics = FALSE, gf = FALSE, wmc = FALSE, ac = FALSE,
   antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
   stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE, sact = FALSE,
-  path = "./")
+  path = ".")
 }
 \arguments{
 \item{type}{String. Options: "standard" or "sem". (Default = "standard").
