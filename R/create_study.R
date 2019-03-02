@@ -112,7 +112,7 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
     if (sessions > 1) {
       for (i in 1:sessions) {
         session <- paste(path, "Tasks/Session ", i, sep = "")
-        if (dir.exists(session) == FASLE) dir.create(session)
+        if (dir.exists(session) == FALSE) dir.create(session)
       }
     }
   }
