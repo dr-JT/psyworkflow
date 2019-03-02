@@ -12,7 +12,7 @@ Parameter: sessions
 Widget: TextInput
 Label: # of Sessions
 Default: 1
-Position: left
+Position: right
 
 Parameter: scripts.dir
 Widget: CheckboxInput
@@ -24,13 +24,13 @@ Parameter: data.dir
 Widget: CheckboxInput
 Label: /Data
 Default: On
-Position: right
+Position: center
 
 Parameter: raw.dir
 Widget: CheckboxInput
 Label: /Raw Data
 Default: On
-Position: right
+Position: left
 
 Parameter: messy.dir
 Widget: CheckboxInput
@@ -103,3 +103,5 @@ Widget: CheckboxInput
 Label: Attention Control Scripts
 Default: Off
 Position: left
+
+
