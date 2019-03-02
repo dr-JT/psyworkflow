@@ -11,16 +11,16 @@ copy_raw(from, to, pattern, subj.list = NULL, remove = FALSE)
 
 \item{to}{a directory where raw data files are to be copied to}
 
-\item{pattern}{a string pattern identifying a specific type of raw data file (e.g. .edat2).}
+\item{pattern}{a string pattern identifying a specific
+type of raw data file (e.g. .edat2).}
 
-\item{subj.list}{a file path to a list of subjects who completed the entire study. (Default: NULL).}
+\item{subj.list}{a file path to a list of subjects who completed
+the entire study. (Default: NULL).}
 
-\item{remove}{logical. Should the files in the 'from' directory be deleted? (Default: FALSE)}
+\item{remove}{logical. Should the files in the 'from' directory
+be deleted? (Default: FALSE)}
 }
 \description{
-This function will automatically copy files from the Task directory to the Raw data directory
+This function will automatically copy files from the Task directory to
+the Raw data directory
 }
-\examples{
-
-}
-\keyword{center}
