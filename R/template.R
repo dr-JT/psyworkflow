@@ -33,7 +33,7 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
                      sact = FALSE, path = "./"){
 
   ## Setup ####
-  to <- paste(path, to, sep = "")
+  to <- paste(path, to, sep = "/")
   if (all == TRUE) {
     masterscript <- TRUE
     rawscript <- TRUE
@@ -55,7 +55,7 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
   ## Download Generic Templates
   if (masterscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/masterscript.R",
-                  paste(path, "masterscript.R", sep = ""))
+                  paste(path, "masterscript.R", sep = "/"))
   }
   if (rawscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/1_taskname1_raw.R",
