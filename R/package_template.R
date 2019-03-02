@@ -1,4 +1,5 @@
-package_template <- function(path, ...) {
+package_template <- function(path, type, sessions, figures.dir, manuscript.dir,
+                             presentations.dir, templates, gf, wmc, ac) {
   # ensure path exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
 
