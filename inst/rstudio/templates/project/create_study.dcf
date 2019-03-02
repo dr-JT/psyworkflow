@@ -56,8 +56,4 @@ Label: Attention Control Scripts
 Default: Off
 Position: right
 
-Parameter: path
-Widget: TextInput
-Default: ~/
-
 
