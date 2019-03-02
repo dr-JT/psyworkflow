@@ -18,7 +18,7 @@ Parameter: scripts.dir
 Widget: CheckboxInput
 Label: /R Scripts
 Default: On
-Position: right
+Position: left
 
 Parameter: data.dir
 Widget: CheckboxInput
@@ -30,19 +30,19 @@ Parameter: raw.dir
 Widget: CheckboxInput
 Label: /Raw Data
 Default: On
-Position: left
+Position: right
 
 Parameter: messy.dir
 Widget: CheckboxInput
 Label: /Messy Data
 Default: On
-Position: right
+Position: left
 
 Parameter: scored.dir
 Widget: CheckboxInput
 Label: /Scored Data
 Default: On
-Position: right
+Position: center
 
 Parameter: tasks.dir
 Widget: CheckboxInput
@@ -54,13 +54,13 @@ Parameter: documents.dir
 Widget: CheckboxInput
 Label: /Documents
 Default: On
-Position: right
+Position: left
 
 Parameter: results.dir
 Widget: CheckboxInput
 Label: /Results
 Default: On
-Position: right
+Position: center
 
 Parameter: figures.dir
 Widget: CheckboxInput
@@ -72,19 +72,19 @@ Parameter: manuscript.dir
 Widget: CheckboxInput
 Label: /Manuscript
 Default: Off
-Position: right
+Position: left
 
 Parameter: presentations.dir
 Widget: CheckboxInput
 Label: /Presentations
 Default: Off
-Position: right
+Position: center
 
 Parameter: templates
 Widget: CheckboxInput
 Label: Generic Scripts
 Default: Off
-Position: left
+Position: right
 
 Parameter: gf
 Widget: CheckboxInput
@@ -96,12 +96,16 @@ Parameter: wmc
 Widget: CheckboxInput
 Label: WMC Scripts
 Default: Off
-Position: left
+Position: center
 
 Parameter: ac
 Widget: CheckboxInput
 Label: Attention Control Scripts
 Default: Off
-Position: left
+Position: right
+
+Parameter: path
+Widget: TextInput
+Default: ~/
 
 
