@@ -14,59 +14,11 @@ Label: # of Sessions
 Default: 1
 Position: right
 
-Parameter: scripts.dir
-Widget: CheckboxInput
-Label: /R Scripts
-Default: On
-Position: left
-
-Parameter: data.dir
-Widget: CheckboxInput
-Label: /Data
-Default: On
-Position: center
-
-Parameter: raw.dir
-Widget: CheckboxInput
-Label: /Raw Data
-Default: On
-Position: right
-
-Parameter: messy.dir
-Widget: CheckboxInput
-Label: /Messy Data
-Default: On
-Position: left
-
-Parameter: scored.dir
-Widget: CheckboxInput
-Label: /Scored Data
-Default: On
-Position: center
-
-Parameter: tasks.dir
-Widget: CheckboxInput
-Label: /Tasks
-Default: On
-Position: right
-
-Parameter: documents.dir
-Widget: CheckboxInput
-Label: /Documents
-Default: On
-Position: left
-
-Parameter: results.dir
-Widget: CheckboxInput
-Label: /Results
-Default: On
-Position: center
-
 Parameter: figures.dir
 Widget: CheckboxInput
 Label: /Results/Figures
 Default: Off
-Position: right
+Position: left
 
 Parameter: manuscript.dir
 Widget: CheckboxInput
@@ -78,7 +30,7 @@ Parameter: presentations.dir
 Widget: CheckboxInput
 Label: /Presentations
 Default: Off
-Position: center
+Position: left
 
 Parameter: templates
 Widget: CheckboxInput
@@ -90,13 +42,13 @@ Parameter: gf
 Widget: CheckboxInput
 Label: Gf Scripts
 Default: Off
-Position: left
+Position: right
 
 Parameter: wmc
 Widget: CheckboxInput
 Label: WMC Scripts
 Default: Off
-Position: center
+Position: right
 
 Parameter: ac
 Widget: CheckboxInput
