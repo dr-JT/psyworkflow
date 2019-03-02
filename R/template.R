@@ -53,7 +53,7 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
   ## Download Generic Templates
   if (masterscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/masterscript.R",
-                  "./masterscript.R")
+                  "~/masterscript.R")
   }
   if (rawscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/General/1_taskname1_raw.R",

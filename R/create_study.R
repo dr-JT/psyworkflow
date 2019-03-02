@@ -90,8 +90,8 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
   #####
 
   ## Create directory structure ####
-  if (scripts.dir==TRUE & dir.exists("R Scripts")==FALSE) {
-    dir.create("R Scripts")
+  if (scripts.dir==TRUE & dir.exists("./R Scripts")==FALSE) {
+    dir.create("./R Scripts")
   }
   if (data.dir==TRUE & dir.exists("Data Files")==FALSE) {
     dir.create("Data Files")
