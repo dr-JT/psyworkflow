@@ -6,6 +6,12 @@ From creating a study directory and sub-directories, creating R scripts for data
 
 ## To-do list
 
-* Copy raw data files from Task directory to Raw Data directory
+### Create functions to
+
+* Download master script temlplate
+
+* Download "tidy" raw script template
+
+* Download scored script template
 
 * 
