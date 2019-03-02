@@ -54,6 +54,9 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
                          sact = FALSE, path = "./"){
 
   ## Setup ####
+  # ensure path exists
+  dir.create(path, recursive = TRUE, showWarnings = FALSE)
+
   if (all == TRUE) {
     scripts.dir <- TRUE
     data.dir <- TRUE
