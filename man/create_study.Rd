@@ -5,7 +5,7 @@
 \title{Setup directory and templates for a new research study}
 \usage{
 create_study(type = "standard", sessions = 1, all = FALSE,
-  templates = FALSE, scripts.dir = TRUE, data.dir = TRUE,
+  generic = FALSE, scripts.dir = TRUE, data.dir = TRUE,
   raw.dir = TRUE, messy.dir = TRUE, messy.name = "messy",
   scored.dir = TRUE, tasks.dir = TRUE, documents.dir = TRUE,
   results.dir = TRUE, figures.dir = FALSE, manuscript.dir = FALSE,
@@ -24,7 +24,7 @@ create_study(type = "standard", sessions = 1, all = FALSE,
 
 \item{all}{Logical. Create all project directories?}
 
-\item{templates}{Logical. Add all R script templates?}
+\item{generic}{Logical. Add generic R script templates?}
 
 \item{scripts.dir}{Logical. Create script directory? default = TRUE}
 

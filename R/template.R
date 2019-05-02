@@ -56,7 +56,6 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
       scorescript <- TRUE
       mergescript <- TRUE
     }
-    }
   }
 
   if (ac == TRUE) {

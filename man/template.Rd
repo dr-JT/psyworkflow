@@ -5,11 +5,12 @@
 \title{Download template R scripts}
 \usage{
 template(all = FALSE, to = "R Scripts", masterscript = FALSE,
-  rawscript = FALSE, scorescript = FALSE, mergescript = FALSE,
-  demographics = FALSE, sem = FALSE, type = "both", gf = FALSE,
-  wmc = FALSE, ac = FALSE, antisaccade = FALSE, stroop = FALSE,
-  flanker = FALSE, stroopDL = FALSE, flankerDL = FALSE,
-  va4 = FALSE, sact = FALSE, path = "./")
+  rawscript = FALSE, scorescript = FALSE, generic = FALSE,
+  mergescript = FALSE, demographics = FALSE, sem = FALSE,
+  type = "both", gf = FALSE, wmc = FALSE, ac = FALSE,
+  antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
+  stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE, sact = FALSE,
+  path = "./")
 }
 \arguments{
 \item{all}{Logical. Download all R script templates?}
@@ -21,6 +22,8 @@ template(all = FALSE, to = "R Scripts", masterscript = FALSE,
 \item{rawscript}{Logical. Download rawscript template? default = FALSE}
 
 \item{scorescript}{Logical. Download scorescript template? default = FALSE}
+
+\item{generic}{Logical. Download all generic templates? default = FALSE}
 
 \item{mergescript}{Logical. Download mergescript template? default = FALSE}
 
