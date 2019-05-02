@@ -1,5 +1,5 @@
-package_template <- function(path, type, sessions, messy.dir, scored.dir, manuscript.dir,
-                             results.dir, generic, gf, wmc, ac) {
+package_template <- function(path, type, sessions, generic, gf, wmc, ac,
+                             messy.dir, scored.dir, results.dir, manuscript.dir) {
   # ensure path exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
 
