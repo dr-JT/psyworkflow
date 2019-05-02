@@ -6,7 +6,7 @@
 #'     "sem" will add sem analysis templates
 #' @param sessions Numeric. How many sessions will the study have?
 #' @param all Logical. Create all project directories?
-#' @param templates Logical. Add all R script templates?
+#' @param generic Logical. Add generic R script templates?
 #' @param scripts.dir Logical. Create script directory? default = TRUE
 #' @param data.dir Logical. Create data files directory? default = TRUE
 #' @param raw.dir Logical. Create raw? default = TRUE
@@ -40,7 +40,7 @@
 #'
 
 create_study <- function(type = "standard", sessions = 1, all = FALSE,
-                         templates = FALSE, scripts.dir = TRUE, data.dir = TRUE,
+                         generic = FALSE, scripts.dir = TRUE, data.dir = TRUE,
                          raw.dir = TRUE, messy.dir = TRUE, messy.name = "messy",
                          scored.dir = TRUE, tasks.dir = TRUE,
                          documents.dir = TRUE, results.dir = TRUE,
@@ -67,14 +67,6 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
     figures.dir <- TRUE
     manuscript.dir <- TRUE
     presentation.dir <- TRUE
-    masterscript <- TRUE
-    rawscript <- TRUE
-    scorescript <- TRUE
-    mergescript <- TRUE
-    demographics <- TRUE
-  }
-
-  if (templates == TRUE) {
     masterscript <- TRUE
     rawscript <- TRUE
     scorescript <- TRUE
@@ -139,7 +131,7 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
 
   ## Download Templates ####
   template(masterscript = masterscript, rawscript = rawscript,
-           scorescript = scorescript, mergescript = mergescript,
+           scorescript = scorescript, generic = generic, mergescript = mergescript,
            demographics = demographics, sem = sem, gf = gf, wmc = wmc, ac = ac,
            antisaccade = antisaccade, stroop = stroop, flanker = flanker,
            stroopDL = stroopDL, flankerDL = flankerDL, va4 = va4, sact = sact,

@@ -2,58 +2,62 @@ Binding: package_template
 Title: Create a Research Study
 
 Parameter: type
-Widget: SelectInput
-Label: Type of Study
-Fields: standard, sem
-Default: standard
+Widget: Select
+Label: Script Types
+Field: raw, score, both
 Position: left
 
 Parameter: sessions
 Widget: TextInput
 Label: # of Sessions
-Default: 1
+Default: 0
 Position: right
 
-Parameter: figures.dir
-Widget: CheckboxInput
-Label: /Results/Figures
-Default: Off
-Position: left
-
-Parameter: manuscript.dir
-Widget: CheckboxInput
-Label: /Manuscript
-Default: Off
-Position: left
-
-Parameter: presentations.dir
-Widget: CheckboxInput
-Label: /Presentations
-Default: Off
-Position: left
-
-Parameter: templates
+Parameter: generic
 Widget: CheckboxInput
 Label: Generic Scripts
 Default: Off
-Position: right
+Position: left
 
 Parameter: gf
 Widget: CheckboxInput
 Label: Gf Scripts
 Default: Off
-Position: right
+Position: left
 
 Parameter: wmc
 Widget: CheckboxInput
 Label: WMC Scripts
 Default: Off
-Position: right
+Position: left
 
 Parameter: ac
 Widget: CheckboxInput
 Label: Attention Control Scripts
 Default: Off
+Position: left
+
+Parameter: messy.dir
+Widget: CheckboxInput
+Label: /Data Files/Raw Data
+Default: Off
 Position: right
 
+Parameter: scored.dir
+Widget: CheckboxInput
+Label: /Data Files/Scored Data
+Default: Off
+Position: right
+
+Parameter: results.dir
+Widget: CheckboxInput
+Label: /Results
+Default: Off
+Position: right
+
+Parameter: manuscript.dir
+Widget: CheckboxInput
+Label: /Manuscript
+Default: Off
+Position: right
 

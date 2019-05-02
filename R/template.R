@@ -7,6 +7,7 @@
 #' @param rawscript Logical. Download rawscript template? default = FALSE
 #' @param scorescript Logical. Download scorescript template? default = FALSE
 #' @param mergescript Logical. Download mergescript template? default = FALSE
+#' @param generic Logical. Download all generic templates? default = FALSE
 #' @param demographics Logical. Download demographics template? default = FALSE
 #' @param sem Logical. Download sem analysis templates? default = FALSE
 #' @param type String. Do you want to download "raw" or "score" task template files?
@@ -25,7 +26,7 @@
 #'
 
 template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
-                     rawscript = FALSE, scorescript = FALSE,
+                     rawscript = FALSE, scorescript = FALSE, generic = FALSE,
                      mergescript = FALSE, demographics = FALSE, sem = FALSE,
                      type = "both", gf = FALSE, wmc = FALSE, ac = FALSE,
                      antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
@@ -43,6 +44,21 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
     sem <- TRUE
   }
 
+  if (generic == TRUE) {
+    masterscript <- TRUE
+    if (type == "raw") {
+      rawscript <- TRUE
+    } else if (type == "score") {
+      scorescript <- TRUE
+      mergescript <- TRUE
+    } else {
+      rawscript <- TRUE
+      scorescript <- TRUE
+      mergescript <- TRUE
+    }
+    }
+  }
+
   if (ac == TRUE) {
     antisaccade <- TRUE
     stroopDL <- TRUE
@@ -54,40 +70,28 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
 
   ## Download Generic Templates
   if (masterscript == TRUE) {
-    if (gf == TRUE | wmc == TRUE | ac == TRUE) {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/masterscript.R",
-                    paste(path, "masterscript.R", sep = "/"))
-    } else {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/masterscript.R",
-                    paste(path, "masterscript.R", sep = "/"))
-    }
+    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/masterscript.R",
+                  paste(path, "masterscript.R", sep = "/"))
   }
   if (rawscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/1_taskname1_raw.R",
-                  paste(to, "1_taskname1_raw.R", sep = "/"))
+                  paste(to, "0_taskname1_raw.R", sep = "/"))
   }
   if (scorescript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/2_taskname1_score.R",
-                  paste(to, "2_taskname1_score.R", sep = "/"))
+                  paste(to, "1_taskname1_score.R", sep = "/"))
   }
   if (mergescript == TRUE) {
-    if (gf == TRUE | wmc == TRUE | ac == TRUE) {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/merge.R",
-                    paste(to, "3_merge.R", sep = "/"))
-    } else {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/3_merge.R",
-                    paste(to, "3_merge.R", sep = "/"))
-    }
+    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/3_merge.R",
+                  paste(to, "2_merge.R", sep = "/"))
   }
   if (demographics == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Analysis/Demographics.Rmd",
-                  paste(to, "4_Demographics.Rmd", sep = "/"))
+                  paste(to, "3_Demographics.Rmd", sep = "/"))
   }
   if (sem == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Analysis/Correlations.Rmd",
-                  paste(to, "4_Correlations.Rmd", sep = "/"))
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Analysis/SEM.Rmd",
-                  paste(to, "5_MainAnalyses.Rmd", sep = "/"))
+                  paste(to, "3_MainAnalyses.Rmd", sep = "/"))
   }
   #####
 
