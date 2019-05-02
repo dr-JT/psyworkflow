@@ -24,6 +24,7 @@
 #' @param rawscript Logical. Download rawscript template? default = FALSE
 #' @param scorescript Logical. Download scorescript template? default = FALSE
 #' @param mergescript Logical. Download mergescript template? default = FALSE
+#' @param generic Logical. Download all generic templates? default = FALSE
 #' @param demographics Logical. Download demographics template? default = FALSE
 #' @param gf Logical. Do you want to download gf template files?
 #' @param wmc Logical. Do you want to download wmc template files?
@@ -39,15 +40,15 @@
 #' @export
 #'
 
-create_study <- function(type = "standard", sessions = 1, all = FALSE,
-                         generic = FALSE, scripts.dir = TRUE, data.dir = TRUE,
+create_study <- function(type = "both", sessions = 1, all = FALSE,
+                         scripts.dir = TRUE, data.dir = TRUE,
                          raw.dir = TRUE, messy.dir = TRUE, messy.name = "messy",
                          scored.dir = TRUE, tasks.dir = TRUE,
                          documents.dir = TRUE, results.dir = TRUE,
                          figures.dir = FALSE, manuscript.dir = FALSE,
                          presentations.dir = FALSE, other.dir = c(),
                          masterscript = TRUE, rawscript = FALSE,
-                         scorescript = FALSE, mergescript = FALSE,
+                         scorescript = FALSE, mergescript = FALSE, generic = FALSE,
                          demographics = FALSE, gf = FALSE, wmc = FALSE, ac = FALSE,
                          antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
                          stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE,
@@ -72,12 +73,6 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
     scorescript <- TRUE
     mergescript <- TRUE
     demographics <- TRUE
-  }
-
-  if (type == "sem") {
-    sem <- TRUE
-  } else {
-    sem <- FALSE
   }
 
   messy.name <- paste(path, "Data Files/Raw Data/", messy.name, sep = "")
@@ -130,7 +125,7 @@ create_study <- function(type = "standard", sessions = 1, all = FALSE,
   #####
 
   ## Download Templates ####
-  template(masterscript = masterscript, rawscript = rawscript,
+  template(masterscript = masterscript, rawscript = rawscript, type = type,
            scorescript = scorescript, generic = generic, mergescript = mergescript,
            demographics = demographics, sem = sem, gf = gf, wmc = wmc, ac = ac,
            antisaccade = antisaccade, stroop = stroop, flanker = flanker,

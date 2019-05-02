@@ -4,15 +4,15 @@
 \alias{create_study}
 \title{Setup directory and templates for a new research study}
 \usage{
-create_study(type = "standard", sessions = 1, all = FALSE,
-  generic = FALSE, scripts.dir = TRUE, data.dir = TRUE,
-  raw.dir = TRUE, messy.dir = TRUE, messy.name = "messy",
-  scored.dir = TRUE, tasks.dir = TRUE, documents.dir = TRUE,
-  results.dir = TRUE, figures.dir = FALSE, manuscript.dir = FALSE,
+create_study(type = "both", sessions = 1, all = FALSE,
+  scripts.dir = TRUE, data.dir = TRUE, raw.dir = TRUE,
+  messy.dir = TRUE, messy.name = "messy", scored.dir = TRUE,
+  tasks.dir = TRUE, documents.dir = TRUE, results.dir = TRUE,
+  figures.dir = FALSE, manuscript.dir = FALSE,
   presentations.dir = FALSE, other.dir = c(), masterscript = TRUE,
   rawscript = FALSE, scorescript = FALSE, mergescript = FALSE,
-  demographics = FALSE, gf = FALSE, wmc = FALSE, ac = FALSE,
-  antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
+  generic = FALSE, demographics = FALSE, gf = FALSE, wmc = FALSE,
+  ac = FALSE, antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
   stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE, sact = FALSE,
   path = ".")
 }
@@ -23,8 +23,6 @@ create_study(type = "standard", sessions = 1, all = FALSE,
 \item{sessions}{Numeric. How many sessions will the study have?}
 
 \item{all}{Logical. Create all project directories?}
-
-\item{generic}{Logical. Add generic R script templates?}
 
 \item{scripts.dir}{Logical. Create script directory? default = TRUE}
 
@@ -60,6 +58,8 @@ create_study(type = "standard", sessions = 1, all = FALSE,
 
 \item{mergescript}{Logical. Download mergescript template? default = FALSE}
 
+\item{generic}{Logical. Add generic R script templates?}
+
 \item{demographics}{Logical. Download demographics template? default = FALSE}
 
 \item{gf}{Logical. Do you want to download gf template files?}
@@ -83,6 +83,8 @@ create_study(type = "standard", sessions = 1, all = FALSE,
 \item{sact}{Logical. Do you want to download sact template files?}
 
 \item{path}{String. Home directory file path}
+
+\item{generic}{Logical. Download all generic templates? default = FALSE}
 }
 \description{
 This function can be used to automatically setup your study directory by
