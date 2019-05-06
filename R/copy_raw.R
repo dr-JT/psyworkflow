@@ -33,7 +33,7 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
   dirs <- list.dirs(from, full.names = FALSE, recursive = FALSE)
   for (task_dir in dirs){
     files <- list.files(paste(from, task_dir, sep = "/"),
-                        pattern = pattern, recursive = TRUE, full.names = TRUE)
+                        pattern = filetype, recursive = TRUE, full.names = TRUE)
     if (length(files)>0){
 
       for (i in seq_along(files)){
