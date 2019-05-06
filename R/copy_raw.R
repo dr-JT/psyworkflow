@@ -53,7 +53,9 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
         }
       }
 
-      task <- stringr::str_split(task_dir, ". ")
+      task <-
+        paste(stringr::str_c(stringr::str_split(task_dir, " ")[[1]][-1]),
+              sep = " ", collapse = "")
       if (length(task[[1]])==1){
         task <- task[[1]][1]
       } else {
