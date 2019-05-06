@@ -4,7 +4,8 @@
 \alias{copy_raw}
 \title{Copy raw data files from one direcoty to another}
 \usage{
-copy_raw(from, to, filetype, remove = FALSE, subj.file = NULL)
+copy_raw(from, to, filetype, remove = FALSE, subj.file = NULL,
+  copy = TRUE)
 }
 \arguments{
 \item{from}{a directory of task folders}
@@ -19,6 +20,8 @@ be deleted? (Default: FALSE)}
 
 \item{subj.file}{a file path to a list of subjects who completed
 the entire study. (Default: NULL).}
+
+\item{copy}{logical. Do you want to copy or only remove the files? (Default = TRUE)}
 }
 \description{
 This function will automatically copy files from the Task directory to
