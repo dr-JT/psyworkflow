@@ -76,11 +76,14 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
       file.copy(files.drop, drop_dir, copy.date = TRUE)
       file.copy(files.error, error_dir, copy.date = TRUE)
 
+      cat("   ", "\n")
+      cat("-----------------------------------------", "\n")
       cat("Files Copied: ", task, "\n")
       cat("Completed Subjects: ", length(files.keep), "\n")
       cat("Did not finish all sessions: ", length(files.drop), "\n")
       cat("Files with errors: ", length(files.error), "\n")
       cat("Total Files: ", length(files), "\n")
+      cat("-----------------------------------------", "\n")
 
       if (remove == TRUE){
         file.remove(files)
