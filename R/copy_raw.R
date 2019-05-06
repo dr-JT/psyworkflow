@@ -35,16 +35,15 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
     files <- list.files(paste(from, task_dir, sep = "/"),
                         pattern = filetype, recursive = TRUE, full.names = TRUE)
     if (length(files)>0){
-
+      files.error <- c()
+      files.keep <- c()
+      files.drop <- c()
       for (i in seq_along(files)){
         subj.complete <-
           length(which(stringr::str_detect(files[i], subj.list) == TRUE))
         error <-
           length(which(stringr::str_detect(files[i], "conflicted copy") == TRUE))
 
-        files.error <- c()
-        files.keep <- c()
-        files.drop <- c()
         if (error == 1) {
           files.error <- c(files.error, files[i])
         } else if (subj.complete == 1) {
@@ -77,13 +76,15 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
       file.copy(files.drop, drop_dir, copy.date = TRUE)
       file.copy(files.error, error_dir, copy.date = TRUE)
 
+      cat("Files Copied: ", task, "\n")
+      cat("Completed Subjects: ", length(files.keep), "\n")
+      cat("Did not finish all sessions: ", length(files.drop), "\n")
+      cat("Files with errors: ", length(files.error), "\n")
+      cat("Total Files: ", length(files), "\n")
+
       if (remove == TRUE){
         file.remove(files)
       }
     }
   }
-  cat("Completed Subjects: ", length(files.keep), "/n")
-  cat("Did not finish all sessions: ", length(files.drop), "/n")
-  cat("Files with errors: ", length(files.error), "/n")
-  cat("Total Files: ", length(files), "/n")
 }
