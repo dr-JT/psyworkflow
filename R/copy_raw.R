@@ -20,11 +20,11 @@ copy_raw <- function(from, to, pattern, remove = FALSE,
                   ifelse(stringr::str_detect(subj.file, ".txt"), "\t", NULL))
   if (delim == ",") {
     subj.list <- readr::read_csv(subj.file)
-    colnames(subj) <- "Subject"
+    colnames(subj.list) <- "Subject"
   } else if (delim == "\t") {
     subj.list <- readr::read_delim(subj.file, "\t",
                                    escape_double = FALSE, trim_ws = TRUE)
-    colnames(subj) <- "Subject"
+    colnames(subj.list) <- "Subject"
   } else {
     subj.list <- data.frame(Subject = NA)
   }
