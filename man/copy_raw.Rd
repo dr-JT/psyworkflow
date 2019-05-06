@@ -4,7 +4,7 @@
 \alias{copy_raw}
 \title{Copy raw data files from one direcoty to another}
 \usage{
-copy_raw(from, to, pattern, subj.list = NULL, remove = FALSE)
+copy_raw(from, to, pattern, remove = FALSE, subj.file = NULL)
 }
 \arguments{
 \item{from}{a directory of task folders}
@@ -14,11 +14,11 @@ copy_raw(from, to, pattern, subj.list = NULL, remove = FALSE)
 \item{pattern}{a string pattern identifying a specific
 type of raw data file (e.g. .edat2).}
 
-\item{subj.list}{a file path to a list of subjects who completed
-the entire study. (Default: NULL).}
-
 \item{remove}{logical. Should the files in the 'from' directory
 be deleted? (Default: FALSE)}
+
+\item{subj.file}{a file path to a list of subjects who completed
+the entire study. (Default: NULL).}
 }
 \description{
 This function will automatically copy files from the Task directory to
