@@ -4,14 +4,14 @@
 \alias{copy_raw}
 \title{Copy raw data files from one direcoty to another}
 \usage{
-copy_raw(from, to, pattern, remove = FALSE, subj.file = NULL)
+copy_raw(from, to, filetype, remove = FALSE, subj.file = NULL)
 }
 \arguments{
 \item{from}{a directory of task folders}
 
 \item{to}{a directory where raw data files are to be copied to}
 
-\item{pattern}{a string pattern identifying a specific
+\item{filetype}{a string pattern identifying a specific
 type of raw data file (e.g. .edat2).}
 
 \item{remove}{logical. Should the files in the 'from' directory

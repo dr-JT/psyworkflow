@@ -4,7 +4,7 @@
 #' the Raw data directory
 #' @param from a directory of task folders
 #' @param to a directory where raw data files are to be copied to
-#' @param pattern a string pattern identifying a specific
+#' @param filetype a string pattern identifying a specific
 #'     type of raw data file (e.g. .edat2).
 #' @param remove logical. Should the files in the 'from' directory
 #'     be deleted? (Default: FALSE)
@@ -13,7 +13,7 @@
 #' @export
 #'
 
-copy_raw <- function(from, to, pattern, remove = FALSE,
+copy_raw <- function(from, to, filetype, remove = FALSE,
                      subj.file = NULL){
 
   delim <- ifelse(stringr::str_detect(subj.file, ".csv"), ",",
