@@ -6,7 +6,6 @@
 #'     "sem" will add sem analysis templates
 #' @param sessions Numeric. How many sessions will the study have?
 #' @param all Logical. Create all project directories?
-#' @param generic Logical. Add generic R script templates?
 #' @param scripts.dir Logical. Create script directory? default = TRUE
 #' @param data.dir Logical. Create data files directory? default = TRUE
 #' @param raw.dir Logical. Create raw? default = TRUE

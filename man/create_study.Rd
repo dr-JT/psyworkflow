@@ -58,7 +58,7 @@ create_study(type = "both", sessions = 1, all = FALSE,
 
 \item{mergescript}{Logical. Download mergescript template? default = FALSE}
 
-\item{generic}{Logical. Add generic R script templates?}
+\item{generic}{Logical. Download all generic templates? default = FALSE}
 
 \item{demographics}{Logical. Download demographics template? default = FALSE}
 
@@ -83,8 +83,6 @@ create_study(type = "both", sessions = 1, all = FALSE,
 \item{sact}{Logical. Do you want to download sact template files?}
 
 \item{path}{String. Home directory file path}
-
-\item{generic}{Logical. Download all generic templates? default = FALSE}
 }
 \description{
 This function can be used to automatically setup your study directory by
