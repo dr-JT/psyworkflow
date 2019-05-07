@@ -4,16 +4,15 @@
 \alias{template}
 \title{Download template R scripts}
 \usage{
-template(all = FALSE, to = "R Scripts", masterscript = FALSE,
+template(type = "both", to = "R Scripts", masterscript = FALSE,
   rawscript = FALSE, scorescript = FALSE, generic = FALSE,
-  mergescript = FALSE, demographics = FALSE, sem = FALSE,
-  type = "both", gf = FALSE, wmc = FALSE, ac = FALSE,
-  antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
-  stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE, sact = FALSE,
-  path = "./")
+  mergescript = FALSE, demographics = FALSE, gf = FALSE,
+  wmc = FALSE, ac = FALSE, antisaccade = FALSE, stroop = FALSE,
+  flanker = FALSE, stroopDL = FALSE, flankerDL = FALSE,
+  va4 = FALSE, sact = FALSE, path = "./")
 }
 \arguments{
-\item{all}{Logical. Download all R script templates?}
+\item{type}{String. Do you want to download "raw" or "score" task template files?}
 
 \item{to}{a directory where to download R scripts}
 
@@ -28,10 +27,6 @@ template(all = FALSE, to = "R Scripts", masterscript = FALSE,
 \item{mergescript}{Logical. Download mergescript template? default = FALSE}
 
 \item{demographics}{Logical. Download demographics template? default = FALSE}
-
-\item{sem}{Logical. Download sem analysis templates? default = FALSE}
-
-\item{type}{String. Do you want to download "raw" or "score" task template files?}
 
 \item{gf}{Logical. Do you want to download gf template files?}
 

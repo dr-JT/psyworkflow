@@ -1,7 +1,7 @@
 #' Download template R scripts
 #'
 #' This function will download R script templates
-#' @param all Logical. Download all R script templates?
+#' @param type String. Do you want to download "raw" or "score" task template files?
 #' @param to a directory where to download R scripts
 #' @param masterscript Logical. Download masterscript template? default = TRUE
 #' @param rawscript Logical. Download rawscript template? default = FALSE
@@ -9,8 +9,6 @@
 #' @param mergescript Logical. Download mergescript template? default = FALSE
 #' @param generic Logical. Download all generic templates? default = FALSE
 #' @param demographics Logical. Download demographics template? default = FALSE
-#' @param sem Logical. Download sem analysis templates? default = FALSE
-#' @param type String. Do you want to download "raw" or "score" task template files?
 #' @param gf Logical. Do you want to download gf template files?
 #' @param wmc Logical. Do you want to download wmc template files?
 #' @param ac Logical. Do you want to download all attention control template files?
@@ -25,24 +23,16 @@
 #' @export
 #'
 
-template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
+template <- function(type = "both", to = "R Scripts", masterscript = FALSE,
                      rawscript = FALSE, scorescript = FALSE, generic = FALSE,
-                     mergescript = FALSE, demographics = FALSE, sem = FALSE,
-                     type = "both", gf = FALSE, wmc = FALSE, ac = FALSE,
+                     mergescript = FALSE, demographics = FALSE,
+                     gf = FALSE, wmc = FALSE, ac = FALSE,
                      antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
                      stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE,
                      sact = FALSE, path = "./"){
 
   ## Setup ####
   to <- paste(path, to, sep = "/")
-  if (all == TRUE) {
-    masterscript <- TRUE
-    rawscript <- TRUE
-    scorescript <- TRUE
-    mergescript <- TRUE
-    demographics <- TRUE
-    sem <- TRUE
-  }
 
   if (generic == TRUE) {
     masterscript <- TRUE
@@ -60,6 +50,8 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
 
   if (ac == TRUE) {
     antisaccade <- TRUE
+    flanker <- TRUE
+    stroop <- TRUE
     stroopDL <- TRUE
     flankerDL <- TRUE
     va4 <- TRUE
@@ -73,24 +65,20 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
                   paste(path, "masterscript.R", sep = "/"))
   }
   if (rawscript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/1_taskname1_raw.R",
+    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/0_taskname1_raw.R",
                   paste(to, "0_taskname1_raw.R", sep = "/"))
   }
   if (scorescript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/2_taskname1_score.R",
+    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/1_taskname1_score.R",
                   paste(to, "1_taskname1_score.R", sep = "/"))
   }
   if (mergescript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/3_merge.R",
+    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/2_merge.R",
                   paste(to, "2_merge.R", sep = "/"))
   }
   if (demographics == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Analysis/Demographics.Rmd",
                   paste(to, "3_Demographics.Rmd", sep = "/"))
-  }
-  if (sem == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Analysis/SEM.Rmd",
-                  paste(to, "3_MainAnalyses.Rmd", sep = "/"))
   }
   #####
 
@@ -98,127 +86,127 @@ template <- function(all = FALSE, to = "R Scripts", masterscript = FALSE,
   if (gf == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/gf_raw.R",
-                    paste(to, "1_gf_raw.R", sep = "/"))
+                    paste(to, "0_gf_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/gf_score.R",
-                    paste(to, "2_gf_score.R", sep = "/"))
+                    paste(to, "1_gf_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/gf_raw.R",
-                    paste(to, "1_gf_raw.R", sep = "/"))
+                    paste(to, "0_gf_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/gf_score.R",
-                    paste(to, "2_gf_score.R", sep = "/"))
+                    paste(to, "1_gf_score.R", sep = "/"))
     }
   }
   if (wmc == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/wmc_raw.R",
-                    paste(to, "1_wmc_raw.R", sep = "/"))
+                    paste(to, "0_wmc_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/wmc_score.R",
-                    paste(to, "2_wmc_score.R", sep = "/"))
+                    paste(to, "1_wmc_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/wmc_raw.R",
-                    paste(to, "1_wmc_raw.R", sep = "/"))
+                    paste(to, "0_wmc_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/wmc_score.R",
-                    paste(to, "2_wmc_score.R", sep = "/"))
+                    paste(to, "1_wmc_score.R", sep = "/"))
     }
   }
   if (antisaccade == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/antisaccade_raw.R",
-                    paste(to, "1_antisaccade_raw.R", sep = "/"))
+                    paste(to, "0_antisaccade_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/antisaccade_score.R",
-                    paste(to, "2_antisaccade_score.R", sep = "/"))
+                    paste(to, "1_antisaccade_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/antisaccade_raw.R",
-                    paste(to, "1_antisaccade_raw.R", sep = "/"))
+                    paste(to, "0_antisaccade_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/antisaccade_score.R",
-                    paste(to, "2_antisaccade_score.R", sep = "/"))
+                    paste(to, "1_antisaccade_score.R", sep = "/"))
     }
   }
   if (stroop == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/stroop_raw.R",
-                    paste(to, "1_stroop_raw.R", sep = "/"))
+                    paste(to, "0_stroop_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/stroop_score.R",
-                    paste(to, "2_stroop_score.R", sep = "/"))
+                    paste(to, "1_stroop_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/stroop_raw.R",
-                    paste(to, "1_stroop_raw.R", sep = "/"))
+                    paste(to, "0_stroop_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/stroop_score.R",
-                    paste(to, "2_stroop_score.R", sep = "/"))
+                    paste(to, "1_stroop_score.R", sep = "/"))
     }
   }
   if (flanker == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/flanker_raw.R",
-                    paste(to, "1_flanker_raw.R", sep = "/"))
+                    paste(to, "0_flanker_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/flanker_score.R",
-                    paste(to, "2_flanker_score.R", sep = "/"))
+                    paste(to, "1_flanker_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/flanker_raw.R",
-                    paste(to, "1_flanker_raw.R", sep = "/"))
+                    paste(to, "0_flanker_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/flanker_score.R",
-                    paste(to, "2_flanker_score.R", sep = "/"))
+                    paste(to, "1_flanker_score.R", sep = "/"))
     }
   }
   if (stroopDL == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/stroopDL_raw.R",
-                    paste(to, "1_stroopDL_raw.R", sep = "/"))
+                    paste(to, "0_stroopDL_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/stroopDL_score.R",
-                    paste(to, "2_stroopDL_score.R", sep = "/"))
+                    paste(to, "1_stroopDL_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/stroopDL_raw.R",
-                    paste(to, "1_stroopDL_raw.R", sep = "/"))
+                    paste(to, "0_stroopDL_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/stroopDL_score.R",
-                    paste(to, "2_stroopDL_score.R", sep = "/"))
+                    paste(to, "1_stroopDL_score.R", sep = "/"))
     }
   }
   if (flankerDL == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/flankerDL_raw.R",
-                    paste(to, "1_flankerDL_raw.R", sep = "/"))
+                    paste(to, "0_flankerDL_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/flankerDL_score.R",
-                    paste(to, "2_flankerDL_score.R", sep = "/"))
+                    paste(to, "1_flankerDL_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/flankerDL_raw.R",
-                    paste(to, "1_flankerDL_raw.R", sep = "/"))
+                    paste(to, "0_flankerDL_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/flankerDL_score.R",
-                    paste(to, "2_flankerDL_score.R", sep = "/"))
+                    paste(to, "1_flankerDL_score.R", sep = "/"))
     }
   }
   if (va4 == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/va4_raw.R",
-                    paste(to, "1_va4_raw.R", sep = "/"))
+                    paste(to, "0_va4_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/va4_score.R",
-                    paste(to, "2_va4_score.R", sep = "/"))
+                    paste(to, "1_va4_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/va4_raw.R",
-                    paste(to, "1_va4_raw.R", sep = "/"))
+                    paste(to, "0_va4_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/va4_score.R",
-                    paste(to, "2_va4_score.R", sep = "/"))
+                    paste(to, "1_va4_score.R", sep = "/"))
     }
   }
   if (sact == TRUE) {
     if (type == "raw") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/sact_raw.R",
-                    paste(to, "1_sact_raw.R", sep = "/"))
+                    paste(to, "0_sact_raw.R", sep = "/"))
     } else if (type == "score") {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/sact_score.R",
-                    paste(to, "2_sact_score.R", sep = "/"))
+                    paste(to, "1_sact_score.R", sep = "/"))
     } else {
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/sact_raw.R",
-                    paste(to, "1_sact_raw.R", sep = "/"))
+                    paste(to, "0_sact_raw.R", sep = "/"))
       download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Tasks/sact_score.R",
-                    paste(to, "2_sact_score.R", sep = "/"))
+                    paste(to, "1_sact_score.R", sep = "/"))
     }
   }
 }

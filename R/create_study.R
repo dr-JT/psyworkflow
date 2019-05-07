@@ -2,10 +2,8 @@
 #'
 #' This function can be used to automatically setup your study directory by
 #' creating folders and template scripts
-#' @param type String. Options: "standard" or "sem". (Default = "standard").
-#'     "sem" will add sem analysis templates
+#' @param type String. Options: "data collection"; "analysis".
 #' @param sessions Numeric. How many sessions will the study have?
-#' @param all Logical. Create all project directories?
 #' @param scripts.dir Logical. Create script directory? default = TRUE
 #' @param data.dir Logical. Create data files directory? default = TRUE
 #' @param raw.dir Logical. Create raw? default = TRUE
@@ -19,11 +17,11 @@
 #' @param manuscript.dir Logical. Create manuscript directory? default = FALSE
 #' @param presentations.dir Logical. Create presentations directory? default = FALSE
 #' @param other.dir List of other directories you want to create
+#' @param generic Logical. Download all generic templates? default = FALSE
 #' @param masterscript Logical. Download masterscript template? default = TRUE
 #' @param rawscript Logical. Download rawscript template? default = FALSE
 #' @param scorescript Logical. Download scorescript template? default = FALSE
 #' @param mergescript Logical. Download mergescript template? default = FALSE
-#' @param generic Logical. Download all generic templates? default = FALSE
 #' @param demographics Logical. Download demographics template? default = FALSE
 #' @param gf Logical. Do you want to download gf template files?
 #' @param wmc Logical. Do you want to download wmc template files?
@@ -39,15 +37,11 @@
 #' @export
 #'
 
-create_study <- function(type = "both", sessions = 1, all = FALSE,
-                         scripts.dir = TRUE, data.dir = TRUE,
-                         raw.dir = TRUE, messy.dir = TRUE, messy.name = "messy",
-                         scored.dir = TRUE, tasks.dir = TRUE,
-                         documents.dir = TRUE, results.dir = TRUE,
+create_study <- function(type = "analysis", sessions = 1,
                          figures.dir = FALSE, manuscript.dir = FALSE,
                          presentations.dir = FALSE, other.dir = c(),
-                         masterscript = TRUE, rawscript = FALSE,
-                         scorescript = FALSE, mergescript = FALSE, generic = FALSE,
+                         generic = FALSE, masterscript = TRUE, rawscript = FALSE,
+                         scorescript = FALSE, mergescript = FALSE,
                          demographics = FALSE, gf = FALSE, wmc = FALSE, ac = FALSE,
                          antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
                          stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE,
@@ -55,78 +49,58 @@ create_study <- function(type = "both", sessions = 1, all = FALSE,
 
   ## Setup ####
   path <- paste(path, "/", sep = "")
-  if (all == TRUE) {
-    scripts.dir <- TRUE
-    data.dir <- TRUE
-    raw.dir <- TRUE
-    messy.dir <- TRUE
-    scored.dir <- TRUE
-    tasks.dir <- TRUE
-    documents.dir <- TRUE
-    results.dir <- TRUE
-    figures.dir <- TRUE
-    manuscript.dir <- TRUE
-    presentation.dir <- TRUE
-    masterscript <- TRUE
-    rawscript <- TRUE
-    scorescript <- TRUE
-    mergescript <- TRUE
-    demographics <- TRUE
-  }
-
-  messy.name <- paste(path, "Data Files/Raw Data/", messy.name, sep = "")
   #####
 
-  ## Create directory structure ####
-  if (scripts.dir==TRUE & dir.exists(paste(path, "R Scripts", sep = ""))==FALSE) {
-    dir.create(paste(path, "R Scripts", sep = ""))
+  ## Common Directories ####
+  dir.create(paste(path, "R Scripts", sep = ""))
+  dir.create(paste(path, "Data Files", sep = ""))
+  dir.create(paste(path, "Documents", sep = ""))
+  for (dir in other.dir){
+    dir <- paste(path, dir, sep = "")
+    dir.create(dir)
   }
-  if (data.dir==TRUE & dir.exists(paste(path, "Data Files", sep = ""))==FALSE) {
-    dir.create(paste(path, "Data Files", sep = ""))
-  }
-  if (raw.dir==TRUE & dir.exists(paste(path, "Data Files/Raw Data", sep = ""))==FALSE) {
-    dir.create(paste(path, "Data Files/Raw Data", sep = ""))
-  }
-  if (messy.dir==TRUE & dir.exists(messy.name)==FALSE) {
+  ##########################
+
+  ## Data Collection Directories ####
+  if (type == "data collection") {
+    messy.name <- paste(path, "Data Files/", "E-Merge", sep = "")
+    dir.create(paste(path, "Data Files/edat", sep = ""))
     dir.create(messy.name)
-  }
-  if (scored.dir==TRUE & dir.exists(paste(path, "Data Files/Scored Data", sep = ""))==FALSE) {
-    dir.create(paste(path, "Data Files/Scored Data", sep = ""))
-  }
-  if (tasks.dir==TRUE & dir.exists(paste(path, "Tasks", sep = ""))==FALSE) {
     dir.create(paste(path, "Tasks", sep = ""))
     if (sessions > 1) {
       for (i in 1:sessions) {
         session <- paste(path, "Tasks/Session ", i, sep = "")
-        if (dir.exists(session) == FALSE) dir.create(session)
+        dir.create(session)
       }
     }
+    type <- "raw"
   }
-  if (documents.dir==TRUE & dir.exists(paste(path, "Documents", sep = ""))==FALSE) {
-    dir.create(paste(path, "Documents", sep = ""))
-  }
-  if (results.dir==TRUE & dir.exists(paste(path, "Results", sep = ""))==FALSE) {
+  #######################
+
+  ## Analysis Directories ####
+  if (type == "analysis") {
+    messy.name <- paste(path, "Data Files/Raw Data/", "E-Merge", sep = "")
+    dir.create(paste(path, "Data Files/Raw Data", sep = ""))
+    dir.create(messy.name)
+    dir.create(paste(path, "Data Files/Scored Data", sep = ""))
     dir.create(paste(path, "Results", sep = ""))
+    if (figures.dir == TRUE) {
+      dir.create(paste(path, "Results/Figures", sep = ""))
+    }
+    if (manuscript.dir == TRUE) {
+      dir.create(paste(path, "Manuscript", sep = ""))
+    }
+    if (presentations.dir == TRUE) {
+      dir.create(paste(path, "Presentations", sep = ""))
+    }
+    type <- "score"
   }
-  if (figures.dir==TRUE & dir.exists(paste(path, "Results/Figures", sep = ""))==FALSE) {
-    dir.create(paste(path, "Results/Figures", sep = ""))
-  }
-  if (manuscript.dir==TRUE & dir.exists(paste(path, "Manuscript", sep = ""))==FALSE) {
-    dir.create(paste(path, "Manuscript", sep = ""))
-  }
-  if (presentations.dir==TRUE & dir.exists(paste(path, "Presentations", sep = ""))==FALSE) {
-    dir.create(paste(path, "Presentations", sep = ""))
-  }
-  for (dir in other.dir){
-    dir <- paste(path, dir, sep = "")
-    if (dir.exists(dir)==FALSE) dir.create(dir)
-  }
-  #####
+  ############################
 
   ## Download Templates ####
-  template(masterscript = masterscript, rawscript = rawscript, type = type,
+  template(type = type, masterscript = masterscript, rawscript = rawscript,
            scorescript = scorescript, generic = generic, mergescript = mergescript,
-           demographics = demographics, sem = sem, gf = gf, wmc = wmc, ac = ac,
+           demographics = demographics, gf = gf, wmc = wmc, ac = ac,
            antisaccade = antisaccade, stroop = stroop, flanker = flanker,
            stroopDL = stroopDL, flankerDL = flankerDL, va4 = va4, sact = sact,
            path = path)

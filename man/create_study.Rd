@@ -4,43 +4,18 @@
 \alias{create_study}
 \title{Setup directory and templates for a new research study}
 \usage{
-create_study(type = "both", sessions = 1, all = FALSE,
-  scripts.dir = TRUE, data.dir = TRUE, raw.dir = TRUE,
-  messy.dir = TRUE, messy.name = "messy", scored.dir = TRUE,
-  tasks.dir = TRUE, documents.dir = TRUE, results.dir = TRUE,
-  figures.dir = FALSE, manuscript.dir = FALSE,
-  presentations.dir = FALSE, other.dir = c(), masterscript = TRUE,
-  rawscript = FALSE, scorescript = FALSE, mergescript = FALSE,
-  generic = FALSE, demographics = FALSE, gf = FALSE, wmc = FALSE,
-  ac = FALSE, antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
-  stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE, sact = FALSE,
-  path = ".")
+create_study(type = "analysis", sessions = 1, figures.dir = FALSE,
+  manuscript.dir = FALSE, presentations.dir = FALSE, other.dir = c(),
+  generic = FALSE, masterscript = TRUE, rawscript = FALSE,
+  scorescript = FALSE, mergescript = FALSE, demographics = FALSE,
+  gf = FALSE, wmc = FALSE, ac = FALSE, antisaccade = FALSE,
+  stroop = FALSE, flanker = FALSE, stroopDL = FALSE,
+  flankerDL = FALSE, va4 = FALSE, sact = FALSE, path = ".")
 }
 \arguments{
-\item{type}{String. Options: "standard" or "sem". (Default = "standard").
-"sem" will add sem analysis templates}
+\item{type}{String. Options: "data collection"; "analysis".}
 
 \item{sessions}{Numeric. How many sessions will the study have?}
-
-\item{all}{Logical. Create all project directories?}
-
-\item{scripts.dir}{Logical. Create script directory? default = TRUE}
-
-\item{data.dir}{Logical. Create data files directory? default = TRUE}
-
-\item{raw.dir}{Logical. Create raw? default = TRUE}
-
-\item{messy.dir}{Logical. Create raw messy directory? default = TRUE}
-
-\item{messy.name}{String. Name of messy direcotry. default = "messy"}
-
-\item{scored.dir}{Logical. Create scored directory? default = TRUE}
-
-\item{tasks.dir}{Logical. Create tasks directory? default = TRUE}
-
-\item{documents.dir}{Logical. Create documents directory? default = TRUE}
-
-\item{results.dir}{Logical. Create results directory? default = TRUE}
 
 \item{figures.dir}{Logical. Create figures directory? default = FALSE}
 
@@ -50,6 +25,8 @@ create_study(type = "both", sessions = 1, all = FALSE,
 
 \item{other.dir}{List of other directories you want to create}
 
+\item{generic}{Logical. Download all generic templates? default = FALSE}
+
 \item{masterscript}{Logical. Download masterscript template? default = TRUE}
 
 \item{rawscript}{Logical. Download rawscript template? default = FALSE}
@@ -57,8 +34,6 @@ create_study(type = "both", sessions = 1, all = FALSE,
 \item{scorescript}{Logical. Download scorescript template? default = FALSE}
 
 \item{mergescript}{Logical. Download mergescript template? default = FALSE}
-
-\item{generic}{Logical. Download all generic templates? default = FALSE}
 
 \item{demographics}{Logical. Download demographics template? default = FALSE}
 
@@ -83,6 +58,24 @@ create_study(type = "both", sessions = 1, all = FALSE,
 \item{sact}{Logical. Do you want to download sact template files?}
 
 \item{path}{String. Home directory file path}
+
+\item{scripts.dir}{Logical. Create script directory? default = TRUE}
+
+\item{data.dir}{Logical. Create data files directory? default = TRUE}
+
+\item{raw.dir}{Logical. Create raw? default = TRUE}
+
+\item{messy.dir}{Logical. Create raw messy directory? default = TRUE}
+
+\item{messy.name}{String. Name of messy direcotry. default = "messy"}
+
+\item{scored.dir}{Logical. Create scored directory? default = TRUE}
+
+\item{tasks.dir}{Logical. Create tasks directory? default = TRUE}
+
+\item{documents.dir}{Logical. Create documents directory? default = TRUE}
+
+\item{results.dir}{Logical. Create results directory? default = TRUE}
 }
 \description{
 This function can be used to automatically setup your study directory by
