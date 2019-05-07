@@ -2,7 +2,7 @@ Binding: package_template
 Title: Create a Research Study
 
 Parameter: type
-Widget: Select
+Widget: SelectInput
 Label: Script Types
 Field: raw, score, both
 Position: left
