@@ -4,7 +4,7 @@ Title: Create a Research Study
 Parameter: type
 Widget: SelectInput
 Label: Script Types
-Field: raw, score, both
+Fields: raw, score, both
 Position: left
 
 Parameter: sessions
