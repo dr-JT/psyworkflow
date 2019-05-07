@@ -61,8 +61,16 @@ template <- function(type = "both", to = "R Scripts", masterscript = FALSE,
 
   ## Download Generic Templates
   if (masterscript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/masterscript.R",
-                  paste(path, "masterscript.R", sep = "/"))
+    if (type == "raw") {
+      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/raw_masterscript.R",
+                    paste(path, "masterscript.R", sep = "/"))
+    } else if (type == "score") {
+      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/score_masterscript.R",
+                    paste(path, "masterscript.R", sep = "/"))
+    } else {
+      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/masterscript.R",
+                    paste(path, "masterscript.R", sep = "/"))
+    }
   }
   if (rawscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/0_taskname1_raw.R",

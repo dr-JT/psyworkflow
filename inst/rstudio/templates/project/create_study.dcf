@@ -10,7 +10,7 @@ Position: left
 Parameter: sessions
 Widget: TextInput
 Label: # of Sessions
-Default: 0
+Default: 1
 Position: right
 
 Parameter: generic
