@@ -4,7 +4,7 @@ Title: Create a Research Study
 Parameter: type
 Widget: SelectInput
 Label: Script Types
-Fields: data collection, analysis
+Fields: data collection, data analysis
 Position: left
 
 Parameter: sessions
