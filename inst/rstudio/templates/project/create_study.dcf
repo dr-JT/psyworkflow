@@ -3,7 +3,7 @@ Title: Create a Research Study
 
 Parameter: type
 Widget: SelectInput
-Label: Script Types
+Label: Repository Type
 Fields: data collection, data analysis
 Position: left
 
