@@ -78,7 +78,7 @@ create_study <- function(type = "analysis", sessions = 1,
   #######################
 
   ## Analysis Directories ####
-  if (type == "analysis") {
+  if (type == "data analysis") {
     messy.name <- paste(path, "Data Files/Raw Data/", "E-Merge", sep = "")
     dir.create(paste(path, "Data Files/Raw Data", sep = ""))
     dir.create(messy.name)
