@@ -52,6 +52,8 @@ Here are what the different options mean:
 
 * __Scripts__: Notice in the repository image above, how there are script files included. Yes, this will automatically create template scripts for you! Not just the directory structure.
 
+    - masterscript.R: This will download 
+
     - Generic Scripts: This will download generic template scripts that you will find useful for new tasks. These scripts are explained in more detail in the next Chapter. Notice how if you choose the **data collection** repository it will only download a generic template for *converting "messy" raw data files to "tidy" raw data files*. And if you choose the **data analysis** repository it will download generic templates for *creating scored data files from "tidy" raw data files* and to *merge* the Scored data files into one final data file. 
     
     - Gf, WMC, and Attention Scripts: Because these are tasks that we commonly use you can download scripts for these tasks. These should be all good to go and require no modification. Unless you decide to use different data cleaning procedures. 

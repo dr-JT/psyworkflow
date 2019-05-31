@@ -4,13 +4,14 @@
 \alias{create_study}
 \title{Setup directory and templates for a new research study}
 \usage{
-create_study(type = "analysis", sessions = 1, figures.dir = FALSE,
-  manuscript.dir = FALSE, presentations.dir = FALSE, other.dir = c(),
-  generic = FALSE, masterscript = TRUE, rawscript = FALSE,
-  scorescript = FALSE, mergescript = FALSE, demographics = FALSE,
-  gf = FALSE, wmc = FALSE, ac = FALSE, antisaccade = FALSE,
-  stroop = FALSE, flanker = FALSE, stroopDL = FALSE,
-  flankerDL = FALSE, va4 = FALSE, sact = FALSE, path = ".")
+create_study(type = "data analysis", sessions = 1,
+  figures.dir = FALSE, manuscript.dir = FALSE,
+  presentations.dir = FALSE, other.dir = c(), generic = FALSE,
+  masterscript = TRUE, rawscript = FALSE, scorescript = FALSE,
+  mergescript = FALSE, demographics = FALSE, gf = FALSE,
+  wmc = FALSE, ac = FALSE, antisaccade = FALSE, stroop = FALSE,
+  flanker = FALSE, stroopDL = FALSE, flankerDL = FALSE,
+  va4 = FALSE, sact = FALSE, path = ".")
 }
 \arguments{
 \item{type}{String. Options: "data collection"; "analysis".}

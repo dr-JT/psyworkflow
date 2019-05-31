@@ -15,45 +15,21 @@ Label: # of Sessions
 Default: 1
 Position: right
 
-Parameter: masterscript
-Widget: CheckboxInput
-Label: masterscript.R
-Default: Off
-Position: left
-
-Parameter: rawscript
-Widget: CheckboxInput
-Label: _raw.R
-Default: Off
-Position: left
-
-Parameter: scorescript
-Widget: CheckboxInput
-Label: _score.R
-Default: Off
-Position: left
-
-Parameter: mergescript
-Widget: CheckboxInput
-Label: merge.R
-Default: Off
-Position: left
-
 Parameter: figures.dir
 Widget: CheckboxInput
 Label: /Results/Figures
 Default: Off
-Position: right
+Position: left
 
 Parameter: manuscript.dir
 Widget: CheckboxInput
 Label: /Manuscript
 Default: Off
-Position: right
+Position: left
 
 Parameter: presentations.dir
 Widget: CheckboxInput
 Label: /Presentations
 Default: Off
-Position: right
+Position: left
 

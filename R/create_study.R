@@ -37,7 +37,7 @@
 #' @export
 #'
 
-create_study <- function(type = "analysis", sessions = 1,
+create_study <- function(type = "data analysis", sessions = 1,
                          figures.dir = FALSE, manuscript.dir = FALSE,
                          presentations.dir = FALSE, other.dir = c(),
                          generic = FALSE, masterscript = TRUE, rawscript = FALSE,

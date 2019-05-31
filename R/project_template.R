@@ -1,8 +1,22 @@
-project_template <- function(path, type, sessions, masterscript, rawscript,
-                             scorescript, mergescript,
+project_template <- function(path, type, sessions,
                              figures.dir, manuscript.dir, presentations.dir) {
   # ensure path exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
+
+  # which scripts
+  if (type == "data collection") {
+    masterscript <- TRUE
+    rawscript <- TRUE
+    scorescript <- FALSE
+    mergescript <- FALSE
+  }
+
+  if (type == "data analysis") {
+    masterscript <- TRUE
+    rawscript <- FALSE
+    scorescript <- TRUE
+    mergescript <- TRUE
+  }
 
   create_study(type = type, sessions = sessions, figures.dir = figures.dir,
                manuscript.dir = manuscript.dir,
