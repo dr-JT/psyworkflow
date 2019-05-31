@@ -48,15 +48,9 @@ Here are what the different options mean:
   <img src="man/figures/repository_type.png" width="50%"/>
 </div>
 
+Notice that if you choose the **data collection** repository it will download a generic template for *converting "messy" raw data files to "tidy" raw data files*. And if you choose the **data analysis** repository it will download generic templates for *creating scored data files from "tidy" raw data files* and to *merge* the Scored data files into one final data file. 
+
 * __# of Sessions__: How many sessions will the study have? This will create folders in the `Tasks` directory for each session. For instance, if there will be 4 sessions it will create the the folders "Session 1", "Session 2", "Session 3", and "Session 4". Obviously this is not needed for a **data analysis** repository.
-
-* __Scripts__: Notice in the repository image above, how there are script files included. Yes, this will automatically create template scripts for you! Not just the directory structure.
-
-    - masterscript.R: This will download 
-
-    - Generic Scripts: This will download generic template scripts that you will find useful for new tasks. These scripts are explained in more detail in the next Chapter. Notice how if you choose the **data collection** repository it will only download a generic template for *converting "messy" raw data files to "tidy" raw data files*. And if you choose the **data analysis** repository it will download generic templates for *creating scored data files from "tidy" raw data files* and to *merge* the Scored data files into one final data file. 
-    
-    - Gf, WMC, and Attention Scripts: Because these are tasks that we commonly use you can download scripts for these tasks. These should be all good to go and require no modification. Unless you decide to use different data cleaning procedures. 
     
 * __Other Directories__: I talked earlier about some other directories you may want to include in a **Data Analysis** repository. Well you can automatically add them here. 
 
@@ -74,12 +68,6 @@ Or
 
 ```{r}
 workflow::template(path = here::here(), generic = TRUE, type = "score")
-```
-
-Or
-
-```{r}
-workflow::template(path = here::here(), wmc = TRUE, type = "score")
 ```
 
 To see all the different options use
