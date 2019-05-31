@@ -44,7 +44,7 @@ Here are what the different options mean:
 
 * __Repository Type__: **data collection** or **data analysis**. Depending on which one you choose it will create the corresponding repository organization:
 
-<img src="man/figures/repository_type.png" style="width: 50%"/>
+<img src="man/figures/repository_type.png" width="50%"/>
 
 ![alt text](man/figures/repository_type.png)
 
