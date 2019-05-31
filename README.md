@@ -44,6 +44,8 @@ Here are what the different options mean:
 
 * __Repository Type__: **data collection** or **data analysis**. Depending on which one you choose it will create the corresponding repository organization:
 
+<img src="man/figures/repository_type.png" style="width: 50%; align: center"/>
+
 ![alt text](man/figures/repository_type.png)
 
 * __# of Sessions__: How many sessions will the study have? This will create folders in the `Tasks` directory for each session. For instance, if there will be 4 sessions it will create the the folders "Session 1", "Session 2", "Session 3", and "Session 4". Obviously this is not needed for a **data analysis** repository.
