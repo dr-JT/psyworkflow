@@ -34,7 +34,7 @@ And browse until you see the option: __Research Study__
 
 Click on that and you will see a dialogue box like this
 
-![alt text](man/figures/workflow_dialogue.png)
+<img src="man/figures/workflow_dialogue.png" width="50%"/>
 
 Here are what the different options mean:
 
