@@ -15,27 +15,27 @@ Label: # of Sessions
 Default: 1
 Position: right
 
-Parameter: generic
+Parameter: masterscript
 Widget: CheckboxInput
-Label: Generic Scripts
+Label: masterscript.R
 Default: Off
 Position: left
 
-Parameter: gf
+Parameter: rawscript
 Widget: CheckboxInput
-Label: Gf Scripts
+Label: _raw.R
 Default: Off
 Position: left
 
-Parameter: wmc
+Parameter: scorescript
 Widget: CheckboxInput
-Label: WMC Scripts
+Label: _score.R
 Default: Off
 Position: left
 
-Parameter: ac
+Parameter: mergescript
 Widget: CheckboxInput
-Label: Attention Control Scripts
+Label: merge.R
 Default: Off
 Position: left
 
