@@ -1,7 +1,7 @@
 Binding: project_template
 Title: Research Study
 Subtitle: Create a Data Collection or Data Analysis Repository
-Icon: images/Folder-icon3.png
+Icon: icon.png
 
 Parameter: type
 Widget: SelectInput
