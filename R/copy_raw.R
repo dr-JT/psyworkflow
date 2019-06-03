@@ -11,11 +11,12 @@
 #' @param subj.file a file path to a list of subjects who completed
 #'     the entire study. (Default: NULL).
 #' @param copy logical. Do you want to copy or only remove the files? (Default = TRUE)
+#' @param ext a directory extension to the "to" argument.
 #' @export
 #'
 
 copy_raw <- function(from, to, filetype, remove = FALSE,
-                     subj.file = NULL, copy = TRUE){
+                     subj.file = NULL, copy = TRUE, ext = NULL){
 
   if (copy == TRUE) {
     if (!is.null(subj.file)) {
@@ -69,6 +70,9 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
           task <- task[[1]][2]
         }
         copy_dir <- paste(to, task, sep = "/")
+        if (!is.null(ext)) {
+          copy_dir <- paste(copy_dir, ext, sep = "/")
+        }
         if (dir.exists(copy_dir) == FALSE){
           dir.create(copy_dir)
         }

@@ -5,7 +5,7 @@
 \title{Copy raw data files from one direcoty to another}
 \usage{
 copy_raw(from, to, filetype, remove = FALSE, subj.file = NULL,
-  copy = TRUE)
+  copy = TRUE, ext = NULL)
 }
 \arguments{
 \item{from}{a directory of task folders}
@@ -22,6 +22,8 @@ be deleted? (Default: FALSE)}
 the entire study. (Default: NULL).}
 
 \item{copy}{logical. Do you want to copy or only remove the files? (Default = TRUE)}
+
+\item{ext}{a directory extension to the "to" argument.}
 }
 \description{
 This function will automatically copy files from the Task directory to
