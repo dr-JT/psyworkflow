@@ -18,19 +18,21 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
                      subj.file = NULL, copy = TRUE){
 
   if (copy == TRUE) {
-    delim <- ifelse(stringr::str_detect(subj.file, ".csv"), ",",
-                    ifelse(stringr::str_detect(subj.file, ".txt"), "\t", NULL))
-    if (delim == ",") {
-      subj.list <- readr::read_csv(subj.file)
-      colnames(subj.list) <- "Subject"
-    } else if (delim == "\t") {
-      subj.list <- readr::read_delim(subj.file, "\t",
-                                     escape_double = FALSE, trim_ws = TRUE)
-      colnames(subj.list) <- "Subject"
-    } else {
-      subj.list <- data.frame(Subject = NA)
+    if (!is.null(subj.file)) {
+      delim <- ifelse(stringr::str_detect(subj.file, ".csv"), ",",
+                      ifelse(stringr::str_detect(subj.file, ".txt"), "\t", NULL))
+      if (delim == ",") {
+        subj.list <- readr::read_csv(subj.file)
+        colnames(subj.list) <- "Subject"
+      } else if (delim == "\t") {
+        subj.list <- readr::read_delim(subj.file, "\t",
+                                       escape_double = FALSE, trim_ws = TRUE)
+        colnames(subj.list) <- "Subject"
+      } else {
+        subj.list <- data.frame(Subject = NA)
+      }
+      subj.list <- as.character(subj.list$Subject)
     }
-    subj.list <- as.character(subj.list$Subject)
 
     dirs <- list.dirs(from, full.names = FALSE, recursive = FALSE)
     for (task_dir in dirs){
@@ -41,11 +43,14 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
         files.keep <- c()
         files.drop <- c()
         for (i in seq_along(files)){
-          subj.complete <-
-            length(which(stringr::str_detect(files[i], subj.list) == TRUE))
+          if (!is.null(subj.file)) {
+            subj.complete <-
+              length(which(stringr::str_detect(files[i], subj.list) == TRUE))
+          } else {
+            subj.complete <- 1
+          }
           error <-
             length(which(stringr::str_detect(files[i], "conflicted copy") == TRUE))
-
           if (error == 1) {
             files.error <- c(files.error, files[i])
           } else if (subj.complete == 1) {
