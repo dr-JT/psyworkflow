@@ -70,11 +70,14 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
           task <- task[[1]][2]
         }
         copy_dir <- paste(to, task, sep = "/")
-        if (!is.null(ext)) {
-          copy_dir <- paste(copy_dir, ext, sep = "/")
-        }
         if (dir.exists(copy_dir) == FALSE){
           dir.create(copy_dir)
+        }
+        if (!is.null(ext)) {
+          copy_dir <- paste(copy_dir, ext, sep = "/")
+          if (dir.exists(copy_dir) == FALSE){
+            dir.create(copy_dir)
+          }
         }
         drop_dir <- paste(copy_dir, "Did not finish all sessions", sep = "/")
         if (dir.exists(drop_dir) == FALSE) {
