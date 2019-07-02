@@ -72,6 +72,11 @@ template <- function(type = "both", to = "R Scripts", masterscript = FALSE,
                     paste(path, "masterscript.R", sep = "/"))
     }
   }
+  if (mergescript == TRUE) {
+    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/2_merge.R",
+                  paste(to, "2_merge.R", sep = "/"))
+  }
+  to <- paste(to, "templates", sep = "/")
   if (rawscript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/0_taskname1_raw.R",
                   paste(to, "0_taskname1_raw.R", sep = "/"))
@@ -79,10 +84,6 @@ template <- function(type = "both", to = "R Scripts", masterscript = FALSE,
   if (scorescript == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/1_taskname1_score.R",
                   paste(to, "1_taskname1_score.R", sep = "/"))
-  }
-  if (mergescript == TRUE) {
-    download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/2_merge.R",
-                  paste(to, "2_merge.R", sep = "/"))
   }
   if (demographics == TRUE) {
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Analysis/Demographics.Rmd",
