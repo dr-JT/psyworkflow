@@ -78,21 +78,21 @@ template <- function(type = "both", to = "R Scripts", masterscript = FALSE,
   }
   to <- paste(to, "templates", sep = "/")
   if (rawscript == TRUE) {
-    if (dir.exists(to) == TRUE) {
+    if (dir.exists(to) == FALSE) {
       dir.create(to)
     }
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/0_taskname1_raw.R",
                   paste(to, "0_taskname1_raw.R", sep = "/"))
   }
   if (scorescript == TRUE) {
-    if (dir.exists(to) == TRUE) {
+    if (dir.exists(to) == FALSE) {
       dir.create(to)
     }
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/1_taskname1_score.R",
                   paste(to, "1_taskname1_score.R", sep = "/"))
   }
   if (demographics == TRUE) {
-    if (dir.exists(to) == TRUE) {
+    if (dir.exists(to) == FALSE) {
       dir.create(to)
     }
     download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Analysis/Demographics.Rmd",
