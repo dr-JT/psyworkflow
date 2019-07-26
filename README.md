@@ -1,6 +1,6 @@
 # workflow
 
-A package to aid in the research workflow process
+A package to aid in the research workflow
 
 ## Install
 
@@ -14,7 +14,7 @@ As scientists we want to be able to focus on getting to the data, running statis
 
 To do this, however, we have to organize our data and write code to do the analyses. We don't actually care about the organization or care about writing clean easy to read code. We might recognize that having good organization and clean easy to read code will make this whole process easier and has a lot of advantages, but it is also difficult and requires extra time. Therefore, these often times becomes an afterthought at best or at worst completely ignored.
 
-For the most part, your workflow process from one research study to the next will require the same steps, processes, and organization. This means we should be able to automate this so we can spend more time on what we actually care about as scientists.
+For the most part, your workflow from one research study to the next will require the same steps, processes, and organization. This means we should be able to automate this so we can spend more time on what we actually care about as scientists.
 
 I have built this package with certain organization principles in mind. This way you can spend less time thinking about organization and writing clean easy to read code because these are already setup for you. You can have your cake and eat it too! 
 
@@ -61,13 +61,13 @@ Go ahead an play around with creating different types of repositories.
 You can also add template scripts after the fact, if you already have a repository setup. 
 
 ```{r}
-workflow::template(path = here::here(), masterscript = TRUE)
+workflow::template(type = "raw", masterscript = TRUE)
 ```
 
 Or
 
 ```{r}
-workflow::template(path = here::here(), generic = TRUE, type = "score")
+workflow::template(type = "score", scorescript = TRUE, merge = TRUE)
 ```
 
 To see all the different options use
