@@ -40,12 +40,9 @@
 create_study <- function(type = "data analysis", sessions = 1,
                          figures.dir = FALSE, manuscript.dir = FALSE,
                          presentations.dir = FALSE, other.dir = c(),
-                         generic = FALSE, masterscript = TRUE, rawscript = FALSE,
+                         masterscript = NULL, rawscript = FALSE,
                          scorescript = FALSE, mergescript = FALSE,
-                         demographics = FALSE, gf = FALSE, wmc = FALSE, ac = FALSE,
-                         antisaccade = FALSE, stroop = FALSE, flanker = FALSE,
-                         stroopDL = FALSE, flankerDL = FALSE, va4 = FALSE,
-                         sact = FALSE, path = "."){
+                         path = "."){
 
   ## Setup ####
   path <- paste(path, "/", sep = "")
@@ -73,7 +70,6 @@ create_study <- function(type = "data analysis", sessions = 1,
         dir.create(session)
       }
     }
-    type <- "raw"
   }
   #######################
 
@@ -91,16 +87,12 @@ create_study <- function(type = "data analysis", sessions = 1,
     if (presentations.dir == TRUE) {
       dir.create(paste(path, "Presentations", sep = ""))
     }
-    type <- "score"
   }
   ############################
 
   ## Download Templates ####
-  template(type = type, masterscript = masterscript, rawscript = rawscript,
-           scorescript = scorescript, generic = generic, mergescript = mergescript,
-           demographics = demographics, gf = gf, wmc = wmc, ac = ac,
-           antisaccade = antisaccade, stroop = stroop, flanker = flanker,
-           stroopDL = stroopDL, flankerDL = flankerDL, va4 = va4, sact = sact,
+  template(masterscript = masterscript, rawscript = rawscript,
+           scorescript = scorescript, mergescript = mergescript,
            path = path)
   #####
 }

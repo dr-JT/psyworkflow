@@ -5,14 +5,14 @@ project_template <- function(path, type, sessions,
 
   # which scripts
   if (type == "data collection") {
-    masterscript <- TRUE
+    masterscript <- "data preparation"
     rawscript <- TRUE
     scorescript <- FALSE
     mergescript <- FALSE
   }
 
   if (type == "data analysis") {
-    masterscript <- TRUE
+    masterscript <- "data analysis"
     rawscript <- FALSE
     scorescript <- TRUE
     mergescript <- TRUE
@@ -20,7 +20,8 @@ project_template <- function(path, type, sessions,
 
   create_study(type = type, sessions = sessions, figures.dir = figures.dir,
                manuscript.dir = manuscript.dir,
-               presentations.dir = presentations.dir, masterscript = masterscript,
-               rawscript = rawscript, scorescript = scorescript,
-               mergescript = mergescript, path = path)
+               presentations.dir = presentations.dir,
+               masterscript = masterscript, rawscript = rawscript,
+               scorescript = scorescript, mergescript = mergescript,
+               path = path)
 }

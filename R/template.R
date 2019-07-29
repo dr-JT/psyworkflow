@@ -15,7 +15,7 @@
 template <- function(to = "R Scripts/templates", overwrite = FALSE,
                      masterscript = NULL, rawscript = FALSE,
                      scorescript = FALSE, mergescript = FALSE,
-                     path = "./"){
+                     path = "."){
 
   ## Setup ####
   to <- paste(path, to, sep = "/")

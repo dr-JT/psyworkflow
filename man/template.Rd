@@ -6,7 +6,7 @@
 \usage{
 template(to = "R Scripts/templates", overwrite = FALSE,
   masterscript = NULL, rawscript = FALSE, scorescript = FALSE,
-  mergescript = FALSE, path = "./")
+  mergescript = FALSE, path = ".")
 }
 \arguments{
 \item{to}{a directory where to download R scripts}
