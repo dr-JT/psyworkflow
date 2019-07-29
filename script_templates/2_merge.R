@@ -17,11 +17,10 @@ import <- files_join(here(import.dir), pattern = "Scores", id = "Subject")
 data_merge <- import %>%
   select() %>%
   trim(variables = "all", cutoff = 3.5, id = "Subject")
-#################################################################
 
-#### Create list of final subjects ####
+## Create list of final subjects
 subj.list <- select(data_merge, Subject)
-#######################################
+#################################################################
 
 #### Output ####
 write_csv(data_merge, here(output.dir, "name_of_datafile.csv"))
