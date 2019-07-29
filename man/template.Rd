@@ -4,51 +4,25 @@
 \alias{template}
 \title{Download template R scripts}
 \usage{
-template(type = "both", to = "R Scripts", masterscript = FALSE,
-  rawscript = FALSE, scorescript = FALSE, generic = FALSE,
-  mergescript = FALSE, demographics = FALSE, gf = FALSE,
-  wmc = FALSE, ac = FALSE, antisaccade = FALSE, stroop = FALSE,
-  flanker = FALSE, stroopDL = FALSE, flankerDL = FALSE,
-  va4 = FALSE, sact = FALSE, path = "./")
+template(to = "R Scripts/templates", overwrite = FALSE,
+  masterscript = NULL, rawscript = FALSE, scorescript = FALSE,
+  mergescript = FALSE, path = "./")
 }
 \arguments{
-\item{type}{String. Do you want to download "raw" or "score" task template files?}
-
 \item{to}{a directory where to download R scripts}
 
-\item{masterscript}{Logical. Download masterscript template? default = TRUE}
+\item{overwrite}{Logical. Overwite any existing templates?}
+
+\item{masterscript}{String. Which type of masterscript template to download.
+masterscript = "data preparation" or masterscript = "data analysis".}
 
 \item{rawscript}{Logical. Download rawscript template? default = FALSE}
 
 \item{scorescript}{Logical. Download scorescript template? default = FALSE}
 
-\item{generic}{Logical. Download all generic templates? default = FALSE}
-
 \item{mergescript}{Logical. Download mergescript template? default = FALSE}
 
-\item{demographics}{Logical. Download demographics template? default = FALSE}
-
-\item{gf}{Logical. Do you want to download gf template files?}
-
-\item{wmc}{Logical. Do you want to download wmc template files?}
-
-\item{ac}{Logical. Do you want to download all attention control template files?}
-
-\item{antisaccade}{Logical. Do you want to download antisaccade template files?}
-
-\item{stroop}{Logical. Do you want to download stroop template files?}
-
-\item{flanker}{Logical. Do you want to download flanker template files?}
-
-\item{stroopDL}{Logical. Do you want to download stroopDL template files?}
-
-\item{flankerDL}{Logical. Do you want to download flankerDL template files?}
-
-\item{va4}{Logical. Do you want to download va4 template files?}
-
-\item{sact}{Logical. Do you want to download sact template files?}
-
-\item{path}{String. Home directory file path}
+\item{path}{String. Home directory file path. Ignore...}
 }
 \description{
 This function will download R script templates
