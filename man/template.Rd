@@ -2,28 +2,32 @@
 % Please edit documentation in R/template.R
 \name{template}
 \alias{template}
-\title{Download template R scripts}
+\title{Download R Script Templates}
 \usage{
 template(to = "R Scripts/templates", overwrite = FALSE,
   masterscript = NULL, rawscript = FALSE, scorescript = FALSE,
   mergescript = FALSE, path = ".")
 }
 \arguments{
-\item{to}{a directory where to download R scripts}
+\item{to}{a directory where to download R scripts.
+default: "R Scripts/templates"}
 
-\item{overwrite}{Logical. Overwite any existing templates?}
+\item{overwrite}{Logical. Overwite any existing templates? default: FALSE}
 
 \item{masterscript}{String. Which type of masterscript template to download.
-masterscript = "data preparation" or masterscript = "data analysis".}
+options: "data preparation" or "data analysis".}
 
-\item{rawscript}{Logical. Download rawscript template? default = FALSE}
+\item{rawscript}{Logical. Download template to convert a "messy" raw data file
+to a "tidy" raw data file? default = FALSE}
 
-\item{scorescript}{Logical. Download scorescript template? default = FALSE}
+\item{scorescript}{Logical. Download template to perform data cleaning and
+scoring (aggregate) on a "tidy" raw data file? default = FALSE}
 
-\item{mergescript}{Logical. Download mergescript template? default = FALSE}
+\item{mergescript}{Logical. Download template to merge multiple scored data
+files? default = FALSE}
 
-\item{path}{String. Home directory file path. Ignore...}
+\item{path}{String. working directory file path. Ignore...}
 }
 \description{
-This function will download R script templates
+This function will download template scripts for data analysis in R
 }

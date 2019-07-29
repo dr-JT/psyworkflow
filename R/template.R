@@ -1,14 +1,18 @@
-#' Download template R scripts
+#' Download R Script Templates
 #'
-#' This function will download R script templates
-#' @param to a directory where to download R scripts
-#' @param overwrite Logical. Overwite any existing templates?
+#' This function will download template scripts for data analysis in R
+#' @param to a directory where to download R scripts.
+#'     default: "R Scripts/templates"
+#' @param overwrite Logical. Overwite any existing templates? default: FALSE
 #' @param masterscript String. Which type of masterscript template to download.
-#'     masterscript = "data preparation" or masterscript = "data analysis".
-#' @param rawscript Logical. Download rawscript template? default = FALSE
-#' @param scorescript Logical. Download scorescript template? default = FALSE
-#' @param mergescript Logical. Download mergescript template? default = FALSE
-#' @param path String. Home directory file path. Ignore...
+#'     options: "data preparation" or "data analysis".
+#' @param rawscript Logical. Download template to convert a "messy" raw data file
+#'     to a "tidy" raw data file? default = FALSE
+#' @param scorescript Logical. Download template to perform data cleaning and
+#'     scoring (aggregate) on a "tidy" raw data file? default = FALSE
+#' @param mergescript Logical. Download template to merge multiple scored data
+#'     files? default = FALSE
+#' @param path String. working directory file path. Ignore...
 #' @export
 #'
 
@@ -29,7 +33,9 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. masterscript.R already exists")
     } else {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/raw_masterscript.R",
+      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
+                          "master/script_templates/", "masterscript_prep.R",
+                          sep = ""),
                     paste(path, "masterscript.R", sep = "/"))
     }
   } else if (masterscript == "data analysis") {
@@ -37,28 +43,34 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. masterscript.R already exists")
     } else {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/score_masterscript.R",
+      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
+                          "master/script_templates/", "masterscript_analysis.R",
+                          sep = ""),
                     paste(path, "masterscript.R", sep = "/"))
     }
   }
 
   if (rawscript == TRUE) {
-    exists <- file.exists(paste(to, "0_taskname1_raw.R", sep = "/"))
+    exists <- file.exists(paste(to, "0_taskname_raw.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. 0_taskname1_raw.R already exists")
+      message("Did not download file. 0_taskname_raw.R already exists")
     } else {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/0_taskname1_raw.R",
-                    paste(to, "0_taskname1_raw.R", sep = "/"))
+      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
+                          "master/script_templates/", "0_taskname_raw.R",
+                          sep = ""),
+                    paste(to, "0_taskname_raw.R", sep = "/"))
     }
   }
 
   if (scorescript == TRUE) {
-    exists <- file.exists(paste(to, "1_taskname1_score.R", sep = "/"))
+    exists <- file.exists(paste(to, "1_taskname_score.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. 1_taskname1_score.R already exists")
+      message("Did not download file. 1_taskname_score.R already exists")
     } else {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/1_taskname1_score.R",
-                    paste(to, "1_taskname1_score.R", sep = "/"))
+      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
+                          "master/script_templates/", "1_taskname_score.R",
+                          sep = ""),
+                    paste(to, "1_taskname_score.R", sep = "/"))
     }
   }
 
@@ -67,7 +79,9 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. 2_merge.R already exists")
     } else {
-      download.file("https://raw.githubusercontent.com/EngleLab/R-Templates/master/Generic/2_merge.R",
+      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
+                          "master/script_templates/", "2_merge.R",
+                          sep = ""),
                     paste(to, "2_merge.R", sep = "/"))
     }
   }
