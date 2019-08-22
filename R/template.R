@@ -23,6 +23,9 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
 
   ## Setup ####
   to <- paste(path, to, sep = "/")
+  github_repo <-
+    "https://raw.githubusercontent.com/dr-JT/workflow/master/script_templates/"
+
   if (!dir.exists(to)) dir.create(to, recursive = TRUE)
   if (is.null(masterscript)) masterscript <- "none"
   #####
@@ -33,8 +36,7 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. masterscript.R already exists")
     } else {
-      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
-                          "master/script_templates/", "masterscript_prep.R",
+      download.file(paste(github_repo, "masterscript_prep.R",
                           sep = ""),
                     paste(path, "masterscript.R", sep = "/"))
     }
@@ -43,8 +45,7 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. masterscript.R already exists")
     } else {
-      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
-                          "master/script_templates/", "masterscript_analysis.R",
+      download.file(paste(github_repo, "masterscript_analysis.R",
                           sep = ""),
                     paste(path, "masterscript.R", sep = "/"))
     }
@@ -55,8 +56,7 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. 0_taskname_raw.R already exists")
     } else {
-      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
-                          "master/script_templates/", "0_taskname_raw.R",
+      download.file(paste(github_repo, "0_taskname_raw.R",
                           sep = ""),
                     paste(to, "0_taskname_raw.R", sep = "/"))
     }
@@ -67,22 +67,20 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. 1_taskname_score.R already exists")
     } else {
-      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
-                          "master/script_templates/", "1_taskname_score.R",
+      download.file(paste(github_repo, "1_taskname_score.R",
                           sep = ""),
                     paste(to, "1_taskname_score.R", sep = "/"))
     }
   }
 
   if (mergescript == TRUE) {
-    exists <- file.exists(paste(to, "2_merge.R", sep = "/"))
+    exists <- file.exists(paste(path, "R Scripts", "2_merge.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. 2_merge.R already exists")
     } else {
-      download.file(paste("https://raw.githubusercontent.com/dr-JT/workflow/",
-                          "master/script_templates/", "2_merge.R",
+      download.file(paste(github_repo, "2_merge.R",
                           sep = ""),
-                    paste(to, "2_merge.R", sep = "/"))
+                    paste(path, "R Scripts", "2_merge.R", sep = "/"))
     }
   }
   #####
