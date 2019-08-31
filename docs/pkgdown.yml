@@ -1,0 +1,8 @@
+pandoc: 2.7.2
+pkgdown: 1.1.0
+pkgdown_sha: ~
+articles: []
+urls:
+  reference: https://dr-jt.github.io/workflow//reference
+  article: https://dr-jt.github.io/workflow//articles
+
