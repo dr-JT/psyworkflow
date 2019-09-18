@@ -4,7 +4,6 @@
 #############################################
 #------ 0. "messy" to "tidy" raw data ------#
 #############################################
-library(here)
 
 source("R Scripts/0_taskname_raw.R", echo=TRUE)
 
