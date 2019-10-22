@@ -5,7 +5,7 @@
 \title{Copy raw data files from one direcoty to another}
 \usage{
 copy_raw(from, to, filetype, remove = FALSE, subj.file = NULL,
-  copy = TRUE, ext = NULL)
+  copy = TRUE, ext = NULL, task_dir.names = "numbered")
 }
 \arguments{
 \item{from}{a directory of task folders}
@@ -24,6 +24,9 @@ the entire study. (Default: NULL).}
 \item{copy}{logical. Do you want to copy or only remove the files? (Default = TRUE)}
 
 \item{ext}{a directory extension to the "to" argument.}
+
+\item{task_dir.names}{Relationship between task name and task folder name.
+Default is "numbered". Alternative options are; "asis".}
 }
 \description{
 This function will automatically copy files from the Task directory to

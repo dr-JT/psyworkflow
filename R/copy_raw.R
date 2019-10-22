@@ -12,11 +12,14 @@
 #'     the entire study. (Default: NULL).
 #' @param copy logical. Do you want to copy or only remove the files? (Default = TRUE)
 #' @param ext a directory extension to the "to" argument.
+#' @param task_dir.names Relationship between task name and task folder name.
+#'     Default is "numbered". Alternative options are; "asis".
 #' @export
 #'
 
 copy_raw <- function(from, to, filetype, remove = FALSE,
-                     subj.file = NULL, copy = TRUE, ext = NULL){
+                     subj.file = NULL, copy = TRUE, ext = NULL,
+                     task_dir.names = "numbered"){
 
   if (copy == TRUE) {
     if (!is.null(subj.file)) {
@@ -61,9 +64,14 @@ copy_raw <- function(from, to, filetype, remove = FALSE,
           }
         }
 
-        task <-
-          paste(stringr::str_c(stringr::str_split(task_dir, " ")[[1]][-1]),
-                sep = " ", collapse = "")
+        if (task_dir.names == "numbered") {
+          task <-
+            paste(stringr::str_c(stringr::str_split(task_dir, " ")[[1]][-1]),
+                  sep = " ", collapse = "")
+        } else if (task_dir.names == "asis") {
+          task <- task_dir
+        }
+
         if (length(task[[1]])==1){
           task <- task[[1]][1]
         } else {
