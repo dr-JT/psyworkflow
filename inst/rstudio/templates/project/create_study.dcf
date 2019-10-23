@@ -17,7 +17,7 @@ Position: right
 
 Parameter: figures.dir
 Widget: CheckboxInput
-Label: /Results/Figures
+Label: /Figures
 Default: Off
 Position: left
 

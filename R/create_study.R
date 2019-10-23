@@ -79,7 +79,7 @@ create_study <- function(type = "data analysis", sessions = 1,
     dir.create(paste(path, "Data Files/Scored Data", sep = ""))
     dir.create(paste(path, "Results", sep = ""))
     if (figures.dir == TRUE) {
-      dir.create(paste(path, "Results/Figures", sep = ""))
+      dir.create(paste(path, "Figures", sep = ""))
     }
     if (manuscript.dir == TRUE) {
       dir.create(paste(path, "Manuscript", sep = ""))
