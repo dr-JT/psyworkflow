@@ -1,4 +1,4 @@
-#### Set up ####
+#### Setup ####
 ## Load packages
 library(here)
 library(readr)
