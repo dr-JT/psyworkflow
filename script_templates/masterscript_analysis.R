@@ -21,8 +21,8 @@ rm(list=ls())
 library(rmarkdown)
 
 render("R Scripts/3_MainAnalyses.Rmd",
-       output_dir = "Results", output_file = "MainAnalyses.html",
-       params = list(data = "Data Files/Name_of_datafile.csv"))
+       output_dir = "Results", 
+       output_file = "MainAnalyses.html")
 
 rm(list=ls())
 #################################################
