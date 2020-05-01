@@ -5,31 +5,31 @@ library(readr)
 library(dplyr)
 
 ## Set Import/Output Directories
-import.dir <- "Data Files/Raw Data"
-output.dir <- "Data Files/Scored Data"
+import_dir <- "Data Files/Raw Data"
+output_dir <- "Data Files/Scored Data"
 
 ## Set Import/Output Filenames
 task <- "taskname"
-import.file <- paste(task, "raw.csv", sep = "_")
-output.file <- paste(task, "Scores.csv", sep = "_")
+import_file <- paste(task, "raw.csv", sep = "_")
+output_file <- paste(task, "Scores.csv", sep = "_")
 
 ## Set Data Cleaning Params
 
 ###############
 
 #### Import ####
-import <- read_csv(here(import.dir, import.file))
+data_import <- read_csv(here(import_dir, import_file))
 ################
 
 #### Data Cleaning and Scoring ####
-data <- import %>%
+data_scores <- data_import %>%
   filter() %>%
   group_by() %>%
   summarise()
 ###################################
 
 #### Output ####
-write_csv(data, here(output.dir, output.file))
+write_csv(data_scores, here(output_dir, output_file))
 ################
 
 rm(list=ls())
