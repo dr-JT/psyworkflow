@@ -4,6 +4,8 @@
 #################################################
 #------ 1. "tidy" raw data to Scored data ------#
 #################################################
+
+## Create/Clear log file
 write(paste("log: ", format(Sys.Date(), "%B %d %Y"), "\n", sep = ""),
       file = "Data Files/Scored Data/log.txt", append = FALSE)
 
