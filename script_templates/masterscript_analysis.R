@@ -4,6 +4,8 @@
 #################################################
 #------ 1. "tidy" raw data to Scored data ------#
 #################################################
+write(paste("log: ", format(Sys.Date(), "%B %d %Y"), "\n", sep = ""),
+      file = "Data Files/Scored Data/log.txt", append = FALSE)
 
 source("R Scripts/1_taskname_score.R", echo=TRUE)
 
