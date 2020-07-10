@@ -1,7 +1,7 @@
 #### Set up ####
 ## Load packages
 library(here)
-library(datawrangling) # for files_join() and trim()
+library(datawrangling) # for files_join()
 library(dplyr)
 
 ## Set import/output directories
@@ -14,10 +14,9 @@ output_file <- "name_of_datafile.csv"
 data_import <- files_join(here(import_dir), pattern = "Scores", id = "Subject")
 ######################
 
-#### Select only important variables and trim outlier scores ####
+#### Select only important variables ####
 data_merge <- data_import %>%
-  select() %>%
-  trim(variables = "all", cutoff = 3.5, id = "Subject")
+  select()
 
 ## Create list of final subjects
 subj.list <- select(data_merge, Subject)
