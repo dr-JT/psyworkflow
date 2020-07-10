@@ -21,12 +21,20 @@ output_file <- paste(task, "Scores.csv", sep = "_")
 data_import <- read_csv(here(import_dir, import_file))
 ################
 
-#### Data Cleaning and Scoring ####
+#### Score Data ####
 data_scores <- data_import %>%
   filter() %>%
   group_by() %>%
   summarise()
-###################################
+####################
+
+#### Clean Data ####
+
+####################
+
+#### Calculate Reliability ####
+
+###############################
 
 #### Output ####
 write_csv(data_scores, here(output_dir, output_file))
