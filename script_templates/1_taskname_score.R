@@ -18,12 +18,12 @@ output_file <- paste(task, "Scores.csv", sep = "_")
 ###############
 
 #### Import ####
-data_import <- read_csv(here(import_dir, import_file))
+data_import <- read_csv(here(import_dir, import_file)) %>%
+  filter()
 ################
 
 #### Score Data ####
 data_scores <- data_import %>%
-  filter() %>%
   group_by() %>%
   summarise()
 ####################
