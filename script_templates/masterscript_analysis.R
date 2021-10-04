@@ -5,6 +5,10 @@
 #------ 1. "tidy" raw data to Scored data ------#
 #################################################
 
+## Create/Clear log file
+write(paste("log: ", format(Sys.Date(), "%B %d %Y"), "\n", sep = ""),
+      file = "Data Files/Scored Data/log.txt", append = FALSE)
+
 source("R Scripts/1_taskname_score.R", echo=TRUE)
 
 rm(list=ls())
@@ -21,8 +25,8 @@ rm(list=ls())
 library(rmarkdown)
 
 render("R Scripts/3_MainAnalyses.Rmd",
-       output_dir = "Results", output_file = "MainAnalyses.html",
-       params = list(data = "Data Files/Name_of_datafile.csv"))
+       output_dir = "Results", 
+       output_file = "MainAnalyses.html")
 
 rm(list=ls())
 #################################################

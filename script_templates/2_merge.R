@@ -1,7 +1,7 @@
 #### Setup ####
 ## Load Packages
 library(here)
-library(datawrangling) # to use files_join()
+library(datawrangling) # for files_join()
 library(dplyr)
 
 ## Set Import/Output Directories
@@ -14,7 +14,7 @@ output_file <- "name_of_datafile.csv"
 data_import <- files_join(here(import_dir), pattern = "Scores", id = "Subject")
 ######################
 
-#### Select only important variables and trim outlier scores ####
+#### Select only important variables ####
 data_merge <- data_import %>%
   select()
 
