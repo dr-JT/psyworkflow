@@ -38,7 +38,7 @@ get_template <- function(to = "R Scripts/templates", overwrite = FALSE,
     } else {
       download.file(paste(github_repo, "mainscript_collection.Rmd",
                           sep = ""),
-                    paste(path, "mainscript.R", sep = "/"))
+                    paste(path, "mainscript.Rmd", sep = "/"))
     }
   } else if (mainscript == "data analysis") {
     exists <- file.exists(paste(path, "mainscript.R", sep = "/"))
@@ -47,7 +47,7 @@ get_template <- function(to = "R Scripts/templates", overwrite = FALSE,
     } else {
       download.file(paste(github_repo, "mainscript_analysis.Rmd",
                           sep = ""),
-                    paste(path, "mainscript.R", sep = "/"))
+                    paste(path, "mainscript.Rmd", sep = "/"))
     }
   }
 
