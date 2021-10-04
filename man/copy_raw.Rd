@@ -4,8 +4,16 @@
 \alias{copy_raw}
 \title{Copy raw data files from one direcoty to another}
 \usage{
-copy_raw(from, to, filetype, remove = FALSE, subj.file = NULL,
-  copy = TRUE, ext = NULL, task_dir.names = "numbered")
+copy_raw(
+  from,
+  to,
+  filetype,
+  remove = FALSE,
+  subj.file = NULL,
+  copy = TRUE,
+  ext = NULL,
+  task_dir.names = "numbered"
+)
 }
 \arguments{
 \item{from}{a directory of task folders}
