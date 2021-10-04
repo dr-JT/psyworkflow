@@ -1,0 +1,80 @@
+# PROJECTNAME
+
+## Directory Organization:
+
+------------------------------------------------------------------------
+
+-   **Data Files**: All data files are stored here
+
+    -   **Raw Data**: raw data files for each task
+
+    -   **Scored Data**: scored data files for each task
+
+    -   Demographics.csv: demographics data file
+
+-   **R Scripts**: All R scripts used for data analysis
+
+-   **Results**: All result output files from data analysis scripts
+
+## Required Packages
+
+------------------------------------------------------------------------
+
+```{r eval=FALSE}
+source("R Scripts/_required_packages.R")
+```
+
+## Data Scoring and Cleaning
+
+------------------------------------------------------------------------
+
+Create scored and cleaned data files from raw data files
+
+-   **Import Directory**: Data Files/Raw Data
+
+-   **Output Directory**: Data Files/Scored Data
+
+-   **Data Cleaning**: A log of which subjects were removed for each task due to data cleaning can be found in Data Files/Scored Data/**log.txt**
+
+    [provide a general description of some data cleaning decisions]
+
+-   **Reliability**: [provide a general description of how reliability was calculated]
+
+```{r}
+## Create/Clear log file
+write(paste("log: ", format(Sys.Date(), "%B %d %Y"), "\n", sep = ""),
+      file = "Data Files/Scored Data/log.txt", append = FALSE)
+
+## Source R Scripts
+
+
+rm(list=ls())
+```
+
+Create merged data file from scored data files
+
+**Import Directory**: Data Files/Scored Data
+
+**Output Directory**: Data Files/Data.csv
+
+```{r}
+source("R Scripts/2_merge.R", echo=TRUE)
+
+rm(list=ls())
+```
+
+## Statistical Analysis and Data Visualization
+
+------------------------------------------------------------------------
+
+Perform statistical analysis and data visualization
+
+Output is saved as **.html** files to **Results/**
+
+```{r}
+rmarkdown::render("R Scripts/3_Demographics.Rmd",
+                  output_dir = "Results", 
+                  output_file = "Demographics.html")
+
+rm(list=ls())
+```

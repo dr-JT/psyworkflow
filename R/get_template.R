@@ -4,7 +4,7 @@
 #' @param to a directory where to download R scripts.
 #'     default: "R Scripts/templates"
 #' @param overwrite Logical. Overwite any existing templates? default: FALSE
-#' @param masterscript String. Which type of masterscript template to download.
+#' @param mainscript String. Which type of mainscript template to download.
 #'     options: "data preparation" or "data analysis".
 #' @param rawscript Logical. Download template to convert a "messy" raw data file
 #'     to a "tidy" raw data file? default = FALSE
@@ -16,10 +16,10 @@
 #' @export
 #'
 
-template <- function(to = "R Scripts/templates", overwrite = FALSE,
-                     masterscript = NULL, rawscript = FALSE,
-                     scorescript = FALSE, mergescript = FALSE,
-                     path = "."){
+get_template <- function(to = "R Scripts/templates", overwrite = FALSE,
+                         mainscript = NULL, rawscript = FALSE,
+                         scorescript = FALSE, mergescript = FALSE,
+                         path = "."){
 
   ## Setup ####
   to <- paste(path, to, sep = "/")
@@ -27,27 +27,27 @@ template <- function(to = "R Scripts/templates", overwrite = FALSE,
     "https://raw.githubusercontent.com/dr-JT/workflow/master/script_templates/"
 
   if (!dir.exists(to)) dir.create(to, recursive = TRUE)
-  if (is.null(masterscript)) masterscript <- "none"
+  if (is.null(mainscript)) mainscript <- "none"
   #####
 
   ## Download Generic Templates
-  if (masterscript == "data preparation") {
-    exists <- file.exists(paste(path, "masterscript.R", sep = "/"))
+  if (mainscript == "data preparation") {
+    exists <- file.exists(paste(path, "mainscript.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. masterscript.R already exists")
+      message("Did not download file. mainscript.R already exists")
     } else {
-      download.file(paste(github_repo, "masterscript_prep.R",
+      download.file(paste(github_repo, "mainscript_collection.R",
                           sep = ""),
-                    paste(path, "masterscript.R", sep = "/"))
+                    paste(path, "mainscript.R", sep = "/"))
     }
-  } else if (masterscript == "data analysis") {
-    exists <- file.exists(paste(path, "masterscript.R", sep = "/"))
+  } else if (mainscript == "data analysis") {
+    exists <- file.exists(paste(path, "mainscript.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. masterscript.R already exists")
+      message("Did not download file. mainscript.R already exists")
     } else {
-      download.file(paste(github_repo, "masterscript_analysis.R",
+      download.file(paste(github_repo, "mainscript_analysis.R",
                           sep = ""),
-                    paste(path, "masterscript.R", sep = "/"))
+                    paste(path, "mainscript.R", sep = "/"))
     }
   }
 

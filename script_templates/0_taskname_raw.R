@@ -1,26 +1,26 @@
-#### Set up ####
-## Load packages
+#### Setup ####
+## Load Packages
 library(here)
 library(readr)
 library(dplyr)
 
 ## Set Import/Output Directories
-import.dir <- "Data Files/Merged"
-output.dir <- "Data Files"
+import_dir <- "Data Files/Merged"
+output_dir <- "Data Files"
 
-## Set Import/Output Filenames
+## Set Import/Output File Names
 task <- "taskname"
-import.file <- paste(task, ".txt", sep = "")
-output.file <- paste(task, "raw.csv", sep = "_")
+import_file <- paste(task, ".txt", sep = "")
+output_file <- paste(task, "raw.csv", sep = "_")
 ################
 
-#### Import ####
-import <- read_delim(here(import.dir, import.file),
-                     "\t", escape_double = FALSE, trim_ws = TRUE)
-################
+#### Import Data ####
+data_import <- read_delim(here(import_dir, import_file), "\t",
+                          escape_double = FALSE, trim_ws = TRUE)
+#####################
 
-#### Tidy raw data ####
-data_raw <- import %>%
+#### Tidy Raw Data ####
+data_raw <- data_import %>%
   filter() %>%
   rename() %>%
   mutate() %>%
@@ -28,7 +28,7 @@ data_raw <- import %>%
 #######################
 
 #### Output ####
-write_csv(data_raw, here(output.dir, output.file))
+write_csv(data_raw, here(output_dir, output_file))
 ################
 
 rm(list=ls())
