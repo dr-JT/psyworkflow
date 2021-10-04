@@ -36,7 +36,7 @@ get_template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. mainscript.R already exists")
     } else {
-      download.file(paste(github_repo, "mainscript_collection.R",
+      download.file(paste(github_repo, "mainscript_collection.Rmd",
                           sep = ""),
                     paste(path, "mainscript.R", sep = "/"))
     }
@@ -45,7 +45,7 @@ get_template <- function(to = "R Scripts/templates", overwrite = FALSE,
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. mainscript.R already exists")
     } else {
-      download.file(paste(github_repo, "mainscript_analysis.R",
+      download.file(paste(github_repo, "mainscript_analysis.Rmd",
                           sep = ""),
                     paste(path, "mainscript.R", sep = "/"))
     }
