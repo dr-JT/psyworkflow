@@ -2,87 +2,102 @@
 #'
 #' This function can be used to automatically setup your study directory by
 #' creating folders and template scripts
-#' @param type String. Options: "data collection"; "data analysis".
+#' @param script_templates Logical. Download all script templates? default = FALSE
+#' @param mainscript Logical. Download a main script template? default = TRUE
+#' @param rawscript Logical. Download a raw script template? default = FALSE
+#' @param scorescript Logical. Download a score script template? default = FALSE
+#' @param mergescript Logical. Download a merge script template? default = FALSE
+#' @param study_doc Logical. Download a study documentation template? default = FALSE
+#' @param data_raw Logical. Create a raw data directory? default = FALSE
+#' @param data_scored Logical. Create a scored data directory? default = FALSE
+#' @param documents Logical. Create documents directory? default = FALSE
+#' @param results Logical. Create results directory? default = FALSE
+#' @param tasks Logical. Create tasks directory? default = FALSE
 #' @param sessions Numeric. How many sessions will the study have?
-#' @param scripts.dir Logical. Create script directory? default = TRUE
-#' @param data.dir Logical. Create data files directory? default = TRUE
-#' @param raw.dir Logical. Create raw? default = TRUE
-#' @param messy.dir Logical. Create raw messy directory? default = TRUE
-#' @param messy.name String. Name of messy direcotry. default = "messy"
-#' @param scored.dir Logical. Create scored directory? default = TRUE
-#' @param tasks.dir Logical. Create tasks directory? default = TRUE
-#' @param documents.dir Logical. Create documents directory? default = TRUE
-#' @param results.dir Logical. Create results directory? default = TRUE
-#' @param figures.dir Logical. Create figures directory? default = FALSE
-#' @param manuscript.dir Logical. Create manuscript directory? default = FALSE
-#' @param presentations.dir Logical. Create presentations directory? default = FALSE
-#' @param other.dir List of other directories you want to create
-#' @param generic Logical. Download all generic templates? default = FALSE
-#' @param mainscript Logical. Download mainscript template? default = TRUE
-#' @param rawscript Logical. Download rawscript template? default = FALSE
-#' @param scorescript Logical. Download scorescript template? default = FALSE
-#' @param mergescript Logical. Download mergescript template? default = FALSE
+#' @param manuscript Logical. Create manuscript directory? default = FALSE
+#' @param presentations Logical. Create presentations directory? default = FALSE
+#' @param figures Logical. Create figures directory? default = FALSE
+#' @param other List of other directories you want to create
+#' @param standard_project Logical. Create a standard project directory? default = FALSE
 #' @param path String. Home directory file path
 #' @export
 #'
 
-create_project <- function(type = "data analysis", sessions = 1,
-                           figures.dir = FALSE, manuscript.dir = FALSE,
-                           presentations.dir = FALSE, other.dir = c(),
-                           mainscript = NULL, rawscript = FALSE,
+create_project <- function(script_templates = FALSE,
+                           mainscript = FALSE, rawscript = FALSE,
                            scorescript = FALSE, mergescript = FALSE,
+                           study_doc = FALSE,
+                           data_raw = FALSE, data_scored = FALSE,
+                           documents = FALSE, results = FALSE,
+                           tasks = FALSE, sessions = NULL,
+                           manuscript = FALSE, presentations = FALSE,
+                           figures = FALSE, other = c(),
+                           standard_project = FALSE,
                            path = "."){
 
   ## Setup ####
   path <- paste(path, "/", sep = "")
+  if (standard_project == TRUE) {
+    script_templates <- TRUE
+    data_raw <- TRUE
+    data_scored <- TRUE
+    documents <- TRUE
+    results <- TRUE
+    tasks <- TRUE
+    manuscript <- TRUE
+    presentations <- TRUE
+    figures <- TRUE
+  }
   #####
 
   ## Common Directories ####
-  dir.create(paste(path, "R Scripts", sep = ""))
-  dir.create(paste(path, "Data Files", sep = ""))
-  dir.create(paste(path, "Documents", sep = ""))
+  dir.create(paste(path, "R", sep = ""))
+  dir.create(paste(path, "data", sep = ""))
+  ##########################
+
+  ## Other Directories ####
+  if (data_raw == TRUE) dir.create(paste(path, "data/raw", sep = ""))
+  if (data_scored == TRUE) dir.create(paste(path, "data/scored", sep = ""))
+  if (documents == TRUE) dir.create(paste(path, "documents", sep = ""))
+  if (results == TRUE) dir.create(paste(path, "results", sep = ""))
+  if (tasks == TRUE) dir.create(paste(path, "tasks", sep = ""))
+  if (!is.null(sessions) & sessions > 1) {
+    for (i in 1:sessions) {
+      session <- paste(path, "tasks/session ", i, sep = "")
+      dir.create(session)
+    }
+  }
+  if (manuscript == TRUE) dir.create(paste(path, "manuscript", sep = ""))
+  if (presentations == TRUE) dir.create(paste(path, "presentations", sep = ""))
+  if (figures == TRUE) {
+    if (manuscript == TRUE) {
+      dir.create(paste(path, "manuscript/figures", sep = ""))
+    }
+    if (presentations == TRUE) {
+      dir.create(paste(path, "presentations/figures", sep = ""))
+    }
+    if (manuscript == FALSE & presentations == FALSE) {
+      dir.create(paste(path, "figures", sep = ""))
+    }
+  }
   for (dir in other.dir){
     dir <- paste(path, dir, sep = "")
     dir.create(dir)
   }
-  ##########################
+  #########################
 
-  ## Data Collection Directories ####
-  if (type == "data collection") {
-    messy.name <- paste(path, "Data Files/", "Merged", sep = "")
-    dir.create(paste(path, "Data Files/Subject Files", sep = ""))
-    dir.create(messy.name)
-    dir.create(paste(path, "Tasks", sep = ""))
-    if (sessions > 1) {
-      for (i in 1:sessions) {
-        session <- paste(path, "Tasks/Session ", i, sep = "")
-        dir.create(session)
-      }
-    }
+  ## Download R Script Templates ####
+  if (script_templates == TRUE) {
+    mainscript <- TRUE
+    rawscript <- TRUE
+    scorescript <- TRUE
+    mergescript <- TRUE
+    study_doc <- TRUE
   }
-  #######################
-
-  ## Analysis Directories ####
-  if (type == "data analysis") {
-    dir.create(paste(path, "Data Files/Raw Data", sep = ""))
-    dir.create(paste(path, "Data Files/Scored Data", sep = ""))
-    dir.create(paste(path, "Results", sep = ""))
-    if (figures.dir == TRUE) {
-      dir.create(paste(path, "Figures", sep = ""))
-    }
-    if (manuscript.dir == TRUE) {
-      dir.create(paste(path, "Manuscript", sep = ""))
-    }
-    if (presentations.dir == TRUE) {
-      dir.create(paste(path, "Presentations", sep = ""))
-    }
-  }
-  ############################
-
-  ## Download Templates ####
-  get_template(mainscript = mainscript, rawscript = rawscript,
+  get_template(to = "R/templates", path = path,
+               mainscript = mainscript, rawscript = rawscript,
                scorescript = scorescript, mergescript = mergescript,
-               path = path)
-  #####
+               study_doc = study_doc)
+  ###################################
 }
 

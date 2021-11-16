@@ -4,22 +4,23 @@
 #' @param to a directory where to download R scripts.
 #'     default: "R Scripts/templates"
 #' @param overwrite Logical. Overwite any existing templates? default: FALSE
-#' @param mainscript String. Which type of mainscript template to download.
-#'     options: "data preparation" or "data analysis".
+#' @param mainscript Logical. Download a main script template to source all
+#'     other R scripts?
 #' @param rawscript Logical. Download template to convert a "messy" raw data file
 #'     to a "tidy" raw data file? default = FALSE
 #' @param scorescript Logical. Download template to perform data cleaning and
 #'     scoring (aggregate) on a "tidy" raw data file? default = FALSE
 #' @param mergescript Logical. Download template to merge multiple scored data
 #'     files? default = FALSE
+#' @param study_doc Logical. Download a study documentation template? default = FALSE
 #' @param path String. working directory file path. Ignore...
 #' @export
 #'
 
-get_template <- function(to = "R Scripts/templates", overwrite = FALSE,
-                         mainscript = NULL, rawscript = FALSE,
+get_template <- function(to = "R/templates", overwrite = FALSE,
+                         mainscript = FALSE, rawscript = FALSE,
                          scorescript = FALSE, mergescript = FALSE,
-                         path = "."){
+                         study_doc = FALSE, path = "."){
 
   ## Setup ####
   to <- paste(path, to, sep = "/")
@@ -27,25 +28,15 @@ get_template <- function(to = "R Scripts/templates", overwrite = FALSE,
     "https://raw.githubusercontent.com/dr-JT/workflow/master/script_templates/"
 
   if (!dir.exists(to)) dir.create(to, recursive = TRUE)
-  if (is.null(mainscript)) mainscript <- "none"
   #####
 
-  ## Download Generic Templates
-  if (mainscript == "data preparation") {
+  ## Download Templates
+  if (mainscript == TRUE) {
     exists <- file.exists(paste(path, "mainscript.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. mainscript.R already exists")
     } else {
-      download.file(paste(github_repo, "mainscript_collection.Rmd",
-                          sep = ""),
-                    paste(path, "mainscript.Rmd", sep = "/"))
-    }
-  } else if (mainscript == "data analysis") {
-    exists <- file.exists(paste(path, "mainscript.R", sep = "/"))
-    if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. mainscript.R already exists")
-    } else {
-      download.file(paste(github_repo, "mainscript_analysis.Rmd",
+      download.file(paste(github_repo, "mainscript.Rmd",
                           sep = ""),
                     paste(path, "mainscript.Rmd", sep = "/"))
     }
@@ -74,13 +65,13 @@ get_template <- function(to = "R Scripts/templates", overwrite = FALSE,
   }
 
   if (mergescript == TRUE) {
-    exists <- file.exists(paste(path, "R Scripts", "2_merge.R", sep = "/"))
+    exists <- file.exists(paste(to, "2_merge.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
       message("Did not download file. 2_merge.R already exists")
     } else {
       download.file(paste(github_repo, "2_merge.R",
                           sep = ""),
-                    paste(path, "R Scripts", "2_merge.R", sep = "/"))
+                    paste(to, "2_merge.R", sep = "/"))
     }
   }
   #####

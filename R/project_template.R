@@ -1,27 +1,19 @@
-project_template <- function(path, type, sessions,
-                             figures.dir, manuscript.dir, presentations.dir) {
+project_template <- function(script_templates, mainscript, rawscript,
+                             scorescript, mergescript, study_doc, data_raw,
+                             data_scored, documents, results, tasks, sessions,
+                             manuscript, presentations, figures, other,
+                             standard_project, path) {
   # ensure path exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
 
-  # which scripts
-  if (type == "data collection") {
-    mainscript <- "data preparation"
-    rawscript <- TRUE
-    scorescript <- FALSE
-    mergescript <- FALSE
-  }
-
-  if (type == "data analysis") {
-    mainscript <- "data analysis"
-    rawscript <- FALSE
-    scorescript <- TRUE
-    mergescript <- TRUE
-  }
-
-  create_project(type = type, sessions = sessions, figures.dir = figures.dir,
-                 manuscript.dir = manuscript.dir,
-                 presentations.dir = presentations.dir,
+  # create project
+  create_project(script_templates = script_templates,
                  mainscript = mainscript, rawscript = rawscript,
                  scorescript = scorescript, mergescript = mergescript,
-                 path = path)
+                 study_doc = study_doc, data_raw = data_raw,
+                 data_scored = data_scored, documents = documents,
+                 results = results, tasks = tasks, sessions = sessions,
+                 manuscript = manuscript, presentations = presentations,
+                 figures = figures, other = c(),
+                 standard_project = standard_project, path = path)
 }

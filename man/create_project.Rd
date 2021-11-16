@@ -5,61 +5,62 @@
 \title{Setup directory and templates for a new research study}
 \usage{
 create_project(
-  type = "data analysis",
-  sessions = 1,
-  figures.dir = FALSE,
-  manuscript.dir = FALSE,
-  presentations.dir = FALSE,
-  other.dir = c(),
-  mainscript = NULL,
+  script_templates = FALSE,
+  mainscript = FALSE,
   rawscript = FALSE,
   scorescript = FALSE,
   mergescript = FALSE,
+  study_doc = FALSE,
+  data_raw = FALSE,
+  data_scored = FALSE,
+  documents = FALSE,
+  results = FALSE,
+  tasks = FALSE,
+  sessions = NULL,
+  manuscript = FALSE,
+  presentations = FALSE,
+  figures = FALSE,
+  other = c(),
+  standard_project = FALSE,
   path = "."
 )
 }
 \arguments{
-\item{type}{String. Options: "data collection"; "data analysis".}
+\item{script_templates}{Logical. Download all script templates? default = FALSE}
+
+\item{mainscript}{Logical. Download a main script template? default = TRUE}
+
+\item{rawscript}{Logical. Download a raw script template? default = FALSE}
+
+\item{scorescript}{Logical. Download a score script template? default = FALSE}
+
+\item{mergescript}{Logical. Download a merge script template? default = FALSE}
+
+\item{study_doc}{Logical. Download a study documentation template? default = FALSE}
+
+\item{data_raw}{Logical. Create a raw data directory? default = FALSE}
+
+\item{data_scored}{Logical. Create a scored data directory? default = FALSE}
+
+\item{documents}{Logical. Create documents directory? default = FALSE}
+
+\item{results}{Logical. Create results directory? default = FALSE}
+
+\item{tasks}{Logical. Create tasks directory? default = FALSE}
 
 \item{sessions}{Numeric. How many sessions will the study have?}
 
-\item{figures.dir}{Logical. Create figures directory? default = FALSE}
+\item{manuscript}{Logical. Create manuscript directory? default = FALSE}
 
-\item{manuscript.dir}{Logical. Create manuscript directory? default = FALSE}
+\item{presentations}{Logical. Create presentations directory? default = FALSE}
 
-\item{presentations.dir}{Logical. Create presentations directory? default = FALSE}
+\item{figures}{Logical. Create figures directory? default = FALSE}
 
-\item{other.dir}{List of other directories you want to create}
+\item{other}{List of other directories you want to create}
 
-\item{mainscript}{Logical. Download mainscript template? default = TRUE}
-
-\item{rawscript}{Logical. Download rawscript template? default = FALSE}
-
-\item{scorescript}{Logical. Download scorescript template? default = FALSE}
-
-\item{mergescript}{Logical. Download mergescript template? default = FALSE}
+\item{standard_project}{Logical. Create a standard project directory? default = FALSE}
 
 \item{path}{String. Home directory file path}
-
-\item{scripts.dir}{Logical. Create script directory? default = TRUE}
-
-\item{data.dir}{Logical. Create data files directory? default = TRUE}
-
-\item{raw.dir}{Logical. Create raw? default = TRUE}
-
-\item{messy.dir}{Logical. Create raw messy directory? default = TRUE}
-
-\item{messy.name}{String. Name of messy direcotry. default = "messy"}
-
-\item{scored.dir}{Logical. Create scored directory? default = TRUE}
-
-\item{tasks.dir}{Logical. Create tasks directory? default = TRUE}
-
-\item{documents.dir}{Logical. Create documents directory? default = TRUE}
-
-\item{results.dir}{Logical. Create results directory? default = TRUE}
-
-\item{generic}{Logical. Download all generic templates? default = FALSE}
 }
 \description{
 This function can be used to automatically setup your study directory by

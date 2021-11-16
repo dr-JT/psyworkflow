@@ -1,35 +1,89 @@
 Binding: project_template
 Title: Research Study
-Subtitle: Create a Data Collection or Data Analysis Repository
+Subtitle: Create a Research Study Project
 Icon: icon.png
 
-Parameter: type
-Widget: SelectInput
-Label: Repository Type
-Fields: data collection, data analysis
+Parameter: mainscript
+Widget: CheckboxInput
+Label: mainscript.R
+Default: On
+Position: left
+
+Parameter: rawscript
+Widget: CheckboxInput
+Label: 0_taskname_raw.R
+Default: On
+Position: right
+
+Parameter: scorescript
+Widget: CheckboxInput
+Label: 1_taskname_score.R
+Default: On
+Position: left
+
+Parameter: mergescript
+Widget: CheckboxInput
+Label: 2_merge.R
+Default: On
+Position: right
+
+Parameter: study_doc
+Widget: CheckboxInput
+Label: study_documentation.Rmd
+Default: On
+Position: left
+
+Parameter: data_raw
+Widget: CheckboxInput
+Label: data/raw
+Default: On
+Position: left
+
+Parameter: data_scored
+Widget: CheckboxInput
+Label: /data/scored
+Default: On
+Position: right
+
+Parameter: documents
+Widget: CheckboxInput
+Label: /documents
+Default: On
+Position: left
+
+Parameter: results
+Widget: CheckboxInput
+Label: /results
+Default: On
+Position: right
+
+Parameter: tasks
+Widget: CheckboxInput
+Label: /tasks
+Default: On
 Position: left
 
 Parameter: sessions
 Widget: TextInput
 Label: # of Sessions
-Default: 1
+Default: NULL
 Position: right
 
-Parameter: figures.dir
+Parameter: manuscript
 Widget: CheckboxInput
-Label: /Figures
-Default: Off
+Label: /manuscript
+Default: On
 Position: left
 
-Parameter: manuscript.dir
+Parameter: presentations
 Widget: CheckboxInput
-Label: /Manuscript
-Default: Off
-Position: left
+Label: /presentations
+Default: On
+Position: right
 
-Parameter: presentations.dir
+Parameter: figures
 Widget: CheckboxInput
-Label: /Presentations
-Default: Off
+Label: /figures
+Default: On
 Position: left
 

@@ -5,12 +5,13 @@
 \title{Download R Script Templates}
 \usage{
 get_template(
-  to = "R Scripts/templates",
+  to = "R/templates",
   overwrite = FALSE,
-  mainscript = NULL,
+  mainscript = FALSE,
   rawscript = FALSE,
   scorescript = FALSE,
   mergescript = FALSE,
+  study_doc = FALSE,
   path = "."
 )
 }
@@ -20,8 +21,8 @@ default: "R Scripts/templates"}
 
 \item{overwrite}{Logical. Overwite any existing templates? default: FALSE}
 
-\item{mainscript}{String. Which type of mainscript template to download.
-options: "data preparation" or "data analysis".}
+\item{mainscript}{Logical. Download a main script template to source all
+other R scripts?}
 
 \item{rawscript}{Logical. Download template to convert a "messy" raw data file
 to a "tidy" raw data file? default = FALSE}
@@ -31,6 +32,8 @@ scoring (aggregate) on a "tidy" raw data file? default = FALSE}
 
 \item{mergescript}{Logical. Download template to merge multiple scored data
 files? default = FALSE}
+
+\item{study_doc}{Logical. Download a study documentation template? default = FALSE}
 
 \item{path}{String. working directory file path. Ignore...}
 }
