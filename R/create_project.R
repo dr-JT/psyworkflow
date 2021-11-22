@@ -86,7 +86,7 @@ create_project <- function(script_templates = FALSE,
       dir.create(paste(path, "figures", sep = ""))
     }
   }
-  for (dir in other.dir){
+  for (dir in other){
     dir <- paste(path, dir, sep = "")
     dir.create(dir)
   }
