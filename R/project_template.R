@@ -1,12 +1,11 @@
-project_template <- function(path, script_templates, mainscript, rawscript,
-                             scorescript, mergescript, study_doc, data_raw,
-                             data_scored, documents, results, tasks, sessions) {
+project_template <- function(path, mainscript, rawscript, scorescript,
+                             mergescript, study_doc, data_raw, data_scored,
+                             documents, results, tasks, sessions) {
   # ensure path exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
 
   # create project
-  create_project(path = path, script_templates = script_templates,
-                 mainscript = mainscript, rawscript = rawscript,
+  create_project(path = path, mainscript = mainscript, rawscript = rawscript,
                  scorescript = scorescript, mergescript = mergescript,
                  study_doc = study_doc, data_raw = data_raw,
                  data_scored = data_scored, documents = documents,
