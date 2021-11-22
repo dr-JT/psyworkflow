@@ -35,6 +35,10 @@ create_project <- function(script_templates = FALSE,
                            standard_project = FALSE,
                            path = "."){
 
+  if (!is.na(sessions)) {
+    if (sessions == "NULL") sessions <- NULL
+  }
+
   ## Setup ####
   path <- paste(path, "/", sep = "")
   if (standard_project == TRUE) {
