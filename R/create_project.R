@@ -61,10 +61,12 @@ create_project <- function(script_templates = FALSE,
   if (documents == TRUE) dir.create(paste(path, "documents", sep = ""))
   if (results == TRUE) dir.create(paste(path, "results", sep = ""))
   if (tasks == TRUE) dir.create(paste(path, "tasks", sep = ""))
-  if (!is.null(sessions) & sessions > 1) {
-    for (i in 1:sessions) {
-      session <- paste(path, "tasks/session ", i, sep = "")
-      dir.create(session)
+  if (!is.null(sessions)) {
+    if (session > 1) {
+      for (i in 1:sessions) {
+        session <- paste(path, "tasks/session ", i, sep = "")
+        dir.create(session)
+      }
     }
   }
   if (manuscript == TRUE) dir.create(paste(path, "manuscript", sep = ""))
