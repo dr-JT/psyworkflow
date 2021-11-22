@@ -36,6 +36,12 @@ source("R/_required_packages.R")
 
 ------------------------------------------------------------------------
 
+Create tidy raw data files from messy raw data files
+
+-   **Import Directory**: data/raw/messy
+
+-   **Output Directory**: data/raw
+
 ```{r}
 source("R/0_task_raw.csv")
 
