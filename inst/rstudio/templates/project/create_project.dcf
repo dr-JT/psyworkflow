@@ -3,36 +3,6 @@ Title: Research Study
 Subtitle: Create a Research Study Project
 Icon: icon.png
 
-Parameter: mainscript
-Widget: CheckboxInput
-Label: mainscript.R
-Default: On
-Position: left
-
-Parameter: rawscript
-Widget: CheckboxInput
-Label: 0_taskname_raw.R
-Default: On
-Position: right
-
-Parameter: scorescript
-Widget: CheckboxInput
-Label: 1_taskname_score.R
-Default: On
-Position: left
-
-Parameter: mergescript
-Widget: CheckboxInput
-Label: 2_merge.R
-Default: On
-Position: right
-
-Parameter: study_doc
-Widget: CheckboxInput
-Label: study_documentation.Rmd
-Default: On
-Position: left
-
 Parameter: data_raw
 Widget: CheckboxInput
 Label: data/raw
@@ -43,7 +13,7 @@ Parameter: data_scored
 Widget: CheckboxInput
 Label: /data/scored
 Default: On
-Position: right
+Position: left
 
 Parameter: documents
 Widget: CheckboxInput
@@ -55,7 +25,7 @@ Parameter: results
 Widget: CheckboxInput
 Label: /results
 Default: On
-Position: right
+Position: left
 
 Parameter: tasks
 Widget: CheckboxInput
@@ -67,5 +37,35 @@ Parameter: sessions
 Widget: TextInput
 Label: # of Sessions
 Default: NULL
+Position: left
+
+Parameter: mainscript
+Widget: CheckboxInput
+Label: mainscript.R
+Default: On
+Position: right
+
+Parameter: rawscript
+Widget: CheckboxInput
+Label: 0_taskname_raw.R
+Default: On
+Position: right
+
+Parameter: scorescript
+Widget: CheckboxInput
+Label: 1_taskname_score.R
+Default: On
+Position: right
+
+Parameter: mergescript
+Widget: CheckboxInput
+Label: 2_merge.R
+Default: On
+Position: right
+
+Parameter: study_doc
+Widget: CheckboxInput
+Label: study_documentation.Rmd
+Default: On
 Position: right
 
