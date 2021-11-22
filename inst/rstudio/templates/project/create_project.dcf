@@ -69,21 +69,3 @@ Label: # of Sessions
 Default: NULL
 Position: right
 
-Parameter: manuscript
-Widget: CheckboxInput
-Label: /manuscript
-Default: On
-Position: left
-
-Parameter: presentations
-Widget: CheckboxInput
-Label: /presentations
-Default: On
-Position: right
-
-Parameter: figures
-Widget: CheckboxInput
-Label: /figures
-Default: On
-Position: left
-
