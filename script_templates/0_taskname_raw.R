@@ -5,8 +5,8 @@ library(readr)
 library(dplyr)
 
 ## Set Import/Output Directories
-import_dir <- "Data Files/Merged"
-output_dir <- "Data Files"
+import_dir <- "data/raw/messy"
+output_dir <- "data/raw"
 
 ## Set Import/Output File Names
 task <- "taskname"

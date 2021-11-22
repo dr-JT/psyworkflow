@@ -1,0 +1,83 @@
+---
+title: "Document Title"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+    code_folding: hide
+    code_download: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(error = TRUE, message = FALSE, warning = TRUE)
+```
+
+Last updated: `r format(Sys.Date(), "%B %d %Y")`
+
+# Setup
+
+Required Packages
+```{r}
+library(here)
+library(readr)
+```
+
+Import Data
+```{r}
+import <- read_csv(here("folder_path", "filename"))
+```
+
+---
+
+---
+
+
+# Section Titles
+
+```{r}
+
+```
+
+# Section Titles with tabs {.tabset .tabset-pills}
+
+Model
+```{r}
+
+```
+
+## Tables
+
+```{r}
+
+```
+
+
+## Figures
+
+```{r}
+
+```
+
+## Summary Output
+
+```{r}
+
+```
+
+
+---
+
+---
+
+```{r}
+rm(list=ls())
+```
+
+
+# Session Info
+```{r comment = ""}
+citation()
+sessionInfo()
+```
+

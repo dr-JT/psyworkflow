@@ -11,6 +11,7 @@ get_template(
   rawscript = FALSE,
   scorescript = FALSE,
   mergescript = FALSE,
+  analysisscript = FALSE,
   study_doc = FALSE,
   path = "."
 )
@@ -32,6 +33,9 @@ scoring (aggregate) on a "tidy" raw data file? default = FALSE}
 
 \item{mergescript}{Logical. Download template to merge multiple scored data
 files? default = FALSE}
+
+\item{analysisscript}{Logical. Download template to do data analysis (.Rmd)?
+default = FALSE}
 
 \item{study_doc}{Logical. Download a study documentation template? default = FALSE}
 

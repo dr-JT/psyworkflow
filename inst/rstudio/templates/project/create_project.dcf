@@ -63,6 +63,12 @@ Label: 2_merge.R
 Default: On
 Position: right
 
+Parameter: analysisscript
+Widget: CheckboxInput
+Label: 3_Analysis.Rmd
+Default: On
+Position: right
+
 Parameter: study_doc
 Widget: CheckboxInput
 Label: study_documentation.Rmd

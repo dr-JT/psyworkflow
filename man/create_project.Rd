@@ -10,6 +10,7 @@ create_project(
   rawscript = FALSE,
   scorescript = FALSE,
   mergescript = FALSE,
+  analysisscript = FALSE,
   study_doc = FALSE,
   data_raw = FALSE,
   data_scored = FALSE,
@@ -35,6 +36,8 @@ create_project(
 \item{scorescript}{Logical. Download a score script template? default = FALSE}
 
 \item{mergescript}{Logical. Download a merge script template? default = FALSE}
+
+\item{analysisscript}{Logical. Download template to do data analysis (.Rmd)? default = FALSE}
 
 \item{study_doc}{Logical. Download a study documentation template? default = FALSE}
 

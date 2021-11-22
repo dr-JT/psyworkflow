@@ -12,6 +12,8 @@
 #'     scoring (aggregate) on a "tidy" raw data file? default = FALSE
 #' @param mergescript Logical. Download template to merge multiple scored data
 #'     files? default = FALSE
+#' @param analysisscript Logical. Download template to do data analysis (.Rmd)?
+#'     default = FALSE
 #' @param study_doc Logical. Download a study documentation template? default = FALSE
 #' @param path String. working directory file path. Ignore...
 #' @export
@@ -20,7 +22,8 @@
 get_template <- function(to = "R/templates", overwrite = FALSE,
                          mainscript = FALSE, rawscript = FALSE,
                          scorescript = FALSE, mergescript = FALSE,
-                         study_doc = FALSE, path = "."){
+                         analysisscript = FALSE, study_doc = FALSE,
+                         path = "."){
 
   ## Setup ####
   to <- paste(path, to, sep = "/")
@@ -32,9 +35,9 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
 
   ## Download Templates
   if (mainscript == TRUE) {
-    exists <- file.exists(paste(path, "mainscript.R", sep = "/"))
+    exists <- file.exists(paste(path, "mainscript.Rmd", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. mainscript.R already exists")
+      message("Did not download file. mainscript.Rmd already exists")
     } else {
       download.file(paste(github_repo, "mainscript.Rmd",
                           sep = ""),
@@ -72,6 +75,17 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
       download.file(paste(github_repo, "2_merge.R",
                           sep = ""),
                     paste(to, "2_merge.R", sep = "/"))
+    }
+  }
+
+  if (analysisscript == TRUE) {
+    exists <- file.exists(paste(to, "3_Analysis.Rmd", sep = "/"))
+    if (exists == TRUE & overwrite == FALSE) {
+      message("Did not download file. 3_Analysis.Rmd already exists")
+    } else {
+      download.file(paste(github_repo, "3_Analysis.Rmd",
+                          sep = ""),
+                    paste(to, "3_Analysis.Rmd", sep = "/"))
     }
   }
   #####

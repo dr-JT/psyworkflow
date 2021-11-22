@@ -7,6 +7,7 @@
 #' @param rawscript Logical. Download a raw script template? default = FALSE
 #' @param scorescript Logical. Download a score script template? default = FALSE
 #' @param mergescript Logical. Download a merge script template? default = FALSE
+#' @param analysisscript Logical. Download template to do data analysis (.Rmd)? default = FALSE
 #' @param study_doc Logical. Download a study documentation template? default = FALSE
 #' @param data_raw Logical. Create a raw data directory? default = FALSE
 #' @param data_scored Logical. Create a scored data directory? default = FALSE
@@ -26,7 +27,7 @@
 create_project <- function(script_templates = FALSE,
                            mainscript = FALSE, rawscript = FALSE,
                            scorescript = FALSE, mergescript = FALSE,
-                           study_doc = FALSE,
+                           analysisscript = FALSE, study_doc = FALSE,
                            data_raw = FALSE, data_scored = FALSE,
                            documents = FALSE, results = FALSE,
                            tasks = FALSE, sessions = NULL,
@@ -98,12 +99,19 @@ create_project <- function(script_templates = FALSE,
     rawscript <- TRUE
     scorescript <- TRUE
     mergescript <- TRUE
+    analysisscript <- TRUE
     study_doc <- TRUE
   }
+
   get_template(to = "R/templates", path = path,
                mainscript = mainscript, rawscript = rawscript,
                scorescript = scorescript, mergescript = mergescript,
-               study_doc = study_doc)
+               analysisscript = analysisscript, study_doc = study_doc)
+
+  # Download required packages script
+  download.file(paste(github_repo, "_required_packages.R",
+                      sep = ""),
+                paste(path, "R/", "_required_packages.R", sep = ""))
   ###################################
 }
 

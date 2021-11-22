@@ -5,8 +5,8 @@ library(readr)
 library(dplyr)
 
 ## Set Import/Output Directories
-import_dir <- "Data Files/Raw Data"
-output_dir <- "Data Files/Scored Data"
+import_dir <- "data/raw"
+output_dir <- "data/scored"
 
 ## Set Import/Output File Names
 task <- "taskname"
@@ -29,38 +29,73 @@ data_scores <- data_import %>%
 ####################
 
 #### Clean Data ####
+data_remove <- data_scores %>%
+  filter()
 
+data_scores <- filter(data_scores, !(Subject %in% data_remove$Subject))
+
+data_outliers <- data_scores %>%
+  mutate() %>%
+  filter()
+
+data_scores <- filter(data_scores, !(Subject %in% data_outliers$Subject))
 ####################
 
 #### Calculate Reliability ####
+reliability <- data_import %>%
+  filter(Subject %in% data_scores$Subject)
 
+splithalf <- reliability %>%
+  mutate(Trial = row_number(),
+         Split = ifelse(Trial %% 2, "odd", "even")) %>%
+  group_by(Subject, Split) %>%
+  summarise() %>%
+  ungroup() %>%
+  pivot_wider(id_cols = "Subject",
+              names_from = "Split",
+              values_from = "") %>%
+  summarise(r = cor(even, odd)) %>%
+  mutate(r = (2 * r) / (1 + r))
+
+data_scores$splithalf <- splithalf$r
+
+cronbachalpha <- reliability %>%
+  select(Subject, Trial, Accuracy) %>%
+  pivot_wider(id_cols = "Subject",
+              names_from = "Trial",
+              values_from = "Accuracy") %>%
+  select(-Subject) %>%
+  alpha()
+
+data_scores$cronbachalpha <- cronbachalpha$total$std.alpha
 ###############################
 
 #### Output ####
 write_csv(data, here(output_dir, output_file))
 ################
 
-## << Log is optional - delete if not using >> ##
+## << Report is optional - delete if not using >> ##
 
-## Create Log ####
-log_header <- paste("===== TASKNAME: 1_SCRIPTNAME_score.R =====\n\n",
-                    format(Sys.Date(), "%B %d %Y"), sep = "")
-log_init_n <- paste("\n-- Initial subject count: ",
-                    length(unique(data_import$Subject)), "--\n", sep = "")
-log_remove <- paste("\n-- Number of problematic subjects removed: ",
-                    length(unique(data_remove$Subject)), " --\n", sep = "")
-log_outlier <- paste("\n-- Number of outliers removed: ",
-                     length(unique(data_outliers$Subject)), " --\n", sep = "")
-log_final_n <- paste("\n-- Final subject count: ",
-                     length(unique(data_scores$Subject)), "--\n", sep = "")
-log_footer <- "\n==================================================\n"
+## Report ####
+log_init_n <- paste("Initial subject count: ",
+                    length(unique(data_import$Subject)), sep = "")
+log_remove <- paste("Number of problematic subjects removed: ",
+                    length(unique(data_remove$Subject)), sep = "")
+log_outlier <- paste("Number of outliers removed: ",
+                     length(unique(data_outliers$Subject)), sep = "")
+log_final_n <- paste("Final subject count: ",
+                     length(unique(data_scores$Subject)), sep = "")
+cat(log_init_n, log_remove, log_outlier, log_final_n, fill = 1)
 
-sink(file = here(output_dir, "log.txt"), append = TRUE, split = TRUE)
-cat(log_header, log_init_n,
-    log_remove, kable(data_remove, digits = 2, format = "markdown"),
-    log_outlier, kable(data_outliers, digits = 2, format = "markdown"),
-    log_final_n, log_footer, fill = TRUE)
-sink()
-##################
+data_remove %>%
+  kable(caption = "Problematic Subjects", digits = 2, format = "html") %>%
+  kable_styling() %>%
+  scroll_box(width = "100%")
+
+data_outliers %>%
+  kable(caption = "Outliers", digits = 2, format = "html") %>%
+  kable_styling() %>%
+  scroll_box(width = "100%")
+##############
 
 rm(list=ls())
