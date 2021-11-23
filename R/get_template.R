@@ -79,13 +79,13 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
   }
 
   if (analysisscript == TRUE) {
-    exists <- file.exists(paste(to, "3_Analysis.Rmd", sep = "/"))
+    exists <- file.exists(paste(to, "3_MainAnalysis.Rmd", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. 3_Analysis.Rmd already exists")
+      message("Did not download file. 3_MainAnalysis.Rmd already exists")
     } else {
-      download.file(paste(github_repo, "3_Analysis.Rmd",
+      download.file(paste(github_repo, "3_MainAnalysis.Rmd",
                           sep = ""),
-                    paste(to, "3_Analysis.Rmd", sep = "/"))
+                    paste(to, "3_MainAnalysis.Rmd", sep = "/"))
     }
   }
   #####
