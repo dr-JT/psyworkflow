@@ -2,7 +2,7 @@
 
 1 - 2 sentence description.
 
-## Directory Organization:
+## Directory Organization
 
 ------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@
 source("R/_required_packages.R")
 ```
 
-## Data Preparation: *messy to tidy raw data*
+## Data Preparation
 
 ------------------------------------------------------------------------
 
@@ -92,9 +92,9 @@ Perform statistical analysis and data visualization
 Output is saved as **.html** files to **results/**
 
 ```{r}
-rmarkdown::render("R/3_Demographics.Rmd",
+rmarkdown::render("R/3_MainAnalysis.Rmd",
                   output_dir = "results", 
-                  output_file = "Demographics.html")
+                  output_file = "MainAnalysis.html")
 
 rm(list=ls())
 ```
