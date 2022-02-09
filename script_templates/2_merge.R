@@ -1,7 +1,8 @@
 #### Setup ####
 ## Load Packages
+library(plyr)
 library(here)
-library(datawrangling) # for files_join()
+library(readr)
 library(dplyr)
 library(tidyr)
 
@@ -13,7 +14,10 @@ output_reliabilities <- "Reliabilities.csv"
 ################
 
 #### Import Files ####
-data_import <- files_join(here(import_dir), pattern = "Scores", id = "Subject")
+files <- list.files(here(import_dir), pattern = "Scores", full.names = TRUE)
+data_import <- files %>%
+  lapply(read_csv) %>%
+  join_all(by = "Subject", type = "full")
 ######################
 
 #### Select only important variables ####

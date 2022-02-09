@@ -5,27 +5,28 @@ output:
     toc: true
     toc_float:
       collapsed: false
+    toc_depth: 1
     code_folding: hide
     code_download: true
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(error = TRUE, message = FALSE, warning = TRUE)
-```
 
 Last updated: `r format(Sys.Date(), "%B %d %Y")`
 
 # Setup
 
 Required Packages
-```{r}
+
+```{r setup}
+knitr::opts_chunk$set(error = TRUE, message = FALSE, warning = TRUE)
+
 library(here)
 library(readr)
 ```
 
 Import Data
+
 ```{r}
-import <- read_csv(here("folder_path", "filename"))
+data_import <- read_csv(here("folder_path", "filename.csv"))
 ```
 
 ---
@@ -33,15 +34,21 @@ import <- read_csv(here("folder_path", "filename"))
 ---
 
 
-# Section Titles
+# Section Titles without tabs
 
 ```{r}
 
 ```
+
+---
+
+---
+
 
 # Section Titles with tabs {.tabset .tabset-pills}
 
 Model
+
 ```{r}
 
 ```
@@ -52,32 +59,25 @@ Model
 
 ```
 
-
 ## Figures
 
 ```{r}
 
 ```
 
-## Summary Output
-
-```{r}
-
-```
-
-
 ---
 
 ---
-
-```{r}
-rm(list=ls())
-```
 
 
 # Session Info
+
 ```{r comment = ""}
 citation()
 sessionInfo()
+```
+
+```{r}
+rm(list=ls())
 ```
 

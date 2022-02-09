@@ -8,11 +8,13 @@
 
 -   **data**: All data files are stored here
 
-    -   **raw**: raw data files for each task
+    -   **raw**: tidy raw data files
 
-    -   **scored**: scored data files for each task
+        -   **messy**: original raw data files, all other data files are reproducible from here
 
-    -   **logs**: logs for data cleaning procedures
+    -   **scored**: scored data files
+
+    -   **logs**: logs on the result of data cleaning procedures
 
     -   Demographics.csv: demographics data file
 
@@ -20,7 +22,7 @@
 
 -   **R**: All R scripts used for processing and analyzing data
 
--   **results**: All result output files from data analysis scripts
+-   **results**: All result output files from RMarkdown scripts
 
 -   **tasks**: Experimental programs for all the tasks used in the study
 
@@ -71,11 +73,11 @@ render("R/1_task_score.R", output_dir = "data/logs")
 rm(list=ls())
 ```
 
-Create merged data file from scored data files
+Create merged data files ready for statistical analysis from scored data files
 
 **Import Directory**: data/scored
 
-**Merged File**: data/**Data.csv**
+**Merged File**: data/**StudyName_Data.csv**
 
 ```{r}
 source("R/2_merge.R", echo = TRUE)
