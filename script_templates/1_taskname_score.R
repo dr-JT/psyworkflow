@@ -3,6 +3,10 @@
 library(here)
 library(readr)
 library(dplyr)
+library(tidyr)       # for pivot_ functions. delete if not using
+library(psych)       # for cronbach's alpha. delete if not using
+library(knirt)       # for log report. delete if not using
+library(kableExtra)  # for log report. delete if not using
 
 ## Set Import/Output Directories
 import_dir <- "data/raw"
@@ -46,6 +50,7 @@ reliability <- data_import %>%
   filter(Subject %in% data_scores$Subject)
 
 splithalf <- reliability %>%
+  group_by(Subject) %>%
   mutate(Trial = row_number(),
          Split = ifelse(Trial %% 2, "odd", "even")) %>%
   group_by(Subject, Split) %>%
@@ -58,6 +63,8 @@ splithalf <- reliability %>%
   mutate(r = (2 * r) / (1 + r))
 
 data_scores$splithalf <- splithalf$r
+# ^ the column name in data_scores should include the task name
+# e.g., data_scores$taskname_splithalf
 
 cronbachalpha <- reliability %>%
   select(Subject, Trial, Accuracy) %>%
@@ -68,15 +75,17 @@ cronbachalpha <- reliability %>%
   alpha()
 
 data_scores$cronbachalpha <- cronbachalpha$total$std.alpha
+# ^ the column name in data_scores should include the task name
+# e.g., data_scores$taskname_cronbachalpha
 ###############################
 
 #### Output ####
 write_csv(data, here(output_dir, output_file))
 ################
 
-## << Report is optional - delete if not using >> ##
+## << Log Report is optional - delete if not using >> ##
 
-## Report ####
+## Log Report ####
 log_init_n <- paste("Initial subject count: ",
                     length(unique(data_import$Subject)), sep = "")
 log_remove <- paste("Number of problematic subjects removed: ",

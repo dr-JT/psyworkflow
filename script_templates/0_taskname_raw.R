@@ -15,8 +15,8 @@ output_file <- paste(task, "raw.csv", sep = "_")
 ################
 
 #### Import Data ####
-data_import <- read_delim(here(import_dir, import_file), "\t",
-                          escape_double = FALSE, trim_ws = TRUE)
+data_import <- read_delim(here(import_dir, import_file),
+                          "\t", escape_double = FALSE, trim_ws = TRUE)
 #####################
 
 #### Tidy Raw Data ####
