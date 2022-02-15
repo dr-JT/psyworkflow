@@ -61,7 +61,10 @@ create_project <- function(script_templates = FALSE,
   ##########################
 
   ## Other Directories ####
-  if (data_raw == TRUE) dir.create(paste(path, "data/raw", sep = ""))
+  if (data_raw == TRUE) {
+    dir.create(paste(path, "data/raw", sep = ""))
+    dir.create(paste(path, "data/raw/messy", sep = ""))
+  }
   if (data_scored == TRUE) dir.create(paste(path, "data/scored", sep = ""))
   if (documents == TRUE) dir.create(paste(path, "documents", sep = ""))
   if (results == TRUE) dir.create(paste(path, "results", sep = ""))
