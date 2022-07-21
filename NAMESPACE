@@ -2,4 +2,7 @@
 
 export(copy_raw)
 export(create_project)
+export(duplicates_check)
+export(files_bind)
+export(files_join)
 export(get_template)
