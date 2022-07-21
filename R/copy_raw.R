@@ -96,7 +96,8 @@ copy_raw <- function(from, to, filetype, sub_folder = NULL,
 
           cat("   ", "\n")
           cat("-----------------------------------------", "\n")
-          cat("Files Copied: ", task, "\n")
+          cat("Task: ", task, "\n")
+          cat("Files Copied: ", length(files), "\n")
           cat("Duplicate Subject Files: ", duplicated_n, "\n")
           cat("-----------------------------------------", "\n")
 
