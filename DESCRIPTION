@@ -1,14 +1,18 @@
 Package: workflow
 Type: Package
 Title: workflow
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
-    person("Jason", "Tsukahara", , "jtsukahara3@gatech.edu", role = c("aut", "cre"),
+    person("Jason", "Tsukahara", , "jason.tsukahara@gatech.edu", 
+    role = c("aut", "cre"),
     comment = c(ORCID = 0000-0003-3570-1977))
     )
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-URL: https://github.com/dr-JT/pupillometry, https://dr-jt.github.io/workflow/index.html
+Description: workflow
+Imports: 
+    readr,
+    plyr,
+    dplyr
+URL: https://github.com/dr-JT/workflow, https://dr-jt.github.io/workflow/index.html
 BugReports: https://github.com/dr-JT/workflow/issues
 Encoding: UTF-8
 LazyData: true
