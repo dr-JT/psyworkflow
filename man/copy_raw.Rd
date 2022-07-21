@@ -8,11 +8,10 @@ copy_raw(
   from,
   to,
   filetype,
+  sub_folder = NULL,
+  task_dir.names = "numbered",
   remove = FALSE,
-  subj.file = NULL,
-  copy = TRUE,
-  ext = NULL,
-  task_dir.names = "numbered"
+  copy = TRUE
 )
 }
 \arguments{
@@ -23,18 +22,16 @@ copy_raw(
 \item{filetype}{a string pattern identifying a specific
 type of raw data file (e.g. .edat2).}
 
-\item{remove}{logical. Should the files in the 'from' directory
-be deleted? (Default: FALSE)}
-
-\item{subj.file}{a file path to a list of subjects who completed
-the entire study. (Default: NULL).}
-
-\item{copy}{logical. Do you want to copy or only remove the files? (Default = TRUE)}
-
-\item{ext}{a directory extension to the "to" argument.}
+\item{sub_folder}{optional. do you want to copy files to a sub folder within
+the `to = ` directory?}
 
 \item{task_dir.names}{Relationship between task name and task folder name.
 Default is "numbered". Alternative options are; "asis".}
+
+\item{remove}{logical. Should the files in the 'from' directory
+be deleted? (Default: FALSE)}
+
+\item{copy}{logical. Do you want to copy the files? (Default = TRUE)}
 }
 \description{
 This function will automatically copy files from the Task directory to
