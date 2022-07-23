@@ -17,7 +17,7 @@ files_bind <- function(path = "", pattern = "", delim = ",",
   import <- list()
   for (i in seq_along(filelist)) {
     if (delim == ",") {
-      import[[i]] <- readr::read_csv(filelist[[i]], guess_max = guess_max)
+      import[[i]] <- readr::read_csv(filelist[[i]])
     }
 
     if (delim != ",") {
