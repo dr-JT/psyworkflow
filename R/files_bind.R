@@ -35,6 +35,7 @@ files_bind <- function(path = "", pattern = "", delim = ",", bind = "rows",
                                    escape_double = FALSE,
                                    trim_ws = TRUE,
                                    na = "NULL")
+          return(uni)
         }
       )
     }
