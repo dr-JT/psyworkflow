@@ -9,7 +9,8 @@ files_bind(
   pattern = "",
   delim = ",",
   bind = "rows",
-  output_file = ""
+  output_file = "",
+  source = ""
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ files_bind(
 \item{bind}{Bind "rows" or "columns"?}
 
 \item{output_file}{File name and path to be saved to.}
+
+\item{source}{If data file comes from a specific software specify it here
+for better support. Currently supports "eprime".}
 }
 \description{
 Binds multiple files in the same directory into a single data frame.
