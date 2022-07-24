@@ -8,8 +8,8 @@ files_bind(
   path = "",
   pattern = "",
   delim = ",",
-  output_file = "",
-  bind = "rows"
+  bind = "rows",
+  output_file = ""
 )
 }
 \arguments{
@@ -18,6 +18,8 @@ files_bind(
 \item{pattern}{Pattern to identify files to be binded}
 
 \item{delim}{Delimiter used in files. Passed onto `readr::read_delim()`}
+
+\item{bind}{Bind "rows" or "columns"?}
 
 \item{output_file}{File name and path to be saved to.}
 }
