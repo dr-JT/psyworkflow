@@ -1,19 +1,19 @@
-Package: workflow
+Package: psyworkflow
 Type: Package
-Title: workflow
+Title: psyworkflow
 Version: 0.2.0
 Authors@R: c(
     person("Jason", "Tsukahara", , "jason.tsukahara@gatech.edu", 
     role = c("aut", "cre"),
     comment = c(ORCID = 0000-0003-3570-1977))
     )
-Description: workflow
+Description: psyworkflow
 Imports: 
     readr,
     plyr,
     dplyr
-URL: https://github.com/dr-JT/workflow, https://dr-jt.github.io/workflow/index.html
-BugReports: https://github.com/dr-JT/workflow/issues
+URL: https://github.com/dr-JT/psyworkflow, https://dr-jt.github.io/psyworkflow/index.html
+BugReports: https://github.com/dr-JT/psyworkflow/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
