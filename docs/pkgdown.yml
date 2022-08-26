@@ -1,8 +1,9 @@
-pandoc: 2.7.2
-pkgdown: 1.1.0
+pandoc: 2.17.1.1
+pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: []
+articles: {}
+last_built: 2022-08-26T02:04Z
 urls:
-  reference: https://dr-jt.github.io/workflow//reference
-  article: https://dr-jt.github.io/workflow//articles
+  reference: https://dr-jt.github.io/psyworkflow//reference
+  article: https://dr-jt.github.io/psyworkflow//articles
 

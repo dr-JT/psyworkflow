@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Copy raw data files from one direcoty to another — copy_raw • psyworkflow</title>
+<title>Setup directory and templates for a new research study — create_project • psyworkflow</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Copy raw data files from one direcoty to another — copy_raw" />
-<meta property="og:description" content="This function will automatically copy files from the Task directory to
-the Raw data directory" />
+<meta property="og:title" content="Setup directory and templates for a new research study — create_project" />
+<meta property="og:description" content="This function can be used to automatically setup your study directory by
+creating folders and template scripts" />
 
 
 
@@ -109,60 +109,116 @@ the Raw data directory" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Copy raw data files from one direcoty to another</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dr-JT/psyworkflow/blob/master/R/copy_raw.R'><code>R/copy_raw.R</code></a></small>
-    <div class="hidden name"><code>copy_raw.Rd</code></div>
+    <h1>Setup directory and templates for a new research study</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dr-JT/psyworkflow/blob/master/R/create_project.R'><code>R/create_project.R</code></a></small>
+    <div class="hidden name"><code>create_project.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function will automatically copy files from the Task directory to
-the Raw data directory</p>
+    <p>This function can be used to automatically setup your study directory by
+creating folders and template scripts</p>
     </div>
 
-    <pre class="usage"><span class='fu'>copy_raw</span><span class='op'>(</span>
-  <span class='va'>from</span>,
-  <span class='va'>to</span>,
-  <span class='va'>filetype</span>,
-  sub_folder <span class='op'>=</span> <span class='cn'>NULL</span>,
-  task_dir.names <span class='op'>=</span> <span class='st'>"numbered"</span>,
-  remove <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  copy <span class='op'>=</span> <span class='cn'>TRUE</span>
+    <pre class="usage"><span class='fu'>create_project</span><span class='op'>(</span>
+  script_templates <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  mainscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  rawscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  scorescript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  mergescript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  analysisscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  study_doc <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  data_raw <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  data_scored <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  documents <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  results <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tasks <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sessions <span class='op'>=</span> <span class='cn'>NULL</span>,
+  manuscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  presentations <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  figures <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  other <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>,
+  standard_project <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  path <span class='op'>=</span> <span class='st'>"."</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>from</th>
-      <td><p>a directory of task folders</p></td>
+      <th>script_templates</th>
+      <td><p>Logical. Download all script templates? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>to</th>
-      <td><p>a directory where raw data files are to be copied to</p></td>
+      <th>mainscript</th>
+      <td><p>Logical. Download a main script template? default = TRUE</p></td>
     </tr>
     <tr>
-      <th>filetype</th>
-      <td><p>a string pattern identifying a specific
-type of raw data file (e.g. .edat2).</p></td>
+      <th>rawscript</th>
+      <td><p>Logical. Download a raw script template? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>sub_folder</th>
-      <td><p>optional. do you want to copy files to a sub folder within
-the `to = ` directory?</p></td>
+      <th>scorescript</th>
+      <td><p>Logical. Download a score script template? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>task_dir.names</th>
-      <td><p>Relationship between task name and task folder name.
-Default is "numbered". Alternative options are; "asis".</p></td>
+      <th>mergescript</th>
+      <td><p>Logical. Download a merge script template? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>remove</th>
-      <td><p>logical. Should the files in the 'from' directory
-be deleted? (Default: FALSE)</p></td>
+      <th>analysisscript</th>
+      <td><p>Logical. Download template to do data analysis (.Rmd)? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>copy</th>
-      <td><p>logical. Do you want to copy the files? (Default = TRUE)</p></td>
+      <th>study_doc</th>
+      <td><p>Logical. Download a study documentation template? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>data_raw</th>
+      <td><p>Logical. Create a raw data directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>data_scored</th>
+      <td><p>Logical. Create a scored data directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>documents</th>
+      <td><p>Logical. Create documents directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>results</th>
+      <td><p>Logical. Create results directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>tasks</th>
+      <td><p>Logical. Create tasks directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>sessions</th>
+      <td><p>Numeric. How many sessions will the study have?</p></td>
+    </tr>
+    <tr>
+      <th>manuscript</th>
+      <td><p>Logical. Create manuscript directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>presentations</th>
+      <td><p>Logical. Create presentations directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>figures</th>
+      <td><p>Logical. Create figures directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>other</th>
+      <td><p>List of other directories you want to create</p></td>
+    </tr>
+    <tr>
+      <th>standard_project</th>
+      <td><p>Logical. Create a standard project directory? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>String. Home directory file path</p></td>
     </tr>
     </table>
 

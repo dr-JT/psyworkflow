@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • psyworkflow</title>
+<title>Download R Script Templates — get_template • psyworkflow</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Download R Script Templates — get_template" />
+<meta property="og:description" content="This function will download template scripts for data analysis in R" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -105,72 +106,78 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Download R Script Templates</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dr-JT/psyworkflow/blob/master/R/get_template.R'><code>R/get_template.R</code></a></small>
+    <div class="hidden name"><code>get_template.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This function will download template scripts for data analysis in R</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>get_template</span><span class='op'>(</span>
+  to <span class='op'>=</span> <span class='st'>"R/templates"</span>,
+  overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  mainscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  rawscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  scorescript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  mergescript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  analysisscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  study_doc <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  path <span class='op'>=</span> <span class='st'>"."</span>
+<span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="copy_raw.html">copy_raw()</a></code> </p>
-        </td>
-        <td><p>Copy raw data files from one direcoty to another</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="create_project.html">create_project()</a></code> </p>
-        </td>
-        <td><p>Setup directory and templates for a new research study</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="duplicates_check.html">duplicates_check()</a></code> </p>
-        </td>
-        <td><p>Check and Remove Duplicate IDs</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="files_bind.html">files_bind()</a></code> </p>
-        </td>
-        <td><p>Bind Multiple Files</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="files_join.html">files_join()</a></code> </p>
-        </td>
-        <td><p>Merge Multiple Files</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_template.html">get_template()</a></code> </p>
-        </td>
-        <td><p>Download R Script Templates</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>to</th>
+      <td><p>a directory where to download R scripts.
+default: "R Scripts/templates"</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p>Logical. Overwite any existing templates? default: FALSE</p></td>
+    </tr>
+    <tr>
+      <th>mainscript</th>
+      <td><p>Logical. Download a main script template to source all
+other R scripts?</p></td>
+    </tr>
+    <tr>
+      <th>rawscript</th>
+      <td><p>Logical. Download template to convert a "messy" raw data file
+to a "tidy" raw data file? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>scorescript</th>
+      <td><p>Logical. Download template to perform data cleaning and
+scoring (aggregate) on a "tidy" raw data file? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>mergescript</th>
+      <td><p>Logical. Download template to merge multiple scored data
+files? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>analysisscript</th>
+      <td><p>Logical. Download template to do data analysis (.Rmd)?
+default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>study_doc</th>
+      <td><p>Logical. Download a study documentation template? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>String. working directory file path. Ignore...</p></td>
+    </tr>
     </table>
-  </div>
 
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

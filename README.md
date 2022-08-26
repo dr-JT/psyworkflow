@@ -1,79 +1,41 @@
-# workflow
+# psyworkflow
 
-A package to aid in the research workflow
+An R package to aid in the **workflow** of data processing steps common in psychological research
 
 ## Install
 
 ```r
-devtools::install_github("dr-JT/workflow")
+devtools::install_github("dr-JT/psyworkflow")
 ```
-
-## Organization and Templates
-
-As scientists we want to be able to focus on getting to the data, running statistical analyses to test hypotheses, creating visualizations, writing up a manuscript of our findings, and generating new theories. 
-
-To do this, however, we have to organize our data and write code to do the analyses. We don't actually care about the organization or care about writing clean easy to read code. We might recognize that having good organization and clean easy to read code will make this whole process easier and has a lot of advantages, but it is also difficult and requires extra time. Therefore, these often times becomes an afterthought at best or at worst completely ignored.
-
-For the most part, your workflow from one research study to the next will require the same steps, processes, and organization. This means we should be able to automate this so we can spend more time on what we actually care about as scientists.
-
-I have built this package with certain organization principles in mind. This way you can spend less time thinking about organization and writing clean easy to read code because these are already setup for you. You can have your cake and eat it too! 
-
-Read about the organization principles this package uses
-
-Read about how the generic script templates are setup
 
 ## Usage
 
-### Setting up Data Repositories
+This package has been developed specifically to aid in my own workflow in psychological research on individual differences in cognitive abilities. You may, however, find it applicable to your own research workflow.
 
-One of the features of this package allows you to automatically setup the organization of a **Data Collection** or **Data Analysis** project.
+Most of the functions are designed to easily and quickly get you through some preliminary data processing steps so you can get to work on processing and analyzing your data.
 
-Navigate to __File -> New Project... -> New Directory 
+- **R project template**
 
-And browse until you see the option: __Research Study__
-
-Click on that and you will see a dialogue box like this
-
-<img src="man/figures/workflow_dialogue.png" width="50%"/>
-
-Here are what the different options mean:
-
-* __Directory Name__: This will be the name of the folder for the study
-
-* __Create project as subdirecotry of__: Select Browse and choose where the folder (Directory Name) should be located.
-
-* __Repository Type__: **data collection** or **data analysis**. Depending on which one you choose it will create the corresponding repository organization:
-
-<div style="text-align: center">
-  <img src="man/figures/repository_type.png" width="50%"/>
-</div>
-
-Notice that if you choose the **data collection** repository it will download a generic template for *converting "messy" raw data files to "tidy" raw data files*. And if you choose the **data analysis** repository it will download generic templates for *creating scored data files from "tidy" raw data files* and to *merge* the Scored data files into one final data file. 
-
-* __# of Sessions__: How many sessions will the study have? This will create folders in the `Tasks` directory for each session. For instance, if there will be 4 sessions it will create the the folders "Session 1", "Session 2", "Session 3", and "Session 4". Obviously this is not needed for a **data analysis** repository.
+    (In development)
     
-* __Other Directories__: I talked earlier about some other directories you may want to include in a **Data Analysis** repository. Well you can automatically add them here. 
+- **Download R script templates**
 
-Go ahead an play around with creating different types of repositories.
+    (In development)
 
-### Download R Script Templates
+- **Organize files from different computers**
 
-You can also add template scripts after the fact, if you already have a repository setup. 
+    I often collect data on multiple computers on a battery of cognitive tasks. The `copy_raw()` function helps to get all the files for each task, organized on multiple computers, into one location (usually a network drive or shared folder on a cloud storage system). 
+    
+- **Bind multiple data files together**
 
-```{r}
-workflow::template(type = "raw", masterscript = TRUE)
-```
+    Typically, you start out with individual data files for each subject. The first step, then, is to bind those individual data files into one large data file that contains the data for all subjects for a single task. The `files_bind()` function will bind (stack) the rows for multiple data files with the same column names.
 
-Or
+- **Check for duplicate subject ID's in your data files**
 
-```{r}
-workflow::template(type = "score", scorescript = TRUE, merge = TRUE)
-```
+    In large data collection efforts it is not uncommon that subject ID's will occasionally get entered incorrectly when adminstering a task. The `duplicates_check()` function will check for duplicate subject ID's, remove them, and save them to a file so you can sort them out later. 
+    
+- **Join multiple data files together**
 
-To see all the different options use
-
-```{r}
-?workflow::template
-```
+    You start out with seperate data files for each task but at some point you will likely want to join (merge) the data files from multiple tasks into one data file that is ready for statistical analysis. The `files_join()` function will join (merge) multiple data files that have a common id column (e.g., Subject).
 
 

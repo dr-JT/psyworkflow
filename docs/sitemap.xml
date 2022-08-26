@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dr-jt.github.io/workflow//index.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow//index.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/workflow//reference/copy_raw.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow//reference/copy_raw.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/workflow//reference/create_study.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow//reference/create_project.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/workflow//reference/template.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow//reference/duplicates_check.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow//reference/files_bind.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow//reference/files_join.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow//reference/get_template.html</loc>
   </url>
 </urlset>
