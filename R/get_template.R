@@ -2,91 +2,114 @@
 #'
 #' This function will download template scripts for data analysis in R
 #' @param to a directory where to download R scripts.
-#'     default: "R Scripts/templates"
+#'     default: "R/templates".
+#'     For analysis_script will change to "analyses/templates" if the "analyses
+#'     folder exists.
 #' @param overwrite Logical. Overwite any existing templates? default: FALSE
-#' @param mainscript Logical. Download a main script template to source all
+#' @param main_script Logical. Download a main script template to source all
 #'     other R scripts?
-#' @param rawscript Logical. Download template to convert a "messy" raw data file
-#'     to a "tidy" raw data file? default = FALSE
-#' @param scorescript Logical. Download template to perform data cleaning and
-#'     scoring (aggregate) on a "tidy" raw data file? default = FALSE
-#' @param mergescript Logical. Download template to merge multiple scored data
+#' @param raw_script Logical. Download template to convert a "messy" raw data
+#'     file to a "tidy" raw data file? default = FALSE
+#' @param score_script Logical. Download template to perform data cleaning and
+#'     scoring on a "tidy" raw data file? default = FALSE
+#' @param merge_script Logical. Download template to merge multiple scored data
 #'     files? default = FALSE
-#' @param analysisscript Logical. Download template to do data analysis (.Rmd)?
+#' @param analysis_script Logical. Download template to do data analysis (.Rmd)?
 #'     default = FALSE
-#' @param study_doc Logical. Download a study documentation template? default = FALSE
+#' @param study_doc Logical. Download a study documentation template?
+#'     default = FALSE
 #' @param path String. working directory file path. Ignore...
 #' @export
 #'
 
 get_template <- function(to = "R/templates", overwrite = FALSE,
-                         mainscript = FALSE, rawscript = FALSE,
-                         scorescript = FALSE, mergescript = FALSE,
-                         analysisscript = FALSE, study_doc = FALSE,
+                         main_script = FALSE, raw_script = FALSE,
+                         score_script = FALSE, merge_script = FALSE,
+                         analysis_script = FALSE, study_doc = FALSE,
                          path = "."){
 
   ## Setup ####
   to <- paste(path, to, sep = "/")
   github_repo <-
-    "https://raw.githubusercontent.com/dr-JT/workflow/master/script_templates/"
+    "https://raw.githubusercontent.com/dr-JT/workflow/main/script_templates/"
 
   if (!dir.exists(to)) dir.create(to, recursive = TRUE)
   #####
 
   ## Download Templates
-  if (mainscript == TRUE) {
+  if (main_script == TRUE) {
     exists <- file.exists(paste(path, "mainscript.Rmd", sep = "/"))
-    if (exists == TRUE & overwrite == FALSE) {
+    if (exists == TRUE) {
       message("Did not download file. mainscript.Rmd already exists")
     } else {
       download.file(paste(github_repo, "mainscript.Rmd",
                           sep = ""),
-                    paste(path, "mainscript.Rmd", sep = "/"))
+                    paste(".", "mainscript.Rmd", sep = "/"))
     }
   }
 
-  if (rawscript == TRUE) {
-    exists <- file.exists(paste(to, "0_taskname_raw.R", sep = "/"))
+  if (raw_script == TRUE) {
+    exists <- file.exists(paste(to, "1_taskname_raw.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. 0_taskname_raw.R already exists")
+      message("Did not download file. 1_taskname_raw.R already exists")
     } else {
-      download.file(paste(github_repo, "0_taskname_raw.R",
+      download.file(paste(github_repo, "1_taskname_raw.R",
                           sep = ""),
-                    paste(to, "0_taskname_raw.R", sep = "/"))
+                    paste(to, "1_taskname_raw.R", sep = "/"))
     }
   }
 
-  if (scorescript == TRUE) {
-    exists <- file.exists(paste(to, "1_taskname_score.R", sep = "/"))
+  if (score_script == TRUE) {
+    exists <- file.exists(paste(to, "2_taskname_score.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. 1_taskname_score.R already exists")
+      message("Did not download file. 2_taskname_score.R already exists")
     } else {
-      download.file(paste(github_repo, "1_taskname_score.R",
+      download.file(paste(github_repo, "2_taskname_score.R",
                           sep = ""),
-                    paste(to, "1_taskname_score.R", sep = "/"))
+                    paste(to, "2_taskname_score.R", sep = "/"))
     }
   }
 
-  if (mergescript == TRUE) {
-    exists <- file.exists(paste(to, "2_merge.R", sep = "/"))
+  if (merge_script == TRUE) {
+    exists <- file.exists(paste(to, "3_merge.R", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. 2_merge.R already exists")
+      message("Did not download file. 3_merge.R already exists")
     } else {
-      download.file(paste(github_repo, "2_merge.R",
+      download.file(paste(github_repo, "3_merge.R",
                           sep = ""),
-                    paste(to, "2_merge.R", sep = "/"))
+                    paste(to, "3_merge.R", sep = "/"))
     }
   }
 
-  if (analysisscript == TRUE) {
-    exists <- file.exists(paste(to, "3_MainAnalysis.Rmd", sep = "/"))
-    if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. 3_MainAnalysis.Rmd already exists")
+  if (analysis_script == TRUE) {
+    if (dir.exists("./analyses")) {
+      if (!dir.exists("./analyses/templates")) {
+        dir.create("./analyses/templates", recursive = TRUE)
+      }
+      analysis_to <- "./analyses/templates"
     } else {
-      download.file(paste(github_repo, "3_MainAnalysis.Rmd",
+      analysis_to <- to
+    }
+    exists <- file.exists(paste(analysis_to, "Analysis.Rmd", sep = "/"))
+    if (exists == TRUE & overwrite == FALSE) {
+      message("Did not download file. Analysis.Rmd already exists")
+    } else {
+      download.file(paste(github_repo, "Analysis.Rmd",
                           sep = ""),
-                    paste(to, "3_MainAnalysis.Rmd", sep = "/"))
+                    paste(analysis_to, "Analysis.Rmd", sep = "/"))
     }
   }
+
+  if (study_doc == TRUE) {
+    exists <- file.exists(paste(path, "study_documentation.Rmd", sep = "/"))
+    if (exists == TRUE) {
+      message("Did not download file. study_documentation.Rmd already exists")
+    } else {
+      download.file(paste(github_repo, "study_documentation.Rmd",
+                          sep = ""),
+                    paste(".", "study_documentation.Rmd", sep = "/"))
+    }
+  }
+
   #####
 }

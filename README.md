@@ -16,11 +16,13 @@ Most of the functions are designed to easily and quickly get you through some pr
 
 - **R project template**
 
-    (In development)
+    Create a research project directory with folders and R script templates:
+    
+    File -> New Project
     
 - **Download R script templates**
 
-    (In development)
+    R script templates can be downloaded with `get_template()`
 
 - **Organize files from different computers**
 

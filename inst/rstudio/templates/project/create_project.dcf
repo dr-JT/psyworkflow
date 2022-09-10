@@ -15,15 +15,15 @@ Label: /data/scored
 Default: On
 Position: left
 
-Parameter: documents
+Parameter: analyses
 Widget: CheckboxInput
-Label: /documents
+Label: /analyses
 Default: On
 Position: left
 
-Parameter: results
+Parameter: documents
 Widget: CheckboxInput
-Label: /results
+Label: /documents
 Default: On
 Position: left
 
@@ -33,39 +33,33 @@ Label: /tasks
 Default: On
 Position: left
 
-Parameter: sessions
-Widget: TextInput
-Label: # of Sessions
-Default: NULL
-Position: left
-
-Parameter: mainscript
+Parameter: main_script
 Widget: CheckboxInput
 Label: mainscript.R
 Default: On
 Position: right
 
-Parameter: rawscript
+Parameter: raw_script
 Widget: CheckboxInput
-Label: 0_taskname_raw.R
+Label: 1_taskname_raw.R
 Default: On
 Position: right
 
-Parameter: scorescript
+Parameter: score_script
 Widget: CheckboxInput
-Label: 1_taskname_score.R
+Label: 2_taskname_score.R
 Default: On
 Position: right
 
-Parameter: mergescript
+Parameter: merge_script
 Widget: CheckboxInput
-Label: 2_merge.R
+Label: 3_merge.R
 Default: On
 Position: right
 
-Parameter: analysisscript
+Parameter: analysis_script
 Widget: CheckboxInput
-Label: 3_Analysis.Rmd
+Label: Analysis.Rmd
 Default: On
 Position: right
 

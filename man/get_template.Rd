@@ -7,37 +7,40 @@
 get_template(
   to = "R/templates",
   overwrite = FALSE,
-  mainscript = FALSE,
-  rawscript = FALSE,
-  scorescript = FALSE,
-  mergescript = FALSE,
-  analysisscript = FALSE,
+  main_script = FALSE,
+  raw_script = FALSE,
+  score_script = FALSE,
+  merge_script = FALSE,
+  analysis_script = FALSE,
   study_doc = FALSE,
   path = "."
 )
 }
 \arguments{
 \item{to}{a directory where to download R scripts.
-default: "R Scripts/templates"}
+default: "R/templates".
+For analysis_script will change to "analyses/templates" if the "analyses
+folder exists.}
 
 \item{overwrite}{Logical. Overwite any existing templates? default: FALSE}
 
-\item{mainscript}{Logical. Download a main script template to source all
+\item{main_script}{Logical. Download a main script template to source all
 other R scripts?}
 
-\item{rawscript}{Logical. Download template to convert a "messy" raw data file
-to a "tidy" raw data file? default = FALSE}
+\item{raw_script}{Logical. Download template to convert a "messy" raw data
+file to a "tidy" raw data file? default = FALSE}
 
-\item{scorescript}{Logical. Download template to perform data cleaning and
-scoring (aggregate) on a "tidy" raw data file? default = FALSE}
+\item{score_script}{Logical. Download template to perform data cleaning and
+scoring on a "tidy" raw data file? default = FALSE}
 
-\item{mergescript}{Logical. Download template to merge multiple scored data
+\item{merge_script}{Logical. Download template to merge multiple scored data
 files? default = FALSE}
 
-\item{analysisscript}{Logical. Download template to do data analysis (.Rmd)?
+\item{analysis_script}{Logical. Download template to do data analysis (.Rmd)?
 default = FALSE}
 
-\item{study_doc}{Logical. Download a study documentation template? default = FALSE}
+\item{study_doc}{Logical. Download a study documentation template?
+default = FALSE}
 
 \item{path}{String. working directory file path. Ignore...}
 }

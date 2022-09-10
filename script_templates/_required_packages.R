@@ -1,6 +1,13 @@
 # List of required packages for this project
 
-# header description of what these packages are for
 install.packages("here")
 install.packages("readr")
 install.packages("dplyr")
+install.packages("tidyr")
+
+install.packages("plyr")
+install.packages("psych")
+
+# github packages (restart R session after install)
+install.packages("devtools")
+devtools::install_github("EngleLab/englelab")

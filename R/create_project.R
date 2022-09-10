@@ -3,18 +3,17 @@
 #' This function can be used to automatically setup your study directory by
 #' creating folders and template scripts
 #' @param script_templates Logical. Download all script templates? default = FALSE
-#' @param mainscript Logical. Download a main script template? default = TRUE
-#' @param rawscript Logical. Download a raw script template? default = FALSE
-#' @param scorescript Logical. Download a score script template? default = FALSE
-#' @param mergescript Logical. Download a merge script template? default = FALSE
-#' @param analysisscript Logical. Download template to do data analysis (.Rmd)? default = FALSE
+#' @param main_script Logical. Download a main script template? default = TRUE
+#' @param raw_script Logical. Download a raw script template? default = FALSE
+#' @param score_script Logical. Download a score script template? default = FALSE
+#' @param merge_script Logical. Download a merge script template? default = FALSE
+#' @param analysis_script Logical. Download template to do data analysis (.Rmd)? default = FALSE
 #' @param study_doc Logical. Download a study documentation template? default = FALSE
 #' @param data_raw Logical. Create a raw data directory? default = FALSE
 #' @param data_scored Logical. Create a scored data directory? default = FALSE
 #' @param documents Logical. Create documents directory? default = FALSE
 #' @param results Logical. Create results directory? default = FALSE
 #' @param tasks Logical. Create tasks directory? default = FALSE
-#' @param sessions Numeric. How many sessions will the study have?
 #' @param manuscript Logical. Create manuscript directory? default = FALSE
 #' @param presentations Logical. Create presentations directory? default = FALSE
 #' @param figures Logical. Create figures directory? default = FALSE
@@ -25,20 +24,16 @@
 #'
 
 create_project <- function(script_templates = FALSE,
-                           mainscript = FALSE, rawscript = FALSE,
-                           scorescript = FALSE, mergescript = FALSE,
-                           analysisscript = FALSE, study_doc = FALSE,
+                           main_script = FALSE, raw_script = FALSE,
+                           score_script = FALSE, merge_script = FALSE,
+                           analysis_script = FALSE, study_doc = FALSE,
                            data_raw = FALSE, data_scored = FALSE,
                            documents = FALSE, results = FALSE,
-                           tasks = FALSE, sessions = NULL,
+                           tasks = FALSE,
                            manuscript = FALSE, presentations = FALSE,
                            figures = FALSE, other = c(),
                            standard_project = FALSE,
                            path = "."){
-
-  if (!is.na(sessions)) {
-    if (sessions == "NULL") sessions <- NULL
-  }
 
   ## Setup ####
   path <- paste(path, "/", sep = "")
@@ -67,26 +62,21 @@ create_project <- function(script_templates = FALSE,
   }
   if (data_scored == TRUE) dir.create(paste(path, "data/scored", sep = ""))
   if (documents == TRUE) dir.create(paste(path, "documents", sep = ""))
-  if (results == TRUE) dir.create(paste(path, "results", sep = ""))
+  if (analyses == TRUE) dir.create(paste(path, "analyses", sep = ""))
   if (tasks == TRUE) dir.create(paste(path, "tasks", sep = ""))
-  if (!is.null(sessions)) {
-    if (session > 1) {
-      for (i in 1:sessions) {
-        session <- paste(path, "tasks/session ", i, sep = "")
-        dir.create(session)
-      }
-    }
-  }
   if (manuscript == TRUE) dir.create(paste(path, "manuscript", sep = ""))
   if (presentations == TRUE) dir.create(paste(path, "presentations", sep = ""))
   if (figures == TRUE) {
+    if (analyses == TRUE) {
+      dir.create(paste(path, "analyses/figures", sep = ""))
+    }
     if (manuscript == TRUE) {
       dir.create(paste(path, "manuscript/figures", sep = ""))
     }
     if (presentations == TRUE) {
       dir.create(paste(path, "presentations/figures", sep = ""))
     }
-    if (manuscript == FALSE & presentations == FALSE) {
+    if (analyses == FALSE & manuscript == FALSE & presentations == FALSE) {
       dir.create(paste(path, "figures", sep = ""))
     }
   }
@@ -98,22 +88,22 @@ create_project <- function(script_templates = FALSE,
 
   ## Download R Script Templates ####
   if (script_templates == TRUE) {
-    mainscript <- TRUE
-    rawscript <- TRUE
-    scorescript <- TRUE
-    mergescript <- TRUE
-    analysisscript <- TRUE
+    main_script <- TRUE
+    raw_script <- TRUE
+    score_script <- TRUE
+    merge_script <- TRUE
+    analysis_script <- TRUE
     study_doc <- TRUE
   }
 
   get_template(to = "R/templates", path = path,
-               mainscript = mainscript, rawscript = rawscript,
-               scorescript = scorescript, mergescript = mergescript,
-               analysisscript = analysisscript, study_doc = study_doc)
+               main_script = main_script, raw_script = raw_script,
+               score_script = score_script, merge_script = merge_script,
+               analysis_script = analysis_script, study_doc = study_doc)
 
   # Download required packages script
   github_repo <-
-    "https://raw.githubusercontent.com/dr-JT/workflow/master/script_templates/"
+    "https://raw.githubusercontent.com/dr-JT/workflow/main/script_templates/"
 
   download.file(paste(github_repo, "_required_packages.R",
                       sep = ""),
