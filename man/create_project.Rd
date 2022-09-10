@@ -14,6 +14,7 @@ create_project(
   study_doc = FALSE,
   data_raw = FALSE,
   data_scored = FALSE,
+  analyses = FALSE,
   documents = FALSE,
   results = FALSE,
   tasks = FALSE,
@@ -43,6 +44,8 @@ create_project(
 \item{data_raw}{Logical. Create a raw data directory? default = FALSE}
 
 \item{data_scored}{Logical. Create a scored data directory? default = FALSE}
+
+\item{analyses}{Logical. Create an analyses directory? default = FALSE}
 
 \item{documents}{Logical. Create documents directory? default = FALSE}
 

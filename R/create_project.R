@@ -11,6 +11,7 @@
 #' @param study_doc Logical. Download a study documentation template? default = FALSE
 #' @param data_raw Logical. Create a raw data directory? default = FALSE
 #' @param data_scored Logical. Create a scored data directory? default = FALSE
+#' @param analyses Logical. Create an analyses directory? default = FALSE
 #' @param documents Logical. Create documents directory? default = FALSE
 #' @param results Logical. Create results directory? default = FALSE
 #' @param tasks Logical. Create tasks directory? default = FALSE
@@ -28,6 +29,7 @@ create_project <- function(script_templates = FALSE,
                            score_script = FALSE, merge_script = FALSE,
                            analysis_script = FALSE, study_doc = FALSE,
                            data_raw = FALSE, data_scored = FALSE,
+                           analyses = FALSE,
                            documents = FALSE, results = FALSE,
                            tasks = FALSE,
                            manuscript = FALSE, presentations = FALSE,
@@ -41,6 +43,7 @@ create_project <- function(script_templates = FALSE,
     script_templates <- TRUE
     data_raw <- TRUE
     data_scored <- TRUE
+    analyses <- TRUE
     documents <- TRUE
     results <- TRUE
     tasks <- TRUE
