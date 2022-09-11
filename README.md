@@ -1,6 +1,6 @@
 # psyworkflow
 
-An R package to aid in the **workflow** of data processing steps common in psychological research
+An R package to aid in the **workflow** of getting a research project setup and convenient functions for preliminary data processing steps.
 
 ## Install
 
@@ -10,15 +10,13 @@ devtools::install_github("dr-JT/psyworkflow")
 
 ## Usage
 
-This package has been developed specifically to aid in my own workflow in psychological research on individual differences in cognitive abilities. You may, however, find it applicable to your own research workflow.
-
 Most of the functions are designed to easily and quickly get you through some preliminary data processing steps so you can get to work on processing and analyzing your data.
 
 - **R project template**
 
     Create a research project directory with folders and R script templates:
     
-    File -> New Project
+    File -> New Project -> New Directory -> then choose the 'Research Study' template
     
 - **Download R script templates**
 

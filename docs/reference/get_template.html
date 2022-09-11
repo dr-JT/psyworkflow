@@ -120,11 +120,11 @@
     <pre class="usage"><span class='fu'>get_template</span><span class='op'>(</span>
   to <span class='op'>=</span> <span class='st'>"R/templates"</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  mainscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  rawscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  scorescript <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  mergescript <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  analysisscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  main_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  raw_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  score_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  merge_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  analysis_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
   study_doc <span class='op'>=</span> <span class='cn'>FALSE</span>,
   path <span class='op'>=</span> <span class='st'>"."</span>
 <span class='op'>)</span></pre>
@@ -135,40 +135,43 @@
     <tr>
       <th>to</th>
       <td><p>a directory where to download R scripts.
-default: "R Scripts/templates"</p></td>
+default: "R/templates".
+For analysis_script will change to "analyses/templates" if the "analyses
+folder exists.</p></td>
     </tr>
     <tr>
       <th>overwrite</th>
       <td><p>Logical. Overwite any existing templates? default: FALSE</p></td>
     </tr>
     <tr>
-      <th>mainscript</th>
+      <th>main_script</th>
       <td><p>Logical. Download a main script template to source all
 other R scripts?</p></td>
     </tr>
     <tr>
-      <th>rawscript</th>
-      <td><p>Logical. Download template to convert a "messy" raw data file
-to a "tidy" raw data file? default = FALSE</p></td>
+      <th>raw_script</th>
+      <td><p>Logical. Download template to convert a "messy" raw data
+file to a "tidy" raw data file? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>scorescript</th>
+      <th>score_script</th>
       <td><p>Logical. Download template to perform data cleaning and
-scoring (aggregate) on a "tidy" raw data file? default = FALSE</p></td>
+scoring on a "tidy" raw data file? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>mergescript</th>
+      <th>merge_script</th>
       <td><p>Logical. Download template to merge multiple scored data
 files? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>analysisscript</th>
+      <th>analysis_script</th>
       <td><p>Logical. Download template to do data analysis (.Rmd)?
 default = FALSE</p></td>
     </tr>
     <tr>
       <th>study_doc</th>
-      <td><p>Logical. Download a study documentation template? default = FALSE</p></td>
+      <td><p>Logical. Download a study documentation template?
+default = FALSE</p></td>
     </tr>
     <tr>
       <th>path</th>

@@ -121,18 +121,17 @@ creating folders and template scripts</p>
 
     <pre class="usage"><span class='fu'>create_project</span><span class='op'>(</span>
   script_templates <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  mainscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  rawscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  scorescript <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  mergescript <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  analysisscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  main_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  raw_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  score_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  merge_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  analysis_script <span class='op'>=</span> <span class='cn'>FALSE</span>,
   study_doc <span class='op'>=</span> <span class='cn'>FALSE</span>,
   data_raw <span class='op'>=</span> <span class='cn'>FALSE</span>,
   data_scored <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  analyses <span class='op'>=</span> <span class='cn'>FALSE</span>,
   documents <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  results <span class='op'>=</span> <span class='cn'>FALSE</span>,
   tasks <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  sessions <span class='op'>=</span> <span class='cn'>NULL</span>,
   manuscript <span class='op'>=</span> <span class='cn'>FALSE</span>,
   presentations <span class='op'>=</span> <span class='cn'>FALSE</span>,
   figures <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -149,23 +148,23 @@ creating folders and template scripts</p>
       <td><p>Logical. Download all script templates? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>mainscript</th>
+      <th>main_script</th>
       <td><p>Logical. Download a main script template? default = TRUE</p></td>
     </tr>
     <tr>
-      <th>rawscript</th>
+      <th>raw_script</th>
       <td><p>Logical. Download a raw script template? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>scorescript</th>
+      <th>score_script</th>
       <td><p>Logical. Download a score script template? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>mergescript</th>
+      <th>merge_script</th>
       <td><p>Logical. Download a merge script template? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>analysisscript</th>
+      <th>analysis_script</th>
       <td><p>Logical. Download template to do data analysis (.Rmd)? default = FALSE</p></td>
     </tr>
     <tr>
@@ -181,20 +180,16 @@ creating folders and template scripts</p>
       <td><p>Logical. Create a scored data directory? default = FALSE</p></td>
     </tr>
     <tr>
+      <th>analyses</th>
+      <td><p>Logical. Create an analyses directory? default = FALSE</p></td>
+    </tr>
+    <tr>
       <th>documents</th>
       <td><p>Logical. Create documents directory? default = FALSE</p></td>
     </tr>
     <tr>
-      <th>results</th>
-      <td><p>Logical. Create results directory? default = FALSE</p></td>
-    </tr>
-    <tr>
       <th>tasks</th>
       <td><p>Logical. Create tasks directory? default = FALSE</p></td>
-    </tr>
-    <tr>
-      <th>sessions</th>
-      <td><p>Numeric. How many sessions will the study have?</p></td>
     </tr>
     <tr>
       <th>manuscript</th>
