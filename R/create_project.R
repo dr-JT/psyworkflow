@@ -13,7 +13,6 @@
 #' @param data_scored Logical. Create a scored data directory? default = FALSE
 #' @param analyses Logical. Create an analyses directory? default = FALSE
 #' @param documents Logical. Create documents directory? default = FALSE
-#' @param results Logical. Create results directory? default = FALSE
 #' @param tasks Logical. Create tasks directory? default = FALSE
 #' @param manuscript Logical. Create manuscript directory? default = FALSE
 #' @param presentations Logical. Create presentations directory? default = FALSE
@@ -30,8 +29,7 @@ create_project <- function(script_templates = FALSE,
                            analysis_script = FALSE, study_doc = FALSE,
                            data_raw = FALSE, data_scored = FALSE,
                            analyses = FALSE,
-                           documents = FALSE, results = FALSE,
-                           tasks = FALSE,
+                           documents = FALSE, tasks = FALSE,
                            manuscript = FALSE, presentations = FALSE,
                            figures = FALSE, other = c(),
                            standard_project = FALSE,
@@ -45,7 +43,6 @@ create_project <- function(script_templates = FALSE,
     data_scored <- TRUE
     analyses <- TRUE
     documents <- TRUE
-    results <- TRUE
     tasks <- TRUE
     manuscript <- TRUE
     presentations <- TRUE

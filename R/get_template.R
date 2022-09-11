@@ -44,7 +44,7 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
     } else {
       download.file(paste(github_repo, "mainscript.Rmd",
                           sep = ""),
-                    paste(".", "mainscript.Rmd", sep = "/"))
+                    paste(path, "mainscript.Rmd", sep = "/"))
     }
   }
 
@@ -82,11 +82,11 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
   }
 
   if (analysis_script == TRUE) {
-    if (dir.exists("./analyses")) {
-      if (!dir.exists("./analyses/templates")) {
-        dir.create("./analyses/templates", recursive = TRUE)
+    if (dir.exists(paste(path, "analyses", sep = "/"))) {
+      if (!dir.exists(paste(path, "analyses/templates", sep = "/"))) {
+        dir.create(paste(path, "analyses/templates", sep = "/"), recursive = TRUE)
       }
-      analysis_to <- "./analyses/templates"
+      analysis_to <- paste(path, "analyses/templates", sep = "/")
     } else {
       analysis_to <- to
     }
@@ -107,7 +107,7 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
     } else {
       download.file(paste(github_repo, "study_documentation.Rmd",
                           sep = ""),
-                    paste(".", "study_documentation.Rmd", sep = "/"))
+                    paste(path, "study_documentation.Rmd", sep = "/"))
     }
   }
 

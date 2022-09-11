@@ -16,7 +16,6 @@ create_project(
   data_scored = FALSE,
   analyses = FALSE,
   documents = FALSE,
-  results = FALSE,
   tasks = FALSE,
   manuscript = FALSE,
   presentations = FALSE,
@@ -48,8 +47,6 @@ create_project(
 \item{analyses}{Logical. Create an analyses directory? default = FALSE}
 
 \item{documents}{Logical. Create documents directory? default = FALSE}
-
-\item{results}{Logical. Create results directory? default = FALSE}
 
 \item{tasks}{Logical. Create tasks directory? default = FALSE}
 
