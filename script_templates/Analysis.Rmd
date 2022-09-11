@@ -16,11 +16,51 @@ Last updated: `r format(Sys.Date(), "%B %d %Y")`
 
 Required Packages
 
-```{r setup}
+```{r setup, message = FALSE, warning = FALSE}
 knitr::opts_chunk$set(error = TRUE, message = FALSE, warning = TRUE)
 
 library(here)
 library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+Plot and Table Themes
+
+```{r}
+# set global ggplot theme
+theme_spacious <- function(font.size = 14, bold = TRUE){
+  key.size <- trunc(font.size * .8)
+  if (bold == TRUE) {
+    face.type <- "bold"
+  } else {
+    face.type <- "plain"
+  }
+
+  theme(text = element_text(size = font.size),
+        axis.title.x = element_text(margin = margin(t = 20, r = 0,
+                                                    b = 0, l = 0),
+                                    face = face.type),
+        axis.title.y = element_text(margin = margin(t = 0, r = 15,
+                                                    b = 0, l = 0),
+                                    face = face.type),
+        legend.title = element_text(face = face.type),
+        legend.spacing = unit(20, "pt"),
+        legend.text = element_text(size = key.size),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = "white", color = "white"),
+        strip.text = element_text(color = "black"))
+}
+
+output_theme <- theme_linedraw() + theme_spacious(font.size = 12)
+theme_set(output_theme)
+
+table_theme <- function(x) {
+  kable(x, digits = 3, format = "html") %>%
+  kable_classic(position = "left") %>%
+  kable_styling(full_width = FALSE, position = "left")
+}
 ```
 
 Import Data
@@ -29,10 +69,15 @@ Import Data
 data_import <- read_csv(here("folder_path", "filename.csv"))
 ```
 
----
+Get Data Ready For Models
 
----
+```{r}
 
+```
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 # Section Titles without tabs
 
@@ -40,10 +85,9 @@ data_import <- read_csv(here("folder_path", "filename.csv"))
 
 ```
 
----
+------------------------------------------------------------------------
 
----
-
+------------------------------------------------------------------------
 
 # Section Titles with tabs {.tabset .tabset-pills}
 
@@ -55,7 +99,7 @@ Model
 
 ## Tables
 
-```{r}
+```{r results='asis'}
 
 ```
 
@@ -65,10 +109,9 @@ Model
 
 ```
 
----
+------------------------------------------------------------------------
 
----
-
+------------------------------------------------------------------------
 
 # Session Info
 
@@ -78,6 +121,5 @@ sessionInfo()
 ```
 
 ```{r}
-rm(list=ls())
+rm(list = ls())
 ```
-

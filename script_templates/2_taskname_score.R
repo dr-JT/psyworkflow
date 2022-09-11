@@ -35,13 +35,13 @@ data_scores <- data_import %>%
 data_cleaned <- data_scores %>%
   remove_problematic(filter = "",
                      log_file =
-                       here(output_dir, "logs",
+                       here("data/logs",
                             paste(task, "_problematic.csv", sep = ""))) %>%
   replace_outliers(variables = c(),
                    cutoff = outlier_cutoff,
                    with = "NA",
                    log_file =
-                     here(output_dir, "logs",
+                     here("data/logs",
                           paste(task, "_outliers.csv", sep = ""))) %>%
   filter(!is.na())
 # --------------------

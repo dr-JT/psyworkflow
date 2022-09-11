@@ -20,9 +20,9 @@
 
 -   **documents**: Any documents related to the study and analysis procedure
 
--   **R**: All R scripts used for processing and analyzing data
+-   **R**: R scripts used for processing data
 
--   **results**: All result output files from RMarkdown scripts
+-   **analyses**: Scripts and output for data analysis
 
 -   **tasks**: Experimental programs for all the tasks used in the study
 
@@ -45,9 +45,9 @@ Create tidy raw data files from messy raw data files
 -   **Output Directory**: data/raw
 
 ```{r}
-source("R/0_task_raw.csv")
+source("R/1_task_raw.csv")
 
-rm(list=ls())
+rm(list = ls())
 ```
 
 ## Data Scoring and Cleaning
@@ -67,10 +67,9 @@ Create scored and cleaned data files from raw data files
 -   **Reliability**: [provide a general description of how reliability was calculated]
 
 ```{r}
-library(rmarkdown)
-render("R/1_task_score.R", output_dir = "data/logs")
+source("R/2_task_score.R")
 
-rm(list=ls())
+rm(list = ls())
 ```
 
 Create merged data files ready for statistical analysis from scored data files
@@ -80,9 +79,9 @@ Create merged data files ready for statistical analysis from scored data files
 **Merged File**: data/**StudyName_Data.csv**
 
 ```{r}
-source("R/2_merge.R", echo = TRUE)
+source("R/3_merge.R")
 
-rm(list=ls())
+rm(list = ls())
 ```
 
 ## Statistical Analysis and Data Visualization
@@ -91,12 +90,10 @@ rm(list=ls())
 
 Perform statistical analysis and data visualization
 
-Output is saved as **.html** files to **results/**
+Output is saved as **.html** files to **analyses/**
 
 ```{r}
-rmarkdown::render("R/3_MainAnalysis.Rmd",
-                  output_dir = "results", 
-                  output_file = "MainAnalysis.html")
+rmarkdown::render("analyses/Analysis.Rmd")
 
-rm(list=ls())
+rm(list = ls())
 ```
