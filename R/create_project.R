@@ -62,7 +62,10 @@ create_project <- function(script_templates = FALSE,
   }
   if (data_scored == TRUE) dir.create(paste(path, "data/scored", sep = ""))
   if (documents == TRUE) dir.create(paste(path, "documents", sep = ""))
-  if (analyses == TRUE) dir.create(paste(path, "analyses", sep = ""))
+  if (analyses == TRUE) {
+    dir.create(paste(path, "analyses", sep = ""))
+    dir.create(paste(path, "analyses/exploratory", sep = ""))
+  }
   if (tasks == TRUE) dir.create(paste(path, "tasks", sep = ""))
   if (manuscript == TRUE) dir.create(paste(path, "manuscript", sep = ""))
   if (presentations == TRUE) dir.create(paste(path, "presentations", sep = ""))
