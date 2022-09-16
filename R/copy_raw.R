@@ -9,7 +9,7 @@
 #' @param sub_folder optional. do you want to copy files to a sub folder within
 #'     the `to = ` directory?
 #' @param task_dir.names Relationship between task name and task folder name.
-#'     Default is "numbered". Alternative options are; "asis".
+#'     Default is "none". Alternative options are; "numbered", "asis".
 #' @param remove logical. Should the files in the 'from' directory
 #'     be deleted? (Default: FALSE)
 #' @param copy logical. Do you want to copy the files? (Default = TRUE)
@@ -17,7 +17,7 @@
 #'
 
 copy_raw <- function(from, to, filetype, sub_folder = NULL,
-                     task_dir.names = "numbered",
+                     task_dir.names = "none",
                      remove = FALSE, copy = TRUE) {
 
   # function to remove trailing slashes at the end of file paths
@@ -55,9 +55,8 @@ copy_raw <- function(from, to, filetype, sub_folder = NULL,
               task <- task[[1]][2]
             }
           }
-          if (task_dir.names == "asis") {
-            task <- task_dir
-          }
+          if (task_dir.names == "asis" ) task <- task_dir
+          if (task_dir.names == "none") task <- task_dir
 
           # create file paths for where to copy files
           to_dir <- paste(to, task, sep = "/")

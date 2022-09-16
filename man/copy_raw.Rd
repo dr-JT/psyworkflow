@@ -9,7 +9,7 @@ copy_raw(
   to,
   filetype,
   sub_folder = NULL,
-  task_dir.names = "numbered",
+  task_dir.names = "none",
   remove = FALSE,
   copy = TRUE
 )
@@ -26,7 +26,7 @@ type of raw data file (e.g. .edat2).}
 the `to = ` directory?}
 
 \item{task_dir.names}{Relationship between task name and task folder name.
-Default is "numbered". Alternative options are; "asis".}
+Default is "none". Alternative options are; "numbered", "asis".}
 
 \item{remove}{logical. Should the files in the 'from' directory
 be deleted? (Default: FALSE)}
