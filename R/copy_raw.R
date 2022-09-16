@@ -20,15 +20,26 @@ copy_raw <- function(from, to, filetype, sub_folder = NULL,
                      task_dir.names = "numbered",
                      remove = FALSE, copy = TRUE) {
 
+  # function to remove trailing slashes at the end of file paths
+  remove_slash <- function(x, pattern = "/") {
+    if (stringr::str_ends(x, pattern)) {
+      x <- substr(x, 1, nchar(x) - 1)
+    }
+    return(x)
+  }
+
   if (copy == TRUE) {
 
     if (!is.list(task_dir.names)) {
       # get list of task folders
       dirs <- list.dirs(from, full.names = FALSE, recursive = FALSE)
+      if (identical(dirs, character(0))) dirs <- ""
       for (task_dir in dirs) {
         # get list of data files within a task folder
         files <- list.files(paste(from, task_dir, sep = "/"), pattern = filetype,
                             recursive = TRUE, full.names = TRUE)
+
+        files <- lapply(files, remove_slash)
 
         # only continue if there are files in the folder
         if (length(files) > 0) {
@@ -36,18 +47,23 @@ copy_raw <- function(from, to, filetype, sub_folder = NULL,
           # remove numbers or keep as is for new copied task folder
           if (task_dir.names == "numbered") {
             task <- strsplit(task_dir, "\\. ")[[1]][2]
+
+            # extra stuff just making sure the task folder is named correctly
+            if (length(task[[1]]) == 1) {
+              task <- task[[1]][1]
+            } else {
+              task <- task[[1]][2]
+            }
           }
           if (task_dir.names == "asis") {
             task <- task_dir
           }
-          # extra stuff just making sure the task folder is named correctly
-          if (length(task[[1]]) == 1) {
-            task <- task[[1]][1]
-          } else {
-            task <- task[[1]][2]
-          }
+
           # create file paths for where to copy files
           to_dir <- paste(to, task, sep = "/")
+
+          to_dir <- remove_slash(to_dir)
+
           if (dir.exists(to_dir) == FALSE) {
             dir.create(to_dir)
           }
