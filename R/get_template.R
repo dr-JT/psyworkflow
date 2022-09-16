@@ -31,7 +31,7 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
   ## Setup ####
   to <- paste(path, to, sep = "/")
   github_repo <-
-    "https://raw.githubusercontent.com/dr-JT/workflow/main/script_templates/"
+    "https://raw.githubusercontent.com/dr-JT/psyworkflow/main/script_templates/"
 
   if (!dir.exists(to)) dir.create(to, recursive = TRUE)
   #####

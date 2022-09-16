@@ -1,0 +1,44 @@
+---
+title: "Name_of_Study Study Documentation"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  bookdown::gitbook:
+    split_by: none
+    self_contained: true
+    config:
+      toc:
+        collapse: subsection
+        scroll_highlight: yes
+---
+
+# Overview
+
+**OSF Repository**: 
+
+## Study Description
+
+Insert description of study
+
+**Start Date**: November 9, 2020
+
+**End Date**: April 22, 2022
+
+**Total \# of Subjects Recruited**: 461
+
+**\# of Subjects Completed Study**: 327
+
+## IRB and Grant Funding
+
+**IRB**
+
+
+
+**Grant Funding**
+
+
+
+# Any other headers you want to add
+
+## And subheadings
+
+------------------------------------------------------------------------
