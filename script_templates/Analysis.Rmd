@@ -51,8 +51,9 @@ theme_spacious <- function(font.size = 14, bold = TRUE){
         legend.text = element_text(size = key.size),
         plot.title = element_text(face = face.type, hjust = .5,
                                   margin = margin(b = 10)),
-        strip.background = element_rect(fill = "white", color = "white"),
-        strip.text = element_text(color = "black"))
+        strip.background = element_rect(fill = "white", color = "gray"),
+        strip.text = element_text(color = "black",
+                                  face = face.type))
 }
 
 output_theme <- theme_linedraw() + 
