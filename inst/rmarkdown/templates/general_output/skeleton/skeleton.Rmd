@@ -60,7 +60,8 @@ output_theme <- theme_linedraw() +
   theme_spacious(font.size = 12) + 
   theme(panel.border = element_rect(color = "gray"),
         axis.line.x = element_line(color = "gray"),
-        axis.line.y = element_line(color = "gray"))
+        axis.line.y = element_line(color = "gray")) +
+  scale_color_brewer(palette = "Set1")
 
 theme_set(output_theme)
 
