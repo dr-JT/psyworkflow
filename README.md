@@ -12,6 +12,9 @@ devtools::install_github("dr-JT/psyworkflow")
 
 Most of the functions are designed to easily and quickly get you through some preliminary data processing steps so you can get to work on processing and analyzing your data.
 
+
+### Templates
+
 - **R project template**
 
     Create a research project directory with folders and R script templates:
@@ -21,6 +24,14 @@ Most of the functions are designed to easily and quickly get you through some pr
 - **Download R script templates**
 
     R script templates can be downloaded with `get_template()`
+    
+- **RMarkdown analysis template**
+
+    Access the R Markdown template by going to:
+
+    File -> New File -> R Markdown… -> From Template -> Data Analysis Template
+    
+### Organize and process data
 
 - **Organize files from different computers**
 
