@@ -103,7 +103,7 @@ Get Data Ready For Models
 
 Model
 
-```{r}
+```{r class.source = "fold-show"}
 
 ```
 
