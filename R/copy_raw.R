@@ -56,7 +56,7 @@ copy_raw <- function(from, to, filetype, sub_folder = NULL,
             }
           }
           if (task_dir.names == "asis" ) task <- task_dir
-          if (task_dir.names == "none") task <- task_dir
+          if (task_dir.names == "none") task <- ""
 
           # create file paths for where to copy files
           to_dir <- paste(to, task, sep = "/")
