@@ -40,6 +40,7 @@ copy_raw <- function(from, to, filetype, sub_folder = NULL,
                             recursive = TRUE, full.names = TRUE)
 
         files <- lapply(files, remove_slash)
+        files <- unlist(files)
 
         # only continue if there are files in the folder
         if (length(files) > 0) {
