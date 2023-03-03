@@ -106,7 +106,7 @@ create_project <- function(script_templates = FALSE,
 
   # Download required packages script
   github_repo <-
-    "https://raw.githubusercontent.com/dr-JT/workflow/main/script_templates/"
+    "https://raw.githubusercontent.com/dr-JT/psyworkflow/main/script_templates/"
 
   download.file(paste(github_repo, "_required_packages.R",
                       sep = ""),
