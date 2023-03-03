@@ -8,6 +8,8 @@ output:
     toc_depth: 1
     code_folding: hide
     code_download: true
+editor_options: 
+  chunk_output_type: console
 ---
 
 Last updated: `r format(Sys.Date(), "%B %d %Y")`
