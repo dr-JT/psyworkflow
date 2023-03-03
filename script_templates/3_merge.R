@@ -44,10 +44,10 @@ data_reliabilities <- data_import %>%
               values_from = value)
 # -----------------------
 
-# ---- Output ----
+# ---- Save Data ----
 write_csv(data_scores, here(output_dir, output_scores))
 write_csv(data_reliabilities, here(output_dir, output_reliabilities))
 write_csv(subj_list, here(output_dir, "subjlist_final.csv"))
-# ----------------
+# -------------------
 
 rm(list = ls())

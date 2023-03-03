@@ -78,8 +78,8 @@ data_cleaned$cronbachalpha <- cronbachalpha$total$std.alpha
 # e.g., data_cleaned$taskname_cronbachalpha
 # -------------------------------
 
-# ---- Output ----
+# ---- Save Data ----
 write_csv(data_cleaned, here(output_dir, output_file))
-# ----------------
+# -------------------
 
 rm(list = ls())

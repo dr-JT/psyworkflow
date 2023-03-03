@@ -36,8 +36,8 @@ data_raw <- data_import %>%
   select()
 # -------------------
 
-# ---- Output ----
+# ---- Save Data ----
 write_csv(data_raw, here(output_dir, output_file))
-# ----------------
+# -------------------
 
 rm(list = ls())
