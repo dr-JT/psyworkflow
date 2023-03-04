@@ -1,4 +1,4 @@
-# ---- Setup ----
+# ---- Setup -------------------------------------------------------------------
 # packages
 library(here)
 library(readr)
@@ -12,9 +12,9 @@ output_dir <- "data/raw"
 task <- "taskname"
 import_file <- paste(task, ".txt", sep = "")
 output_file <- paste(task, "raw.csv", sep = "_")
-# ---------------
+# ------------------------------------------------------------------------------
 
-# ---- Import Data ----
+# ---- Import Data -------------------------------------------------------------
 data_import <- read_delim(here(import_dir, import_file), delim = "\t",
                           escape_double = FALSE, trim_ws = TRUE)
 
@@ -26,18 +26,18 @@ data_import <- files %>%
   lapply(read_delim, locale = locale(encoding = "UCS-2LE"),
          delim = "\t", escape_double = FALSE, trim_ws = TRUE, na = "NULL") %>%
   bind_rows()
-# ---------------------
+# ------------------------------------------------------------------------------
 
-# ---- Tidy Data ----
+# ---- Tidy Data ---------------------------------------------------------------
 data_raw <- data_import %>%
   filter() %>%
   rename() %>%
   mutate() %>%
   select()
-# -------------------
+# ------------------------------------------------------------------------------
 
-# ---- Save Data ----
+# ---- Save Data ---------------------------------------------------------------
 write_csv(data_raw, here(output_dir, output_file))
-# -------------------
+# ------------------------------------------------------------------------------
 
 rm(list = ls())

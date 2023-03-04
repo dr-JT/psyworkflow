@@ -1,4 +1,4 @@
-# ---- Setup ----
+# ---- Setup -------------------------------------------------------------------
 # packages
 library(here)
 library(readr)
@@ -18,20 +18,20 @@ output_file <- paste(task, "Scores.csv", sep = "_")
 
 ## data cleaning parameters
 outlier_cutoff <- 3.5
-# ---------------
+# ------------------------------------------------------------------------------
 
-# ---- Import Data ----
+# ---- Import Data -------------------------------------------------------------
 data_import <- read_csv(here(import_dir, import_file))
-# ---------------------
+# ------------------------------------------------------------------------------
 
-# ---- Score Data ----
+# ---- Score Data --------------------------------------------------------------
 data_scores <- data_import %>%
   filter() %>%
   group_by() %>%
   summarise()
-# --------------------
+# ------------------------------------------------------------------------------
 
-# ---- Clean Data ----
+# ---- Clean Data --------------------------------------------------------------
 data_cleaned <- data_scores %>%
   remove_problematic(
     filter = "",
@@ -42,9 +42,9 @@ data_cleaned <- data_scores %>%
     with = "NA",
     log_file = here("data/logs", paste(task, "_outliers.csv", sep = ""))) %>%
   filter(!is.na())
-# --------------------
+# ------------------------------------------------------------------------------
 
-# ---- Calculate Reliability ----
+# ---- Calculate Reliability ---------------------------------------------------
 reliability <- data_import %>%
   filter(Subject %in% data_cleaned$Subject)
 
@@ -76,10 +76,10 @@ cronbachalpha <- reliability %>%
 data_cleaned$cronbachalpha <- cronbachalpha$total$std.alpha
 # ^ the column name in data_cleaned should include the task name
 # e.g., data_cleaned$taskname_cronbachalpha
-# -------------------------------
+# ------------------------------------------------------------------------------
 
-# ---- Save Data ----
+# ---- Save Data ---------------------------------------------------------------
 write_csv(data_cleaned, here(output_dir, output_file))
-# -------------------
+# ------------------------------------------------------------------------------
 
 rm(list = ls())
