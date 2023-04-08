@@ -21,12 +21,12 @@ outlier_cutoff <- 3.5
 # ------------------------------------------------------------------------------
 
 # ---- Import Data -------------------------------------------------------------
-data_import <- read_csv(here(import_dir, import_file))
+data_import <- read_csv(here(import_dir, import_file)) %>%
+  filter()
 # ------------------------------------------------------------------------------
 
 # ---- Score Data --------------------------------------------------------------
 data_scores <- data_import %>%
-  filter() %>%
   group_by() %>%
   summarise()
 # ------------------------------------------------------------------------------
@@ -46,12 +46,14 @@ data_cleaned <- data_scores %>%
 
 # ---- Calculate Reliability ---------------------------------------------------
 reliability <- data_import %>%
-  filter(Subject %in% data_cleaned$Subject)
+  filter(Subject %in% data_cleaned$Subject) %>%
+  group_by(Subject) %>%
+  mutate(Trial = row_number()) %>%
+  ungroup()
 
 splithalf <- reliability %>%
   group_by(Subject) %>%
-  mutate(Trial = row_number(),
-         Split = ifelse(Trial %% 2, "odd", "even")) %>%
+  mutate(Split = ifelse(Trial %% 2, "odd", "even")) %>%
   group_by(Subject, Split) %>%
   summarise() %>%
   ungroup() %>%
@@ -63,7 +65,7 @@ splithalf <- reliability %>%
 
 data_cleaned$splithalf <- splithalf$r
 # ^ the column name in data_cleaned should include the task name
-# e.g., data_cleaned$taskname_splithalf
+# e.g., data_cleaned$taskname.splithalf
 
 cronbachalpha <- reliability %>%
   select(Subject, Trial, Accuracy) %>%
@@ -75,7 +77,7 @@ cronbachalpha <- reliability %>%
 
 data_cleaned$cronbachalpha <- cronbachalpha$total$std.alpha
 # ^ the column name in data_cleaned should include the task name
-# e.g., data_cleaned$taskname_cronbachalpha
+# e.g., data_cleaned$taskname.cronbachalpha
 # ------------------------------------------------------------------------------
 
 # ---- Save Data ---------------------------------------------------------------
