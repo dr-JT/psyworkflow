@@ -11,7 +11,8 @@ copy_raw(
   sub_folder = NULL,
   task_dir.names = "none",
   remove = FALSE,
-  copy = TRUE
+  copy = TRUE,
+  overwrite = "no"
 )
 }
 \arguments{
@@ -32,6 +33,10 @@ Default is "none". Alternative options are; "numbered", "asis".}
 be deleted? (Default: FALSE)}
 
 \item{copy}{logical. Do you want to copy the files? (Default = TRUE)}
+
+\item{overwrite}{"no" (default), "yes", or "skip". "no" will copy over the
+file but append the file with "DUPLICATED". "yes" will overwrite the
+file. "skip" will not copy the file over.}
 }
 \description{
 This function will automatically copy files from the Task directory to

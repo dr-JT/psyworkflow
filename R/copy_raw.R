@@ -13,12 +13,15 @@
 #' @param remove logical. Should the files in the 'from' directory
 #'     be deleted? (Default: FALSE)
 #' @param copy logical. Do you want to copy the files? (Default = TRUE)
+#' @param overwrite "no" (default), "yes", or "skip". "no" will copy over the
+#'     file but append the file with "DUPLICATED". "yes" will overwrite the
+#'     file. "skip" will not copy the file over.
 #' @export
 #'
 
 copy_raw <- function(from, to, filetype, sub_folder = NULL,
                      task_dir.names = "none",
-                     remove = FALSE, copy = TRUE) {
+                     remove = FALSE, copy = TRUE, overwrite = "no") {
 
   # function to remove trailing slashes at the end of file paths
   remove_slash <- function(x, pattern = "/") {
@@ -74,38 +77,55 @@ copy_raw <- function(from, to, filetype, sub_folder = NULL,
               dir.create(to_dir)
             }
           }
-          # create a temporary directory for duplicates
-          dup_dir <- paste(to_dir, "/dup", sep = "")
-          if (dir.exists(dup_dir) == FALSE) {
-            dir.create(dup_dir)
-          }
 
-          # check for duplicate file names in copy to directory
-          check_files <- list.files(to_dir, pattern = filetype,
-                                    recursive = FALSE, full.names = FALSE)
-          duplicated_n <- 0
-          for (file in files) {
-            # get file name and check for duplicates
-            filename <- strsplit(file, "/")[[1]][length(strsplit(file, "/")[[1]])]
-            duplicate <-
-              length(which(lapply(filename, grepl, x = check_files)[[1]] == TRUE))
-            if (duplicate >= 1) {
-              duplicated_n <- duplicated_n + 1
-              # copy file to temporary directory and rename as a duplicate
-              file.copy(file, dup_dir, copy.date = TRUE)
-              new_filename <-
-                paste("DUPLICATED (", duplicate, ") ", filename, sep = "")
-              file_from <- list.files(dup_dir, filename, full.names = TRUE)
-              file_to <- paste(dup_dir, new_filename, sep = "/")
-              file.rename(file_from, file_to)
-              # copy renamed file to copy to directory and remove from files
-              file.copy(file_to, to_dir, copy.date = TRUE)
-              file.remove(file_to)
-              files <- files[-which(file == files)]
+          if (overwrite == "no") {
+            # create a temporary directory for duplicates
+            dup_dir <- paste(to_dir, "/dup", sep = "")
+            if (dir.exists(dup_dir) == FALSE) {
+              dir.create(dup_dir)
             }
           }
 
-          unlink(dup_dir, recursive = TRUE)
+          if (overwrite == "no" | overwrite == "skip") {
+            # get list of files in copy-to directory to check for duplicates
+            check_files <- list.files(to_dir, pattern = filetype,
+                                      recursive = FALSE, full.names = FALSE)
+            duplicated_n <- 0
+          }
+
+          for (file in files) {
+            # get file name and check if duplicate
+            filename <- strsplit(file, "/")[[1]][length(strsplit(file, "/")[[1]])]
+
+            if (overwrite == "no" | overwrite == "skip") {
+              duplicate <-
+                length(which(lapply(filename,
+                                    grepl,
+                                    x = check_files)[[1]] == TRUE))
+              if (duplicate >= 1) {
+                duplicated_n <- duplicated_n + 1
+                if (overwrite == "no") {
+                  # copy file to temporary directory and rename as a duplicate
+                  file.copy(file, dup_dir, copy.date = TRUE)
+                  new_filename <-
+                    paste("DUPLICATED (", duplicate, ") ", filename, sep = "")
+                  file_from <- list.files(dup_dir, filename, full.names = TRUE)
+                  file_to <- paste(dup_dir, new_filename, sep = "/")
+                  file.rename(file_from, file_to)
+
+                  # copy renamed file to copy-to directory and remove from files
+                  file.copy(file_to, to_dir, copy.date = TRUE)
+                  file.remove(file_to)
+                  files <- files[-which(file == files)]
+                }
+                if (overwrite == "skip") {
+                  files <- files[-which(file == files)]
+                }
+              }
+            }
+          }
+
+          if (overwrite == "no") unlink(dup_dir, recursive = TRUE)
 
           # copy over files
           file.copy(files, to_dir, copy.date = TRUE)
@@ -114,7 +134,9 @@ copy_raw <- function(from, to, filetype, sub_folder = NULL,
           cat("-----------------------------------------", "\n")
           cat("Task: ", task, "\n")
           cat("Files Copied: ", length(files), "\n")
-          cat("Duplicate Subject Files: ", duplicated_n, "\n")
+          if (overwrite == "no") {
+            cat("Duplicate Subject Files: ", duplicated_n, "\n")
+          }
           cat("-----------------------------------------", "\n")
 
           if (remove == TRUE) {
