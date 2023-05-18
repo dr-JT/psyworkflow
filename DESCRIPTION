@@ -1,7 +1,7 @@
 Package: psyworkflow
 Type: Package
 Title: psyworkflow
-Version: 0.3.0
+Version: 0.4.0
 Authors@R: c(
     person("Jason", "Tsukahara", , "jason.tsukahara@gatech.edu", 
     role = c("aut", "cre"),
@@ -11,7 +11,10 @@ Description: psyworkflow
 Imports: 
     readr,
     plyr,
-    dplyr
+    dplyr,
+    stringr,
+    purrr,
+    osfr
 URL: https://github.com/dr-JT/psyworkflow, https://dr-jt.github.io/psyworkflow/index.html
 BugReports: https://github.com/dr-JT/psyworkflow/issues
 Encoding: UTF-8

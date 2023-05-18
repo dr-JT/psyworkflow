@@ -16,8 +16,11 @@
 
 duplicates_check <- function(x, id = "Subject",
                              unique = c("SessionDate", "SessionTime"),
-                             n = 1, remove = TRUE, keep_by = "none",
+                             n = 1, remove = TRUE,
+                             keep_by = c("none", "first date"),
                              save_as = NULL){
+  keep_by <- match.arg(keep_by)
+
   # get duplicate ids
   duplicates <- dplyr::select(x, id, dplyr::all_of(unique))
   duplicates <- dplyr::distinct(duplicates)

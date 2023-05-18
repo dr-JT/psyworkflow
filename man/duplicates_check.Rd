@@ -10,7 +10,7 @@ duplicates_check(
   unique = c("SessionDate", "SessionTime"),
   n = 1,
   remove = TRUE,
-  keep_by = "none",
+  keep_by = c("none", "first date"),
   save_as = NULL
 )
 }
