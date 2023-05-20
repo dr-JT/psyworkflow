@@ -18,14 +18,14 @@ output_admintimes <- "AdminTimes.csv"
 
 # ---- Import Data -------------------------------------------------------------
 files <- list.files(here(import_dir), pattern = "Scores", full.names = TRUE)
-data_import <- files %>%
-  map(read_csv) %>%
+data_import <- files |>
+  map(read_csv) |>
   reduce(full_join, by = "Subject")
 # ------------------------------------------------------------------------------
 
 # ---- Select Variables --------------------------------------------------------
-data_scores <- data_import %>%
-  select(Subject) %>%
+data_scores <- data_import |>
+  select(Subject) |>
   filter()
 
 # list of final subjects
@@ -33,28 +33,28 @@ subjlist <- select(data_scores, Subject)
 # ------------------------------------------------------------------------------
 
 # ---- Reliabilities -----------------------------------------------------------
-data_reliabilities <- data_import %>%
-  select(contains("splithalf"), contains("cronbach_alpha")) %>%
-  drop_na() %>%
-  distinct() %>%
+data_reliabilities <- data_import |>
+  select(contains("splithalf"), contains("cronbach_alpha")) |>
+  drop_na() |>
+  distinct() |>
   pivot_longer(everything(),
                names_to = c("Task", "metric"),
                names_pattern = "(\\w+.\\w+).(\\w+)",
-               values_to = "value") %>%
+               values_to = "value") |>
   pivot_wider(id_col = Task,
               names_from = metric,
               values_from = value)
 # ------------------------------------------------------------------------------
 
 # ---- Admin Times -------------------------------------------------------------
-data_merge <- data_import %>%
-  select(contains("AdminTime")) %>%
-  summarise_all(list(mean = mean, sd = sd), na.rm = TRUE) %>%
+data_merge <- data_import |>
+  select(contains("AdminTime")) |>
+  summarise_all(list(mean = mean, sd = sd), na.rm = TRUE) |>
   pivot_longer(everything(),
                names_to = c("Task", "metric"),
                names_pattern = "(\\w+.\\w+).(\\w+)",
-               values_to = "value") %>%
-  mutate(value = round(value, 3)) %>%
+               values_to = "value") |>
+  mutate(value = round(value, 3)) |>
   pivot_wider(id_col = Task,
               names_from = metric,
               names_prefix = "AdminTime.",

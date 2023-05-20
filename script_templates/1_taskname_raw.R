@@ -24,16 +24,17 @@ data_import <- read_delim(here(import_dir, import_file), delim = "\t",
 # change the arguments in purrr::map_df() depending on type of data files
 # this example is for files created from eprime and needs encoding = "UCS-2LE"
 files <- list.files(here(import_dir, task), pattern = ".txt", full.names = TRUE)
-data_import <- files %>%
-  map_df(read_delim, locale = locale(encoding = "UCS-2LE"),
-         delim = "\t", escape_double = FALSE, trim_ws = TRUE, na = "NULL")
+data_import <- files |>
+  map_df(read_delim, delim = "\t",
+         escape_double = FALSE, trim_ws = TRUE, na = "NULL",
+         locale = locale(encoding = "UCS-2LE"))
 # ------------------------------------------------------------------------------
 
 # ---- Tidy Data ---------------------------------------------------------------
-data_raw <- data_import %>%
-  rename() %>%
-  filter() %>%
-  mutate() %>%
+data_raw <- data_import |>
+  rename() |>
+  filter() |>
+  mutate() |>
   select()
 # ------------------------------------------------------------------------------
 

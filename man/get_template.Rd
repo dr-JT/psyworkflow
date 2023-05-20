@@ -12,7 +12,6 @@ get_template(
   score_script = FALSE,
   merge_script = FALSE,
   analysis_script = FALSE,
-  study_doc = FALSE,
   path = "."
 )
 }
@@ -37,9 +36,6 @@ scoring on a "tidy" raw data file? default = FALSE}
 files? default = FALSE}
 
 \item{analysis_script}{Logical. Download template to do data analysis (.Rmd)?
-default = FALSE}
-
-\item{study_doc}{Logical. Download a study documentation template?
 default = FALSE}
 
 \item{path}{String. working directory file path. Ignore...}

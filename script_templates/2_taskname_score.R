@@ -21,60 +21,54 @@ outlier_cutoff <- 3.5
 # ------------------------------------------------------------------------------
 
 # ---- Import Data -------------------------------------------------------------
-data_import <- read_csv(here(import_dir, import_file)) %>%
+data_import <- read_csv(here(import_dir, import_file)) |>
   filter()
 # ------------------------------------------------------------------------------
 
 # ---- Score Data --------------------------------------------------------------
-data_scores <- data_import %>%
-  group_by() %>%
-  summarise()
+data_scores <- data_import |>
+  summarise(.by = Subject)
 # ------------------------------------------------------------------------------
 
 # ---- Clean Data --------------------------------------------------------------
-data_cleaned <- data_scores %>%
-  remove_problematic(filter = "",
-                     log_file =
-                       here("data/logs",
-                            paste(task, "_problematic.csv", sep = ""))) %>%
-  replace_outliers(variables = c(),
-                   cutoff = outlier_cutoff,
-                   with = "NA",
-                   log_file =
-                     here("data/logs",
-                          paste(task, "_outliers.csv", sep = ""))) %>%
+data_cleaned <- data_scores |>
+  remove_problematic(
+    filter = "",
+    log_file = here("data/logs", paste(task, "_problematic.csv", sep = ""))) |>
+  replace_outliers(
+    variables = c(),
+    cutoff = outlier_cutoff,
+    with = "NA",
+    log_file = here("data/logs", paste(task, "_outliers.csv", sep = ""))) |>
   filter(!is.na())
 # ------------------------------------------------------------------------------
 
 # ---- Calculate Reliability ---------------------------------------------------
-reliability <- data_import %>%
-  filter(Subject %in% data_cleaned$Subject) %>%
-  group_by(Subject) %>%
-  mutate(Trial = row_number()) %>%
-  ungroup()
+reliability <- data_import |>
+  filter(Subject %in% data_cleaned$Subject) |>
+  mutate(.by = Subject,
+         Trial = row_number())
 
-splithalf <- reliability %>%
-  group_by(Subject) %>%
-  mutate(Split = ifelse(Trial %% 2, "odd", "even")) %>%
-  group_by(Subject, Split) %>%
-  summarise() %>%
-  ungroup() %>%
+splithalf <- reliability |>
+  mutate(.by = Subject,
+         Split = ifelse(Trial %% 2, "odd", "even")) |>
+  summarise(.by = c(Subject, Split)) |>
   pivot_wider(id_cols = "Subject",
               names_from = "Split",
-              values_from = "") %>%
-  summarise(r = cor(even, odd)) %>%
+              values_from = "") |>
+  summarise(r = cor(even, odd)) |>
   mutate(r = (2 * r) / (1 + r))
 
 data_cleaned$splithalf <- splithalf$r
 # ^ the column name in data_cleaned should include the task name
 # e.g., data_cleaned$taskname.splithalf
 
-cronbachalpha <- reliability %>%
-  select(Subject, Trial, Accuracy) %>%
+cronbachalpha <- reliability |>
+  select(Subject, Trial, Accuracy) |>
   pivot_wider(id_cols = "Subject",
               names_from = "Trial",
-              values_from = "Accuracy") %>%
-  select(-Subject) %>%
+              values_from = "Accuracy") |>
+  select(-Subject) |>
   alpha()
 
 data_cleaned$cronbachalpha <- cronbachalpha$total$std.alpha

@@ -16,8 +16,6 @@
 #'     files? default = FALSE
 #' @param analysis_script Logical. Download template to do data analysis (.Rmd)?
 #'     default = FALSE
-#' @param study_doc Logical. Download a study documentation template?
-#'     default = FALSE
 #' @param path String. working directory file path. Ignore...
 #' @export
 #'
@@ -25,7 +23,7 @@
 get_template <- function(to = "R/templates", overwrite = FALSE,
                          main_script = FALSE, raw_script = FALSE,
                          score_script = FALSE, merge_script = FALSE,
-                         analysis_script = FALSE, study_doc = FALSE,
+                         analysis_script = FALSE,
                          path = "."){
 
   ## Setup ####
@@ -38,13 +36,13 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
 
   ## Download Templates
   if (main_script == TRUE) {
-    exists <- file.exists(paste(path, "mainscript.Rmd", sep = "/"))
+    exists <- file.exists(paste(path, "mainscript.qmd", sep = "/"))
     if (exists == TRUE) {
-      message("Did not download file. mainscript.Rmd already exists")
+      message("Did not download file. mainscript.qmd already exists")
     } else {
-      download.file(paste(github_repo, "mainscript.Rmd",
+      download.file(paste(github_repo, "mainscript.qmd",
                           sep = ""),
-                    paste(path, "mainscript.Rmd", sep = "/"))
+                    paste(path, "mainscript.qmd", sep = "/"))
     }
   }
 
@@ -82,32 +80,21 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
   }
 
   if (analysis_script == TRUE) {
-    if (dir.exists(paste(path, "analyses", sep = "/"))) {
-      if (!dir.exists(paste(path, "analyses/templates", sep = "/"))) {
-        dir.create(paste(path, "analyses/templates", sep = "/"), recursive = TRUE)
+    if (dir.exists(paste(path, "results", sep = "/"))) {
+      if (!dir.exists(paste(path, "results/templates", sep = "/"))) {
+        dir.create(paste(path, "results/templates", sep = "/"), recursive = TRUE)
       }
-      analysis_to <- paste(path, "analyses/templates", sep = "/")
+      analysis_to <- paste(path, "results/templates", sep = "/")
     } else {
       analysis_to <- to
     }
-    exists <- file.exists(paste(analysis_to, "Analysis.Rmd", sep = "/"))
+    exists <- file.exists(paste(analysis_to, "Analysis_Template.qmd", sep = "/"))
     if (exists == TRUE & overwrite == FALSE) {
-      message("Did not download file. Analysis.Rmd already exists")
+      message("Did not download file. Analysis_Template.qmd already exists")
     } else {
-      download.file(paste(github_repo, "Analysis.Rmd",
+      download.file(paste(github_repo, "Analysis_Template.qmd",
                           sep = ""),
-                    paste(analysis_to, "Analysis.Rmd", sep = "/"))
-    }
-  }
-
-  if (study_doc == TRUE) {
-    exists <- file.exists(paste(path, "study_documentation.Rmd", sep = "/"))
-    if (exists == TRUE) {
-      message("Did not download file. study_documentation.Rmd already exists")
-    } else {
-      download.file(paste(github_repo, "study_documentation.Rmd",
-                          sep = ""),
-                    paste(path, "study_documentation.Rmd", sep = "/"))
+                    paste(analysis_to, "Analysis_Template.qmd", sep = "/"))
     }
   }
 

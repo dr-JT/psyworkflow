@@ -15,9 +15,9 @@ Label: /data/scored
 Default: On
 Position: left
 
-Parameter: analyses
+Parameter: results
 Widget: CheckboxInput
-Label: /analyses
+Label: /results
 Default: On
 Position: left
 
@@ -59,13 +59,7 @@ Position: right
 
 Parameter: analysis_script
 Widget: CheckboxInput
-Label: Analysis.Rmd
-Default: On
-Position: right
-
-Parameter: study_doc
-Widget: CheckboxInput
-Label: study_documentation.Rmd
+Label: Analysis_Template.qmd
 Default: On
 Position: right
 

@@ -8,15 +8,13 @@
 #' @param score_script Logical. Download a score script template? default = FALSE
 #' @param merge_script Logical. Download a merge script template? default = FALSE
 #' @param analysis_script Logical. Download template to do data analysis (.Rmd)? default = FALSE
-#' @param study_doc Logical. Download a study documentation template? default = FALSE
 #' @param data_raw Logical. Create a raw data directory? default = FALSE
 #' @param data_scored Logical. Create a scored data directory? default = FALSE
-#' @param analyses Logical. Create an analyses directory? default = FALSE
+#' @param results Logical. Create an analyses directory? default = FALSE
 #' @param documents Logical. Create documents directory? default = FALSE
 #' @param tasks Logical. Create tasks directory? default = FALSE
 #' @param manuscript Logical. Create manuscript directory? default = FALSE
 #' @param presentations Logical. Create presentations directory? default = FALSE
-#' @param figures Logical. Create figures directory? default = FALSE
 #' @param other List of other directories you want to create
 #' @param standard_project Logical. Create a standard project directory? default = FALSE
 #' @param path String. Home directory file path
@@ -26,13 +24,12 @@
 create_project <- function(script_templates = FALSE,
                            main_script = FALSE, raw_script = FALSE,
                            score_script = FALSE, merge_script = FALSE,
-                           analysis_script = FALSE, study_doc = FALSE,
+                           analysis_script = FALSE,
                            data_raw = FALSE, data_scored = FALSE,
-                           analyses = FALSE,
+                           results = FALSE,
                            documents = FALSE, tasks = FALSE,
                            manuscript = FALSE, presentations = FALSE,
-                           figures = FALSE, other = c(),
-                           standard_project = FALSE,
+                           other = c(), standard_project = FALSE,
                            path = "."){
 
   ## Setup ####
@@ -41,12 +38,11 @@ create_project <- function(script_templates = FALSE,
     script_templates <- TRUE
     data_raw <- TRUE
     data_scored <- TRUE
-    analyses <- TRUE
+    results <- TRUE
     documents <- TRUE
     tasks <- TRUE
     manuscript <- TRUE
     presentations <- TRUE
-    figures <- TRUE
   }
   #####
 
@@ -62,27 +58,21 @@ create_project <- function(script_templates = FALSE,
   }
   if (data_scored == TRUE) dir.create(paste(path, "data/scored", sep = ""))
   if (documents == TRUE) dir.create(paste(path, "documents", sep = ""))
-  if (analyses == TRUE) {
-    dir.create(paste(path, "analyses", sep = ""))
-    dir.create(paste(path, "analyses/exploratory", sep = ""))
+  if (results == TRUE) {
+    dir.create(paste(path, "results", sep = ""))
+    dir.create(paste(path, "results/exploratory", sep = ""))
+    dir.create(paste(path, "results/figures", sep = ""))
   }
   if (tasks == TRUE) dir.create(paste(path, "tasks", sep = ""))
-  if (manuscript == TRUE) dir.create(paste(path, "manuscript", sep = ""))
-  if (presentations == TRUE) dir.create(paste(path, "presentations", sep = ""))
-  if (figures == TRUE) {
-    if (analyses == TRUE) {
-      dir.create(paste(path, "analyses/figures", sep = ""))
-    }
-    if (manuscript == TRUE) {
-      dir.create(paste(path, "manuscript/figures", sep = ""))
-    }
-    if (presentations == TRUE) {
-      dir.create(paste(path, "presentations/figures", sep = ""))
-    }
-    if (analyses == FALSE & manuscript == FALSE & presentations == FALSE) {
-      dir.create(paste(path, "figures", sep = ""))
-    }
+  if (manuscript == TRUE) {
+    dir.create(paste(path, "manuscript", sep = ""))
+    dir.create(paste(path, "manuscript/figures", sep = ""))
   }
+  if (presentations == TRUE) {
+    dir.create(paste(path, "presentations", sep = ""))
+    dir.create(paste(path, "presentations/figures", sep = ""))
+  }
+
   for (dir in other) {
     dir <- paste(path, dir, sep = "")
     dir.create(dir)
@@ -96,13 +86,12 @@ create_project <- function(script_templates = FALSE,
     score_script <- TRUE
     merge_script <- TRUE
     analysis_script <- TRUE
-    study_doc <- TRUE
   }
 
   get_template(to = "R/templates", path = path,
                main_script = main_script, raw_script = raw_script,
                score_script = score_script, merge_script = merge_script,
-               analysis_script = analysis_script, study_doc = study_doc)
+               analysis_script = analysis_script)
 
   # Download required packages script
   github_repo <-

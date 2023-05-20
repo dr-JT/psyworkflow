@@ -11,15 +11,13 @@ create_project(
   score_script = FALSE,
   merge_script = FALSE,
   analysis_script = FALSE,
-  study_doc = FALSE,
   data_raw = FALSE,
   data_scored = FALSE,
-  analyses = FALSE,
+  results = FALSE,
   documents = FALSE,
   tasks = FALSE,
   manuscript = FALSE,
   presentations = FALSE,
-  figures = FALSE,
   other = c(),
   standard_project = FALSE,
   path = "."
@@ -38,13 +36,11 @@ create_project(
 
 \item{analysis_script}{Logical. Download template to do data analysis (.Rmd)? default = FALSE}
 
-\item{study_doc}{Logical. Download a study documentation template? default = FALSE}
-
 \item{data_raw}{Logical. Create a raw data directory? default = FALSE}
 
 \item{data_scored}{Logical. Create a scored data directory? default = FALSE}
 
-\item{analyses}{Logical. Create an analyses directory? default = FALSE}
+\item{results}{Logical. Create an analyses directory? default = FALSE}
 
 \item{documents}{Logical. Create documents directory? default = FALSE}
 
@@ -53,8 +49,6 @@ create_project(
 \item{manuscript}{Logical. Create manuscript directory? default = FALSE}
 
 \item{presentations}{Logical. Create presentations directory? default = FALSE}
-
-\item{figures}{Logical. Create figures directory? default = FALSE}
 
 \item{other}{List of other directories you want to create}
 

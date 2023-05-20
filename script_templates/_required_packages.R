@@ -5,7 +5,6 @@ install.packages("readr")
 install.packages("dplyr")
 install.packages("tidyr")
 
-install.packages("plyr")
 install.packages("psych")
 
 # github packages (restart R session after install)
