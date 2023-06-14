@@ -1,3 +1,9 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
 # STUDYNAME
 
 1 - 2 sentence description.
@@ -101,4 +107,3 @@ quarto_render("results/Analysis.qmd")
 
 rm(list = ls())
 ```
-
