@@ -10,7 +10,7 @@
 #' @param analysis_script Logical. Download template to do data analysis (.Rmd)? default = FALSE
 #' @param data_raw Logical. Create a raw data directory? default = FALSE
 #' @param data_scored Logical. Create a scored data directory? default = FALSE
-#' @param results Logical. Create an analyses directory? default = FALSE
+#' @param analyses Logical. Create an analyses directory? default = FALSE
 #' @param documents Logical. Create documents directory? default = FALSE
 #' @param tasks Logical. Create tasks directory? default = FALSE
 #' @param manuscript Logical. Create manuscript directory? default = FALSE
@@ -26,7 +26,7 @@ create_project <- function(script_templates = FALSE,
                            score_script = FALSE, merge_script = FALSE,
                            analysis_script = FALSE,
                            data_raw = FALSE, data_scored = FALSE,
-                           results = FALSE,
+                           analyses = FALSE,
                            documents = FALSE, tasks = FALSE,
                            manuscript = FALSE, presentations = FALSE,
                            other = c(), standard_project = FALSE,
@@ -38,7 +38,7 @@ create_project <- function(script_templates = FALSE,
     script_templates <- TRUE
     data_raw <- TRUE
     data_scored <- TRUE
-    results <- TRUE
+    analyses <- TRUE
     documents <- TRUE
     tasks <- TRUE
     manuscript <- TRUE
@@ -58,10 +58,10 @@ create_project <- function(script_templates = FALSE,
   }
   if (data_scored == TRUE) dir.create(paste(path, "data/scored", sep = ""))
   if (documents == TRUE) dir.create(paste(path, "documents", sep = ""))
-  if (results == TRUE) {
-    dir.create(paste(path, "results", sep = ""))
-    dir.create(paste(path, "results/exploratory", sep = ""))
-    dir.create(paste(path, "results/figures", sep = ""))
+  if (analyses == TRUE) {
+    dir.create(paste(path, "analyses", sep = ""))
+    dir.create(paste(path, "analyses/exploratory", sep = ""))
+    dir.create(paste(path, "analyses/figures", sep = ""))
   }
   if (tasks == TRUE) dir.create(paste(path, "tasks", sep = ""))
   if (manuscript == TRUE) {

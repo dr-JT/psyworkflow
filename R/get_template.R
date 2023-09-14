@@ -80,11 +80,11 @@ get_template <- function(to = "R/templates", overwrite = FALSE,
   }
 
   if (analysis_script == TRUE) {
-    if (dir.exists(paste(path, "results", sep = "/"))) {
-      if (!dir.exists(paste(path, "results/templates", sep = "/"))) {
-        dir.create(paste(path, "results/templates", sep = "/"), recursive = TRUE)
+    if (dir.exists(paste(path, "analyses", sep = "/"))) {
+      if (!dir.exists(paste(path, "analyses/templates", sep = "/"))) {
+        dir.create(paste(path, "analyses/templates", sep = "/"), recursive = TRUE)
       }
-      analysis_to <- paste(path, "results/templates", sep = "/")
+      analysis_to <- paste(path, "analyses/templates", sep = "/")
     } else {
       analysis_to <- to
     }

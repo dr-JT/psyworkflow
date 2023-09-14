@@ -13,7 +13,7 @@ create_project(
   analysis_script = FALSE,
   data_raw = FALSE,
   data_scored = FALSE,
-  results = FALSE,
+  analyses = FALSE,
   documents = FALSE,
   tasks = FALSE,
   manuscript = FALSE,
@@ -40,7 +40,7 @@ create_project(
 
 \item{data_scored}{Logical. Create a scored data directory? default = FALSE}
 
-\item{results}{Logical. Create an analyses directory? default = FALSE}
+\item{analyses}{Logical. Create an analyses directory? default = FALSE}
 
 \item{documents}{Logical. Create documents directory? default = FALSE}
 

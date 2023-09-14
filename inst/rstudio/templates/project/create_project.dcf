@@ -15,9 +15,9 @@ Label: /data/scored
 Default: On
 Position: left
 
-Parameter: results
+Parameter: analyses
 Widget: CheckboxInput
-Label: /results
+Label: /analyses
 Default: On
 Position: left
 
