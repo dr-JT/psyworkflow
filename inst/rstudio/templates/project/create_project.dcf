@@ -35,7 +35,7 @@ Position: left
 
 Parameter: main_script
 Widget: CheckboxInput
-Label: mainscript.R
+Label: mainscript.qmd
 Default: On
 Position: right
 
