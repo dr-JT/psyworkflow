@@ -76,7 +76,7 @@ output_theme <- theme_linedraw() +
   theme(panel.border = element_rect(color = "gray"),
         axis.line.x = element_line(color = "gray"),
         axis.line.y = element_line(color = "gray"),
-        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank())
 
 theme_set(output_theme)
