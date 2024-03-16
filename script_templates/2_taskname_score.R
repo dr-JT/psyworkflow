@@ -12,9 +12,8 @@ import_dir <- "data/raw"
 output_dir <- "data/scored"
 
 # file names
-task <- "taskname"
-import_file <- paste(task, "raw.csv", sep = "_")
-output_file <- paste(task, "Scores.csv", sep = "_")
+import_file <- ""
+output_file <- ""
 
 ## data cleaning parameters
 outlier_cutoff <- 3.5

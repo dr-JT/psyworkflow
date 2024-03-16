@@ -10,9 +10,8 @@ import_dir <- "data/raw/messy"
 output_dir <- "data/raw"
 
 # file names
-task <- "taskname"
-import_file <- paste(task, ".txt", sep = "")
-output_file <- paste(task, "raw.csv", sep = "_")
+import_file <- ""
+output_file <- ""
 # ------------------------------------------------------------------------------
 
 # ---- Import Data -------------------------------------------------------------
