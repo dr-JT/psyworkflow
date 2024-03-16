@@ -23,8 +23,6 @@ editor: visual
 
     -   **logs**: logs on the result of data cleaning procedures
 
-    -   Demographics.csv: demographics data file
-
 -   **documents**: Any documents related to the study and analysis procedure
 
 -   **R**: R scripts used for processing data
@@ -97,7 +95,7 @@ rm(list = ls())
 
 ------------------------------------------------------------------------
 
-Perform statistical analysis and data visualization
+Perform statistical analysis and create data visualizations
 
 Output is saved as **.html** files to **analyses/**
 
