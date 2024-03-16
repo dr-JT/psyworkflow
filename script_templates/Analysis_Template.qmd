@@ -96,10 +96,6 @@ table_theme <- function(x, digits = 3, title = NULL, note = NULL) {
 ```
 :::
 
-```{r}
-
-```
-
 # Data
 
 ::: panel-tabset
@@ -121,15 +117,44 @@ data_import <- read_csv(here("folder_path", "filename.csv"))
 ```
 :::
 
-```{r}
-
-```
-
-# First Section
+# Non-Tabbed Section
 
 ```{r}
 
 ```
+
+# Tabbed Section
+
+Model
+
+```{r}
+#| code-fold: false
+
+
+```
+
+::: panel-tabset
+## Tables
+
+```{r}
+
+
+```
+
+## Figures
+
+```{r}
+
+
+```
+
+## Summary Output
+
+```{r}
+
+summary()
+```
+:::
 
 # Footer
 
