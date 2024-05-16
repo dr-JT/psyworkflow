@@ -16,13 +16,15 @@
 #' @param overwrite "no" (default), "yes", or "skip". "no" will copy over the
 #'     file but append the file with "DUPLICATED". "yes" will overwrite the
 #'     file. "skip" will not copy the file over.
+#' @param ignore a character vector of task folders to ignore
 #' @export
 #'
 
 copy_files <- function(from, to, filetype, sub_folder = NULL,
                      task_dir.names = c("none", "numbered", "asis"),
                      remove = FALSE, copy = TRUE,
-                     overwrite = c("no", "yes", "skip")) {
+                     overwrite = c("no", "yes", "skip"),
+                     ignore = NULL) {
 
   task_dir.names <- match.arg(task_dir.names)
   overwrite <- match.arg(overwrite)
@@ -40,6 +42,7 @@ copy_files <- function(from, to, filetype, sub_folder = NULL,
     if (!is.list(task_dir.names)) {
       # get list of task folders
       dirs <- list.dirs(from, full.names = FALSE, recursive = FALSE)
+      if (!is.null(ignore)) dirs <- dirs[!dirs %in% ignore]
       if (identical(dirs, character(0))) dirs <- ""
       for (task_dir in dirs) {
         # get list of data files within a task folder
