@@ -44,7 +44,7 @@ copy_files <- function(from, to, filetype, sub_folder = NULL,
       dirs <- list.dirs(from, full.names = FALSE, recursive = FALSE)
       if (!is.null(ignore)) dirs <- dirs[!dirs %in% ignore]
       if (identical(dirs, character(0))) dirs <- ""
-      if (task_dir.names = "none") dirs <- ""
+      if (task_dir.names == "none") dirs <- ""
       for (task_dir in dirs) {
         # get list of data files within a task folder
         files <- list.files(paste(from, task_dir, sep = "/"), pattern = filetype,
