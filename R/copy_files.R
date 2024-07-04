@@ -21,12 +21,11 @@
 #'
 
 copy_files <- function(from, to, filetype, sub_folder = NULL,
-                     task_dir.names = c("none", "numbered", "asis"),
-                     remove = FALSE, copy = TRUE,
-                     overwrite = c("no", "yes", "skip"),
-                     ignore = NULL) {
-
-  recursive <- TRUE
+                       task_dir.names = c("none", "numbered", "asis"),
+                       remove = FALSE, copy = TRUE,
+                       overwrite = c("no", "yes", "skip"),
+                       ignore = NULL, recursive = TRUE) {
+  
   task_dir.names <- match.arg(task_dir.names)
   overwrite <- match.arg(overwrite)
 
@@ -45,8 +44,6 @@ copy_files <- function(from, to, filetype, sub_folder = NULL,
       dirs <- list.dirs(from, full.names = FALSE, recursive = FALSE)
       if (!is.null(ignore)) dirs <- dirs[!dirs %in% ignore]
       if (identical(dirs, character(0))) dirs <- ""
-      if (task_dir.names == "none") dirs <- ""
-      if (dirs == "") recursive <- FALSE
 
       for (task_dir in dirs) {
         # get list of data files within a task folder
