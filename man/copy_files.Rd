@@ -12,7 +12,9 @@ copy_files(
   task_dir.names = c("none", "numbered", "asis"),
   remove = FALSE,
   copy = TRUE,
-  overwrite = c("no", "yes", "skip")
+  overwrite = c("no", "yes", "skip"),
+  ignore = NULL,
+  recursive = TRUE
 )
 }
 \arguments{
@@ -37,6 +39,10 @@ be deleted? (Default: FALSE)}
 \item{overwrite}{"no" (default), "yes", or "skip". "no" will copy over the
 file but append the file with "DUPLICATED". "yes" will overwrite the
 file. "skip" will not copy the file over.}
+
+\item{ignore}{a character vector of task folders to ignore}
+
+\item{recursive}{logical. Should the function search for files recursively?}
 }
 \description{
 This function will automatically copy files from the Task directory to

@@ -17,6 +17,7 @@
 #'     file but append the file with "DUPLICATED". "yes" will overwrite the
 #'     file. "skip" will not copy the file over.
 #' @param ignore a character vector of task folders to ignore
+#' @param recursive logical. Should the function search for files recursively?
 #' @export
 #'
 
@@ -25,7 +26,7 @@ copy_files <- function(from, to, filetype, sub_folder = NULL,
                        remove = FALSE, copy = TRUE,
                        overwrite = c("no", "yes", "skip"),
                        ignore = NULL, recursive = TRUE) {
-  
+
   task_dir.names <- match.arg(task_dir.names)
   overwrite <- match.arg(overwrite)
 
