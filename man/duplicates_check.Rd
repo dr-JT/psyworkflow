@@ -10,7 +10,7 @@ duplicates_check(
   unique = c("SessionDate", "SessionTime"),
   n = 1,
   remove = TRUE,
-  keep_by = c("none", "first date"),
+  keep_by = c("none", "first date", "missing"),
   save_as = NULL
 )
 }
@@ -28,7 +28,7 @@ file contains multiple sessions per subject id}
 \item{remove}{logical. Remove duplicate ids from data? (default: TRUE)}
 
 \item{keep_by}{If remove = TRUE, should one or more of the dupilcate id's be kept?
-options: "none", "first date"}
+options: "none", "first date", "missing"}
 
 \item{save_as}{Folder path and file name to output the duplicate ID's}
 }

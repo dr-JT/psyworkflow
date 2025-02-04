@@ -10,25 +10,31 @@
 #'     file contains multiple sessions per subject id
 #' @param remove logical. Remove duplicate ids from data? (default: TRUE)
 #' @param keep_by If remove = TRUE, should one or more of the dupilcate id's be kept?
-#'     options: "none", "first date"
+#'     options: "none", "first date", "missing"
 #' @param save_as Folder path and file name to output the duplicate ID's
 #' @export
 
 duplicates_check <- function(x, id = "Subject",
                              unique = c("SessionDate", "SessionTime"),
                              n = 1, remove = TRUE,
-                             keep_by = c("none", "first date"),
-                             save_as = NULL){
+                             keep_by = c("none", "first date", "missing"),
+                             save_as = NULL) {
   keep_by <- match.arg(keep_by)
 
   # get duplicate ids
-  duplicates <- dplyr::select(x, id, dplyr::all_of(unique))
-  duplicates <- dplyr::distinct(duplicates)
-  duplicates <- dplyr::group_by(duplicates, dplyr::across(id))
-  duplicates <- dplyr::mutate(duplicates, count = n())
-  duplicates <- dplyr::ungroup(duplicates)
-  duplicates <- dplyr::filter(duplicates, count > n)
-  duplicates <- dplyr::select(duplicates, id, dplyr::all_of(unique))
+  if (unique == "none" | is.null(unique)) {
+    duplicates <- x |>
+      dplyr::mutate(.by = id, count = n()) |>
+      dplyr::filter(count > n)
+  } else {
+    duplicates <- dplyr::select(x, id, dplyr::all_of(unique))
+    duplicates <- dplyr::distinct(duplicates)
+    duplicates <- dplyr::group_by(duplicates, dplyr::across(id))
+    duplicates <- dplyr::mutate(duplicates, count = n())
+    duplicates <- dplyr::ungroup(duplicates)
+    duplicates <- dplyr::filter(duplicates, count > n)
+    duplicates <- dplyr::select(duplicates, id, dplyr::all_of(unique))
+  }
 
   # save duplicates to file
   if (!is.null(save_as)) {
@@ -58,6 +64,19 @@ duplicates_check <- function(x, id = "Subject",
         message("duplicates_check: Kept one duplicate that occured first by date.",
                 " All others were removed.")
         ids_remove <- remove_bydate[[id]]
+      }
+      if (keep_by == "missing") {
+        keep <- duplicates |>
+          mutate(missing = rowSums(across(everything(), ~ is.na(.x)))) |>
+          group_by(!!sym(id)) |>
+          slice_min(missing, with_ties = FALSE) |>
+          select(-missing)
+
+        remove_bymissing <- dplyr::anti_join(duplicates, keep)
+        x <- dplyr::anti_join(x, remove_bymissing)
+        message("duplicates_check: Kept one duplicate that had the least missing data",
+                " All others were removed.")
+        ids_remove <- remove_bymissing[[id]]
       }
 
       message(cat(ids_remove))
