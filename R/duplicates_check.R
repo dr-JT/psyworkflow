@@ -72,8 +72,8 @@ duplicates_check <- function(x, id = "Subject",
           slice_min(missing, with_ties = FALSE) |>
           select(-missing)
 
-        remove_bymissing <- dplyr::anti_join(duplicates, keep)
-        x <- dplyr::anti_join(x, remove_bymissing)
+        suppressMessages(remove_bymissing <- dplyr::anti_join(duplicates, keep))
+        suppressMessages(x <- dplyr::anti_join(x, remove_bymissing))
         message("duplicates_check: Kept one duplicate that had the least missing data",
                 " All others were removed.")
         ids_remove <- remove_bymissing[[id]]
