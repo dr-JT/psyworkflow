@@ -7,30 +7,33 @@
 duplicates_check(
   x,
   id = "Subject",
-  unique = c("SessionDate", "SessionTime"),
+  date_time = c("SessionDate", "SessionTime"),
   n = 1,
   remove = TRUE,
   keep_by = c("none", "first date", "least missing"),
-  save_as = NULL
+  save_as = NULL,
+  unique = c("SessionDate", "SessionTime")
 )
 }
 \arguments{
 \item{x}{dataframe}
 
-\item{id}{Subject ID variable name.}
+\item{id}{Column name that SHOULD be unique and will be used to check for
+duplicate id's grouped by these columns (e.g., "Subject", c("Subject, Session))}
 
-\item{unique}{Column names that are unique and should be used to
-check for duplicate id's (session date and/or time)}
+\item{date_time}{Column names that uniquely identify a testing administration
+(e.g., "SessionDate", "SessionTime").}
 
-\item{n}{Number of unique id's expected (default: 1). More than 1 if data
-file contains multiple sessions per subject id}
+\item{n}{Number of unique id's expected (default: 1).}
 
 \item{remove}{logical. Remove duplicate ids from data? (default: TRUE)}
 
-\item{keep_by}{If remove = TRUE, should one or more of the dupilcate id's be kept?
+\item{keep_by}{Which duplicate id should be kept?
 options: "none", "first date", "least missing"}
 
 \item{save_as}{Folder path and file name to output the duplicate ID's}
+
+\item{unique}{deprecated. Use date_time instead.}
 }
 \description{
 Checks and removes duplicate subject ids that can happen when misentered
