@@ -56,7 +56,6 @@ duplicates_check <- function(x, id = "Subject",
 
     if (keep_by == "none") {
       remove_duplicates <- duplicates
-      message('yes')
       if (remove == TRUE) {
         x <- dplyr::anti_join(x, remove_duplicates, by = id)
         message("duplicates_check: Duplicate IDs found AND removed!")
