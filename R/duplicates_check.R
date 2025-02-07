@@ -87,9 +87,9 @@ duplicates_check <- function(x, id = "Subject",
         message("duplicates_check: Kept one duplicate that had the least missing data",
                 " ALL others were removed.")
       }
-
-      ids_removed <- dplyr::select(remove_duplicates, id, dplyr::any_of(date_time))
     }
+
+    ids_removed <- dplyr::select(remove_duplicates, id, dplyr::any_of(date_time))
 
     if (remove == FALSE) {
       message("duplicates_check: Duplicate IDs found BUT not removed!")
