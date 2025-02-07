@@ -24,7 +24,7 @@ duplicates_check <- function(x, id = "Subject",
   # get duplicate ids
   if ("none" %in% unique | is.null(unique)) {
     duplicates <- x |>
-      dplyr::mutate(.by = id, count = n()) |>
+      dplyr::mutate(.by = !!sym(id), count = n()) |>
       dplyr::filter(count > n)
   } else {
     duplicates <- dplyr::select(x, id, dplyr::all_of(unique))
