@@ -10,19 +10,19 @@
 #'     file contains multiple sessions per subject id
 #' @param remove logical. Remove duplicate ids from data? (default: TRUE)
 #' @param keep_by If remove = TRUE, should one or more of the dupilcate id's be kept?
-#'     options: "none", "first date", "missing"
+#'     options: "none", "first date", "least missing"
 #' @param save_as Folder path and file name to output the duplicate ID's
 #' @export
 
 duplicates_check <- function(x, id = "Subject",
                              unique = c("SessionDate", "SessionTime"),
                              n = 1, remove = TRUE,
-                             keep_by = c("none", "first date", "missing"),
+                             keep_by = c("none", "first date", "least missing"),
                              save_as = NULL) {
   keep_by <- match.arg(keep_by)
 
   # get duplicate ids
-  if (unique == "none" | is.null(unique)) {
+  if ("none" %in% unique | is.null(unique)) {
     duplicates <- x |>
       dplyr::mutate(.by = id, count = n()) |>
       dplyr::filter(count > n)
@@ -65,7 +65,7 @@ duplicates_check <- function(x, id = "Subject",
                 " All others were removed.")
         ids_remove <- remove_bydate[[id]]
       }
-      if (keep_by == "missing") {
+      if (keep_by == "least missing") {
         keep <- duplicates |>
           mutate(missing = rowSums(across(everything(), ~ is.na(.x)))) |>
           group_by(!!sym(id)) |>
