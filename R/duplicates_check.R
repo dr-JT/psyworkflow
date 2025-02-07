@@ -50,42 +50,46 @@ duplicates_check <- function(x, id = "Subject",
   # remove duplicates
   if (nrow(duplicates) > 0) {
 
-    if (remove == TRUE) {
-      if (keep_by == "none") {
-        ids_remove <- duplicates[[id]]
+    if (keep_by == "none") {
+      ids_remove <- duplicates[[id]]
+      if (remove == TRUE) {
         x <- dplyr::filter(x, !(get(id) %in% ids_remove))
         message("duplicates_check: Duplicate IDs found AND removed!")
       }
-      if (keep_by == "first date") {
-        remove_bydate <- dplyr::group_by(duplicates, dplyr::across(id))
-        remove_bydate <- dplyr::arrange(remove_bydate, dplyr::across(unique))
-        remove_bydate <- dplyr::slice(remove_bydate, -1)
+    }
+    if (keep_by == "first date") {
+      remove_bydate <- dplyr::group_by(duplicates, dplyr::across(id))
+      remove_bydate <- dplyr::arrange(remove_bydate, dplyr::across(unique))
+      remove_bydate <- dplyr::slice(remove_bydate, -1)
+      if (remove == TRUE) {
         x <- dplyr::anti_join(x, remove_bydate,  by = c(id, unique))
         message("duplicates_check: Kept one duplicate that occured first by date.",
-                " All others were removed.")
-        ids_remove <- remove_bydate[[id]]
+                " ALL others were removed.")
       }
-      if (keep_by == "least missing") {
-        keep <- duplicates |>
-          mutate(missing = rowSums(across(everything(), ~ is.na(.x)))) |>
-          group_by(!!sym(id)) |>
-          slice_min(missing, with_ties = FALSE) |>
-          select(-missing)
+      ids_remove <- remove_bydate[[id]]
+    }
+    if (keep_by == "least missing") {
+      keep <- duplicates |>
+        mutate(missing = rowSums(across(everything(), ~ is.na(.x)))) |>
+        group_by(!!sym(id)) |>
+        slice_min(missing, with_ties = FALSE) |>
+        select(-missing)
 
-        suppressMessages(remove_bymissing <- dplyr::anti_join(duplicates, keep))
+      suppressMessages(remove_bymissing <- dplyr::anti_join(duplicates, keep))
+      if (remove == TRUE) {
         suppressMessages(x <- dplyr::anti_join(x, remove_bymissing))
         message("duplicates_check: Kept one duplicate that had the least missing data",
-                " All others were removed.")
-        ids_remove <- remove_bymissing[[id]]
+                " ALL others were removed.")
       }
 
-      message(cat(ids_remove))
+      ids_remove <- remove_bymissing[[id]]
     }
 
     if (remove == FALSE) {
-      message("duplicates_check: Duplicate IDs found but not removed!")
-      message(cat(duplicates[[id]]))
+      message("duplicates_check: Duplicate IDs found BUT not removed!")
     }
+
+    message(cat(ids_remove))
 
   } else {
     message("duplicates_check: No duplicate IDs found!")
