@@ -3,24 +3,38 @@
 #' Checks and removes duplicate subject ids that can happen when misentered
 #' during task administration
 #' @param x dataframe
-#' @param id Column name that SHOULD be unique and will be used to check for
+#' @param unique_id Column name(s) that should be uniquely identified and will be used to check for
 #'     duplicate id's grouped by these columns (e.g., "Subject", c("Subject, Session))
 #' @param date_time Column names that uniquely identify a testing administration
-#'     (e.g., "SessionDate", "SessionTime").
+#'     (e.g., "Date", "Time").
 #' @param n Number of unique id's expected (default: 1).
 #' @param remove logical. Remove duplicate ids from data? (default: TRUE)
 #' @param keep_by Which duplicate id should be kept?
 #'     options: "none", "first date", "least missing"
 #' @param save_as Folder path and file name to output the duplicate ID's
+#' @param id deprecated. Use unique_id instead.
 #' @param unique deprecated. Use date_time instead.
 #' @export
 
-duplicates_check <- function(x, id = "Subject",
+duplicates_check <- function(x,
+                             unique_id = "Subject",
                              date_time = c("SessionDate", "SessionTime"),
                              n = 1, remove = TRUE,
                              keep_by = c("none", "first date", "least missing"),
                              save_as = NULL,
+                             id = "Subject",
                              unique = c("SessionDate", "SessionTime")) {
+  # deprecated arguments
+  if (!missing(id) | missing(unique_id)) {
+    message("duplicates_check: 'id' argument is deprecated. Use 'unique_id' instead.")
+    unique_id <- id
+  }
+
+  if (!missing(unique) | missing(date_time)) {
+    message("duplicates_check: 'unique' argument is deprecated. Use 'date_time' instead.")
+    date_time <- unique
+  }
+
   keep_by <- match.arg(keep_by)
 
   # get duplicate ids
@@ -30,7 +44,7 @@ duplicates_check <- function(x, id = "Subject",
       dplyr::filter(count > n) |>
       dplyr::select(-n)
   } else {
-    duplicates <- dplyr::select(x, id, dplyr::all_of(date_time))
+    duplicates <- dplyr::select(x, dplyr::all_of(id), dplyr::all_of(date_time))
     duplicates <- dplyr::distinct(duplicates)
     duplicates <- dplyr::group_by(duplicates, dplyr::across(id))
     duplicates <- dplyr::mutate(duplicates, count = n())
@@ -59,7 +73,7 @@ duplicates_check <- function(x, id = "Subject",
 
       suppressMessages(
         ids_kept <- dplyr::anti_join(duplicates, remove_duplicates) |>
-          dplyr::select(id, dplyr::any_of(date_time))
+          dplyr::select(dplyr::all_of(id), dplyr::any_of(date_time))
       )
 
       if (remove == TRUE) {
@@ -74,7 +88,7 @@ duplicates_check <- function(x, id = "Subject",
 
       suppressMessages(
         ids_kept <- dplyr::anti_join(duplicates, remove_duplicates) |>
-          dplyr::select(id, dplyr::any_of(date_time))
+          dplyr::select(dplyr::all_of(id), dplyr::any_of(date_time))
       )
 
       if (remove == TRUE) {
@@ -89,14 +103,14 @@ duplicates_check <- function(x, id = "Subject",
     if (keep_by == "least missing") {
       dup_missing <- duplicates |>
         dplyr::mutate(missing = rowSums(dplyr::across(dplyr::everything(), ~ is.na(.x)))) |>
-        dplyr::select(id, dplyr::any_of(date_time), missing)
+        dplyr::select(dplyr::all_of(id), dplyr::any_of(date_time), missing)
 
       remove_duplicates <- dup_missing |>
         dplyr::group_by(dplyr::across(id)) |>
         dplyr::slice_min(missing, with_ties = TRUE) |>
         dplyr::ungroup()
 
-      ids_kept <- dplyr::select(remove_duplicates, id, dplyr::any_of(date_time), missing)
+      ids_kept <- dplyr::select(remove_duplicates, dplyr::all_of(id), dplyr::any_of(date_time), missing)
 
       suppressMessages(
         remove_duplicates <- dplyr::anti_join(dup_missing, remove_duplicates)
@@ -111,7 +125,7 @@ duplicates_check <- function(x, id = "Subject",
       }
     }
 
-    ids_removed <- dplyr::select(remove_duplicates, id, dplyr::any_of(date_time), dplyr::any_of("missing"))
+    ids_removed <- dplyr::select(remove_duplicates, dplyr::all_of(id), dplyr::any_of(date_time), dplyr::any_of("missing"))
 
     if (remove == FALSE) {
       message("duplicates_check: Duplicate IDs found BUT not removed!")
