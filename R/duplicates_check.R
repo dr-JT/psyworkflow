@@ -5,8 +5,8 @@
 #' @param x dataframe
 #' @param unique_id Column name(s) that should be uniquely identified and will be used to check for
 #'     duplicate id's grouped by these columns (e.g., "Subject", c("Subject, Session))
-#' @param date_time Column names that uniquely identify a testing administration
-#'     (e.g., "Date", "Time").
+#' @param date_time Column names that uniquely identify a testing administration.
+#'     (e.g., "Date", "Time"). Can also be: "none" or NULL
 #' @param n Number of unique id's expected (default: 1).
 #' @param remove logical. Remove duplicate ids from data? (default: TRUE)
 #' @param keep_by Which duplicate id should be kept?

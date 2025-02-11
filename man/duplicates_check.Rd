@@ -6,23 +6,24 @@
 \usage{
 duplicates_check(
   x,
-  id = "Subject",
+  unique_id = "Subject",
   date_time = c("SessionDate", "SessionTime"),
   n = 1,
   remove = TRUE,
   keep_by = c("none", "first date", "least missing"),
   save_as = NULL,
+  id = "Subject",
   unique = c("SessionDate", "SessionTime")
 )
 }
 \arguments{
 \item{x}{dataframe}
 
-\item{id}{Column name that SHOULD be unique and will be used to check for
+\item{unique_id}{Column name(s) that should be uniquely identified and will be used to check for
 duplicate id's grouped by these columns (e.g., "Subject", c("Subject, Session))}
 
-\item{date_time}{Column names that uniquely identify a testing administration
-(e.g., "SessionDate", "SessionTime").}
+\item{date_time}{Column names that uniquely identify a testing administration.
+(e.g., "Date", "Time"). Can also be: "none" or NULL}
 
 \item{n}{Number of unique id's expected (default: 1).}
 
@@ -32,6 +33,8 @@ duplicate id's grouped by these columns (e.g., "Subject", c("Subject, Session))}
 options: "none", "first date", "least missing"}
 
 \item{save_as}{Folder path and file name to output the duplicate ID's}
+
+\item{id}{deprecated. Use unique_id instead.}
 
 \item{unique}{deprecated. Use date_time instead.}
 }
