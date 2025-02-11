@@ -56,6 +56,12 @@ duplicates_check <- function(x, id = "Subject",
 
     if (keep_by == "none") {
       remove_duplicates <- duplicates
+
+      suppressMessages(
+        ids_kept <- dplyr::anti_join(duplicates, remove_duplicates) |>
+          dplyr::select(id, dplyr::any_of(date_time))
+      )
+
       if (remove == TRUE) {
         x <- dplyr::anti_join(x, remove_duplicates, by = id)
         message("duplicates_check: Duplicate IDs found AND removed!")
@@ -65,36 +71,64 @@ duplicates_check <- function(x, id = "Subject",
       remove_duplicates <- dplyr::group_by(duplicates, dplyr::across(id))
       remove_duplicates <- dplyr::arrange(remove_duplicates, dplyr::across(date_time))
       remove_duplicates <- dplyr::slice(remove_duplicates, -1)
+
+      suppressMessages(
+        ids_kept <- dplyr::anti_join(duplicates, remove_duplicates) |>
+          dplyr::select(id, dplyr::any_of(date_time))
+      )
+
       if (remove == TRUE) {
-        suppressMessages(x <- dplyr::anti_join(x, remove_duplicates))
-        message("duplicates_check: Kept one duplicate that occured first by date.",
+        suppressMessages(
+          x <- dplyr::anti_join(x, remove_duplicates)
+        )
+        message("duplicates_check: Kept duplicate that occured first by date.",
                 " ALL others were removed.")
       }
 
     }
     if (keep_by == "least missing") {
-      remove_duplicates <- duplicates |>
+      dup_missing <- duplicates |>
         dplyr::mutate(missing = rowSums(dplyr::across(dplyr::everything(), ~ is.na(.x)))) |>
+        dplyr::select(id, dplyr::any_of(date_time), missing)
+
+      remove_duplicates <- dup_missing |>
         dplyr::group_by(dplyr::across(id)) |>
         dplyr::slice_min(missing, with_ties = TRUE) |>
-        dplyr::ungroup() |>
-        dplyr::select(-missing)
+        dplyr::ungroup()
 
-      suppressMessages(remove_duplicates <- dplyr::anti_join(duplicates, remove_duplicates))
+      ids_kept <- dplyr::select(remove_duplicates, id, dplyr::any_of(date_time), missing)
+
+      suppressMessages(
+        remove_duplicates <- dplyr::anti_join(dup_missing, remove_duplicates)
+      )
       if (remove == TRUE) {
-        suppressMessages(x <- dplyr::anti_join(x, remove_duplicates))
-        message("duplicates_check: Kept one duplicate that had the least missing data",
+        suppressMessages(
+          x <- dplyr::anti_join(x, remove_duplicates)
+        )
+        message("duplicates_check: Kept duplicate that had the least missing data.",
+                " Duplicates with the same amount of missing data were NOT removed.",
                 " ALL others were removed.")
       }
     }
 
-    ids_removed <- dplyr::select(remove_duplicates, id, dplyr::any_of(date_time))
+    ids_removed <- dplyr::select(remove_duplicates, id, dplyr::any_of(date_time), dplyr::any_of("missing"))
 
     if (remove == FALSE) {
       message("duplicates_check: Duplicate IDs found BUT not removed!")
-    }
+      print(ids_removed)
+    } else {
+      message("-- Duplicates Removed --")
+      print(ids_removed)
 
-    print(ids_removed)
+      message("-- Duplicates Kept --")
+      print(ids_kept)
+
+      ids_warning <- dplyr::anti_join(ids_kept, ids_removed, by = id)
+      if (nrow(ids_warning) > 0) {
+        message("-- WARNING: Some duplicates remain in the data --")
+        print(ids_warning)
+      }
+    }
 
   } else {
     message("duplicates_check: No duplicate IDs found!")
