@@ -10,7 +10,7 @@
 #' @param n Number of unique id's expected (default: 1).
 #' @param remove logical. Remove duplicate ids from data? (default: TRUE)
 #' @param keep_by Which duplicate id should be kept?
-#'     options: "none", "first date", "least missing"
+#'     options: "none", "first date_time", "least missing"
 #' @param save_as Folder path and file name to output the duplicate ID's
 #' @param id deprecated. Use unique_id instead.
 #' @param unique deprecated. Use date_time instead.
@@ -20,7 +20,7 @@ duplicates_check <- function(x,
                              unique_id = "Subject",
                              date_time = c("SessionDate", "SessionTime"),
                              n = 1, remove = TRUE,
-                             keep_by = c("none", "first date", "least missing"),
+                             keep_by = c("none", "first date_time", "least missing"),
                              save_as = NULL,
                              id = "Subject",
                              unique = c("SessionDate", "SessionTime")) {
@@ -35,7 +35,10 @@ duplicates_check <- function(x,
     date_time <- unique
   }
 
-  keep_by <- match.arg(keep_by)
+  keep_by <- match.arg(c(keep_by, "missing", "first date"))
+
+  if (keep_by == "missing") keep_by <- "least missing"
+  if (keep_by == "first date") keep_by <- "first date_time"
 
   # get duplicate ids
   if ("none" %in% date_time | is.null(date_time)) {

@@ -10,7 +10,7 @@ duplicates_check(
   date_time = c("SessionDate", "SessionTime"),
   n = 1,
   remove = TRUE,
-  keep_by = c("none", "first date", "least missing"),
+  keep_by = c("none", "first date_time", "least missing"),
   save_as = NULL,
   id = "Subject",
   unique = c("SessionDate", "SessionTime")
@@ -30,7 +30,7 @@ duplicate id's grouped by these columns (e.g., "Subject", c("Subject, Session))}
 \item{remove}{logical. Remove duplicate ids from data? (default: TRUE)}
 
 \item{keep_by}{Which duplicate id should be kept?
-options: "none", "first date", "least missing"}
+options: "none", "first date_time", "least missing"}
 
 \item{save_as}{Folder path and file name to output the duplicate ID's}
 
