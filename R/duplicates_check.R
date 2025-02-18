@@ -84,7 +84,7 @@ duplicates_check <- function(x,
         message("duplicates_check: Duplicate IDs found AND removed!")
       }
     }
-    if (keep_by == "first date") {
+    if (keep_by == "first date_time") {
       remove_duplicates <- dplyr::group_by(duplicates, dplyr::across(unique_id))
       remove_duplicates <- dplyr::arrange(remove_duplicates, dplyr::across(date_time))
       remove_duplicates <- dplyr::slice(remove_duplicates, -1)
