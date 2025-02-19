@@ -45,7 +45,7 @@ duplicates_check <- function(x,
     duplicates <- x |>
       dplyr::mutate(.by = unique_id, count = n()) |>
       dplyr::filter(count > n) |>
-      dplyr::select(-n)
+      dplyr::select(-count)
   } else {
     duplicates <- dplyr::select(x, dplyr::all_of(unique_id), dplyr::all_of(date_time))
     duplicates <- dplyr::distinct(duplicates)
