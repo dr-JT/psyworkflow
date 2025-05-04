@@ -43,14 +43,14 @@ duplicates_check <- function(x,
   # get duplicate ids
   if ("none" %in% date_time | is.null(date_time)) {
     duplicates <- x |>
-      dplyr::mutate(.by = unique_id, count = n()) |>
+      dplyr::mutate(.by = unique_id, count = dplyr::n()) |>
       dplyr::filter(count > n) |>
       dplyr::select(-count)
   } else {
     duplicates <- dplyr::select(x, dplyr::all_of(unique_id), dplyr::all_of(date_time))
     duplicates <- dplyr::distinct(duplicates)
     duplicates <- dplyr::group_by(duplicates, dplyr::across(unique_id))
-    duplicates <- dplyr::mutate(duplicates, count = n())
+    duplicates <- dplyr::mutate(duplicates, count = dplyr::n())
     duplicates <- dplyr::ungroup(duplicates)
     duplicates <- dplyr::filter(duplicates, count > n)
     duplicates <- dplyr::select(duplicates, -count)
