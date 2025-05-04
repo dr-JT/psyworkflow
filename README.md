@@ -38,7 +38,7 @@ Most of the functions are designed to easily and quickly get you through some pr
 - **Check for duplicate subject ID's in your data files**
 
     In large data collection efforts it is not uncommon that subject ID's will occasionally get entered incorrectly when adminstering a task. The `duplicates_check()` function will check for duplicate subject ID's, remove them, and save them to a file so you can sort them out later. 
-
+    
 ### Upload to OSF
 
 - **Upload files to an OSF project**

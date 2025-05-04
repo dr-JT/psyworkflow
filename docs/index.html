@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,25 +33,31 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">psyworkflow</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/check_duplicates.html">Check for Duplicate Subjects in Data</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/dr-JT/psyworkflow/">
+  <a href="https://github.com/dr-JT/psyworkflow/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -66,108 +74,112 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="psyworkflow" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#psyworkflow" class="anchor"></a>psyworkflow</h1></div>
-<p>An R package to aid in the <strong>workflow</strong> of getting a
-research project setup and convenient functions for preliminary data
-processing steps.</p>
-<div id="install" class="section level2">
-<h2 class="hasAnchor">
-<a href="#install" class="anchor"></a>Install</h2>
+<div class="section level1">
+<div class="page-header"><h1 id="psyworkflow">psyworkflow<a class="anchor" aria-label="anchor" href="#psyworkflow"></a>
+</h1></div>
+<p>An R package to aid in the <strong>workflow</strong> of getting a research project setup and convenient functions for preliminary data processing steps.</p>
+<div class="section level2">
+<h2 id="install">Install<a class="anchor" aria-label="anchor" href="#install"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"dr-JT/psyworkflow"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"dr-JT/psyworkflow"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p>Most of the functions are designed to easily and quickly get you
-through some preliminary data processing steps so you can get to work on
-processing and analyzing your data.</p>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<p>Most of the functions are designed to easily and quickly get you through some preliminary data processing steps so you can get to work on processing and analyzing your data.</p>
+<div class="section level3">
+<h3 id="templates">Templates<a class="anchor" aria-label="anchor" href="#templates"></a>
+</h3>
 <ul>
 <li>
 <p><strong>R project template</strong></p>
-<p>Create a research project directory with folders and R script
-templates:</p>
-<p>File -&gt; New Project -&gt; New Directory -&gt; then choose the
-‘Research Study’ template</p>
+<p>Create a research project directory with folders and R script templates:</p>
+<p>File -&gt; New Project -&gt; New Directory -&gt; then choose the ‘Research Study’ template</p>
 </li>
 <li>
 <p><strong>Download R script templates</strong></p>
-<p>R script templates can be downloaded with
-<code><a href="reference/get_template.html">get_template()</a></code></p>
+<p>R script templates can be downloaded with <code><a href="reference/get_template.html">get_template()</a></code></p>
 </li>
 <li>
-<p><strong>Organize files from different computers</strong></p>
-<p>I often collect data on multiple computers on a battery of cognitive
-tasks. The <code><a href="reference/copy_raw.html">copy_raw()</a></code> function helps to get all the files
-for each task, organized on multiple computers, into one location
-(usually a network drive or shared folder on a cloud storage
-system).</p>
-</li>
-<li>
-<p><strong>Bind multiple data files together</strong></p>
-<p>Typically, you start out with individual data files for each subject.
-The first step, then, is to bind those individual data files into one
-large data file that contains the data for all subjects for a single
-task. The <code><a href="reference/files_bind.html">files_bind()</a></code> function will bind (stack) the rows
-for multiple data files with the same column names.</p>
-</li>
-<li>
-<p><strong>Check for duplicate subject ID’s in your data
-files</strong></p>
-<p>In large data collection efforts it is not uncommon that subject ID’s
-will occasionally get entered incorrectly when adminstering a task. The
-<code><a href="reference/duplicates_check.html">duplicates_check()</a></code> function will check for duplicate
-subject ID’s, remove them, and save them to a file so you can sort them
-out later.</p>
-</li>
-<li>
-<p><strong>Join multiple data files together</strong></p>
-<p>You start out with seperate data files for each task but at some
-point you will likely want to join (merge) the data files from multiple
-tasks into one data file that is ready for statistical analysis. The
-<code><a href="reference/files_join.html">files_join()</a></code> function will join (merge) multiple data files
-that have a common id column (e.g., Subject).</p>
+<p><strong>Download Quarto analysis template</strong></p>
+<p>R script templates can be downloaded with <code>get_template(analysis_script = TRUE)</code></p>
 </li>
 </ul>
+</div>
+<div class="section level3">
+<h3 id="organize-and-process-data">Organize and process data<a class="anchor" aria-label="anchor" href="#organize-and-process-data"></a>
+</h3>
+<ul>
+<li>
+<p><strong>Organize files from different computers</strong></p>
+<p>We often collect data on multiple computers on a battery of cognitive tasks. The <code><a href="reference/copy_files.html">copy_files()</a></code> function helps to get all the files for each task, organized on multiple computers, into one location (usually a network drive or shared folder on a cloud storage system).</p>
+</li>
+<li>
+<p><strong>Check for duplicate subject ID’s in your data files</strong></p>
+<p>In large data collection efforts it is not uncommon that subject ID’s will occasionally get entered incorrectly when adminstering a task. The <code><a href="reference/duplicates_check.html">duplicates_check()</a></code> function will check for duplicate subject ID’s, remove them, and save them to a file so you can sort them out later.</p>
+</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="upload-to-osf">Upload to OSF<a class="anchor" aria-label="anchor" href="#upload-to-osf"></a>
+</h3>
+<ul>
+<li>
+<p><strong>Upload files to an OSF project</strong></p>
+<p>OSF does not make it easy to upload files especially when you have several leves of nested folders - you cannot upload folders directly to OSF! The `upload_to_osf() function makes it more convenient to upload multiple files and sub-folders to OSF.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/dr-JT/psyworkflow/">https://​github.com/​dr-JT/​psyworkflow/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/dr-JT/psyworkflow/issues">https://​github.com/​dr-JT/​psyworkflow/​issues</a>
-</li>
+<li><a href="https://github.com/dr-JT/psyworkflow/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/dr-JT/psyworkflow/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>NA</li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Jason Tsukahara <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/-5550" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing psyworkflow</a></li>
 </ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Jason Tsukahara <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/-5550" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Jason Tsukahara.</p>
+  <p></p>
+<p>Developed by Jason Tsukahara.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -175,6 +187,8 @@ that have a common id column (e.g., Subject).</p>
 
   
 
+
+  
 
   </body>
 </html>

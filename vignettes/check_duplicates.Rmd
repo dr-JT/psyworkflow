@@ -1,0 +1,42 @@
+---
+title: "Check for Duplicate Subjects in Data"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In large data collection efforts it is not uncommon that subject ID's will occasionally get entered incorrectly when adminstering a task, or a subject is wrongly adminstered the task multiple times. The `duplicates_check()` function will check for duplicate subject ID's, remove them, and save them to a file so you can sort them out later. 
+
+Identifying these duplicates and making decisions on what to do with them should be done before any data processing is done. Here is a template script that can be used to check for duplicates and save them to a file so that you can make decisions on how to handle them. 
+
+```{r eval=FALSE}
+# run this script to check for duplicates
+library(stringr)
+library(readxl)
+library(purrr)
+library(psyworkflow)
+
+extract_name <- function(path) {
+  str_extract(path, "regex to extract task name")
+}
+
+files_import <- list.files(path = "folder location to raw data", 
+                           pattern = "survey", 
+                           recursive = TRUE, full.names = TRUE)
+
+files_import |>
+  map(\(file) {
+    name <- extract_name(file)
+    read_excel(file) |>
+      duplicates_check(unique_id = "subject",
+                       date_time = c("date", "time"),
+                       remove = FALSE,
+                       keep_by = "least missing",
+                       save_as = 
+                         paste0("folder location to raw data/duplicates/", 
+                                name, ".csv"))
+  })
+
+```
+

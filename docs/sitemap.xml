@@ -1,24 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dr-jt.github.io/psyworkflow//index.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow/404.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/psyworkflow//reference/copy_raw.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow/articles/check_duplicates.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/psyworkflow//reference/create_project.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/psyworkflow//reference/duplicates_check.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow/authors.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/psyworkflow//reference/files_bind.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow/index.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/psyworkflow//reference/files_join.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/check_files_to_osf.html</loc>
   </url>
   <url>
-    <loc>https://dr-jt.github.io/psyworkflow//reference/get_template.html</loc>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/copy_files.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/copy_raw.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/create_project.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/create_study.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/duplicates_check.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/files_bind.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/files_join.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/get_template.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/pixel_to_visualangle.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/template.html</loc>
+  </url>
+  <url>
+    <loc>https://dr-jt.github.io/psyworkflow/reference/upload_to_osf.html</loc>
   </url>
 </urlset>
