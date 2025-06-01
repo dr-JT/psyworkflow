@@ -35,11 +35,11 @@ duplicates_check <- function(x,
     date_time <- unique
   }
 
-  if (keep_by == "missing") keep_by <- "least missing"
-  if (keep_by == "first date") keep_by <- "first date_time"
-
   keep_by <- match.arg(keep_by)
 
+  if (keep_by == "missing") keep_by <- "least missing"
+  if (keep_by == "first date") keep_by <- "first date_time"
+  
   # get duplicate ids
   if ("none" %in% date_time | is.null(date_time)) {
     duplicates <- x |>
